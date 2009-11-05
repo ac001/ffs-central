@@ -1,0 +1,1 @@
+/home/dfabert/svn/kfreeflight.local/metar.cpp
