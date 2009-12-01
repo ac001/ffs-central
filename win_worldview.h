@@ -1,1 +1,0 @@
-/home/dfabert/svn/kfreeflight.local/win_worldview.h

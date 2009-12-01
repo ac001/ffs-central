@@ -1,1 +1,0 @@
-/home/dfabert/svn/kfreeflight.local/po/fr/CMakeLists.txt
