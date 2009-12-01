@@ -1,0 +1,52 @@
+******************************************************************************
+                          README for KFreeFlight
+******************************************************************************
+
+Developed by didier FABERT <didier.fabert [AT] gmail.com>
+
+Main site: http://kfreeflight.sourceforge.net
+
+License GNU-GPL version2
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+see the GNU General Public License in the COPYING file became with this distribution
+for more details.
+
+******************************************************************************
+This is the development version, so you must build it by yourself.
+Anyway, it's very simple with cmake. For now, program don't find icons when they aren't in kde standard place.
+So, it's better to install it on /usr instead of /usr/local
+
+To ensure not pollute the source, it's strongly recommended to build program in a sub-directory.
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+$ sudo make install
+
+KFreeFlight need qt and kde libs (dev packages).
+
+******************************************************************************
+What is it?
+-----------
+
+This program is a GUI front-end for launching FlightGear.
+I made it to be as open as possible and I try to puts the most common options but
+if you see a important missing, please send me an email.
+
+Why KFreeFlight ?
+-----------------
+
+Because all program I find doesn't have the common options I use.
+(NMEA for example) or can't be set up for using with an "exotic" 
+GNU/Linux Distribution (like GENTOO or LFS) or a FlightGear source-based installation.
+Otherwise to have fun in programming.
+******************************************************************************
+
+WARNING : the options you enter are not verify by the program and can render
+FlightGear unstable with bad options (ex character in place of number, etc...)
+
+******************************************************************************
+

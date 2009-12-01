@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>opt_scenery</class>
+ <widget class="QWidget" name="opt_scenery">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>540</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>640</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Properties</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Scenarii</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="KActionSelector" name="selector_scenarii">
+     <property name="whatsThis">
+      <string>Let you manage startup personnal properties</string>
+     </property>
+     <property name="availableLabel">
+      <string>&amp;Available Scenarii:</string>
+     </property>
+     <property name="selectedLabel">
+      <string>A&amp;ctivated Scenarii:</string>
+     </property>
+     <property name="availableInsertionPolicy">
+      <enum>KActionSelector::AtBottom</enum>
+     </property>
+     <property name="selectedInsertionPolicy">
+      <enum>KActionSelector::AtBottom</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="btn_refresh">
+       <property name="text">
+        <string>Refresh</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>KActionSelector</class>
+   <extends>QWidget</extends>
+   <header>kactionselector.h</header>
+  </customwidget>
+ </customwidgets>
+ <includes>
+  <include location="local">kactionselector.h</include>
+ </includes>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=KFreeFlight
+Exec=kfreeflight
+Icon=kfreeflight
+Type=Application
+X-DocPath=kfreeflight/kfreeflight.html
+GenericName=A KDE4 GUI Frontend for FlighGear
+GenericName[ca]=Une interface utilisateur KDE4 pour FlightGear
+Terminal=false

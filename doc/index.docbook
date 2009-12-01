@@ -1,0 +1,2091 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+  <!ENTITY kappname "kfreeflight">
+  <!ENTITY package "kdegames">
+  <!ENTITY flightgear "<application>Flightgear</application>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % English "INCLUDE">
+]>
+
+<book lang="&language;">
+
+<bookinfo>
+<title>The &kappname; Handbook</title>
+
+<authorgroup>
+<author>
+<firstname>Didier</firstname>
+<surname>Fabert</surname>
+<affiliation>
+<address><email>didier.fabert@gmail.com</email></address>
+</affiliation>
+</author>
+
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
+</authorgroup>
+
+<legalnotice>&FDLNotice;</legalnotice>
+
+<date>2002-09-07</date>
+<releaseinfo>1.00.00</releaseinfo>
+
+<abstract>
+<para>
+&kappname; is a GUI frontent to &flightgear;
+</para>
+</abstract>
+
+<keywordset>
+<keyword>KDE</keyword>
+<keyword>KFreeFlight</keyword>
+</keywordset>
+
+</bookinfo>
+
+<chapter id="introduction"> 
+<title>Introduction</title> 
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="logo.png" format="PNG" /></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>
+&kappname; launch FlightGear with the most common options. 
+Easiest to use as possible, choose some options and you can take off immediately.
+</para>
+
+<para>While it is not necessary to fully understand the &flightgear;
+application in order to make good use of &kappname;, it is highly
+recommended that you read and try to understand the &flightgear;
+documentation.</para>
+
+<para>To find out more about &flightgear; go to
+<ulink url="http://www.Flightgear.org">www.Flightgear.org</ulink>.</para>
+
+</chapter>
+
+<chapter id="the-interface">
+<title>The &kappname; Interface</title>
+
+<para>When you start &kappname;, the default layout is as
+follows:</para>
+
+<screenshot>
+<screeninfo>The default view layout</screeninfo>
+<mediaobject>
+<imageobject><imagedata fileref="screenshot_app.png" format="PNG"/></imageobject>
+<textobject><phrase>The default view layout</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+<itemizedlist>
+<listitem>
+<para><link linkend="menu-reference">Menubars (1)</link></para>
+</listitem>
+<listitem>
+<para>Toolbars (2)</para>
+</listitem>
+<listitem>
+<para><link linkend="the-object-tree">The object tree (3)</link></para>
+</listitem>
+<listitem>
+<para><link linkend="the-properties-view">The object properties
+view (4)</link></para>
+</listitem>
+<listitem>
+<para><link linkend="the-wireframe-views">The wireframe and camera views (5)</link></para>
+</listitem>
+</itemizedlist>
+
+<sect1 id="the-object-tree">
+<title>The Object Tree</title>
+
+<para>The object tree displays the objects inside the scene and their hierarchy.</para>
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="objecttree.png" format="PNG"/></imageobject>
+<textobject><phrase>The object tree</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+<sect2 id="object-tree-selecting-object">
+<title>Selecting Objects</title>
+<para>In the object tree you can select objects. Once you select an object, its attributes
+are displayed in the
+<link linkend="the-properties-view">properties view</link> and rendered yellow in the
+<link linkend="the-wireframe-views">wireframe views</link>.</para>
+
+<para>You can select multiple objects. However, you cannot select a child of an already
+selected object, because all children are selected indirectly with the parent.</para>
+
+<para>If only one object is selected, it is referred to as <quote>the active object</quote> from now on.</para>
+</sect2>
+
+<sect2 id="object-tree-add-objects">
+<title>Adding new Objects</title>
+
+<para>To add a new object to the object tree, select the object where you want to
+insert the new object and either click the icon in the toolbar or choose a menu entry
+in the <guimenu>Insert</guimenu> menu.</para>
+
+<para>There are three possible positions for new objects:</para>
+<itemizedlist>
+<listitem><para>As the first child of the active object</para></listitem>
+<listitem><para>As the last child of the active object</para></listitem>
+<listitem><para>As a sibling of the active object</para></listitem>
+</itemizedlist>
+
+<para>If there is more than one position possible, the following popup menu prompts
+you to select the correct position:</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="insertaspopup.png" format="PNG"/></imageobject>
+<textobject><phrase>The insert position popup</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+</sect2>
+
+<sect2 id="object-tree-remove-objects">
+<title>Removing Objects</title>
+<para>To remove objects, select them and select <guimenuitem>Delete</guimenuitem> from
+either the <guimenu>Edit</guimenu> menu or the &RMB; context menu.</para>
+</sect2>
+
+<sect2 id="object-tree-move-objects">
+<title>Moving Objects</title>
+<para>To move objects, drag and drop the selected objects on to the object tree.</para>
+<para>You can cut the object and insert it at the new position as well.</para>
+</sect2>
+
+</sect1>
+
+<sect1 id="the-properties-view">
+<title>The Properties View</title>
+
+<para>The properties view displays the attributes of the active object.</para>
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="objectpropertiesview.png" format="PNG"/></imageobject>
+<textobject><phrase>The properties view</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+<para>If you changed some properties, click the <guibutton>Apply</guibutton> button to
+make the changes permanent. If you entered invalid data, a message box will show up with
+an error description. You can then adjust the properties and press
+<guibutton>Apply</guibutton> again, or revert your changes with the
+<guibutton>Cancel</guibutton> button.</para>
+<para>If you set the path to your &flightgear; user documentation in the
+<link linkend="configure-Flightgear-tab">settings dialog</link>, you can open the
+&flightgear; reference page for the displayed object with the <guibutton>Help</guibutton>
+button.
+</para> 
+
+<note><para>You need the &flightgear; 3.1g or 3.5 HTML user documentation in order to use this feature.
+If your distribution does not contain this documentation you can download it
+<ulink url="ftp://ftp.Flightgear.org/pub/Flightgear/Old-Versions/Official-3.1g/Docs/povhtml.zip">here</ulink>.
+The &flightgear; 3.5 package contains the html user documentation.</para>
+</note>
+
+<para>If you edit a texture or a part of a texture, you can preview it inside the properties view.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="texturepreview.png" format="PNG"/></imageobject>
+<textobject><phrase>The properties view, texture preview</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+<para>Press the <guibutton>Preview</guibutton> button inside the properties view and a
+small sample scene with the selected texture will be rendered. By default the whole texture
+will be rendered, even if not the top item is selected. If you want to render only a part of
+the texture (for example a texture inside a texture map and not the whole texture map), check the
+<guilabel>local</guilabel> check box.</para>
+
+</sect1>
+
+<sect1 id="the-wireframe-views">
+<title>The Wireframe Views</title>
+
+<sect2 id="orthographic-views">
+<title>The Orthographic Views</title>
+
+<para>The orthographic wireframe views show the scene as an orthographic
+projection on one of the coordinate planes.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="topview.png" format="PNG"/></imageobject>
+<textobject><phrase>The top wireframe view</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+<para>There are six types of orthographic wireframes views:</para>
+<itemizedlist>
+<listitem><para>Top</para></listitem>
+<listitem><para>Bottom</para></listitem>
+<listitem><para>Left</para></listitem>
+<listitem><para>Right</para></listitem>
+<listitem><para>Front</para></listitem>
+<listitem><para>Back</para></listitem>
+</itemizedlist>
+
+<para>Each type renders the scene from a different perspective.</para>
+
+<sect3 id="graphical-change">
+<title>Graphical Attribute Changes</title>
+<para>In the orthographic views you can change object attribute
+properties graphically with the mouse.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="controlpoints.png" format="PNG"/></imageobject>
+<textobject><phrase>The control points of the camera object</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+<para>The above screenshot shows the control points of the camera.
+You can drag the control points around to change the camera's position and direction.</para>
+
+<para>If a transformation is selected, the control points are removed and a small cross is
+displayed in the wireframe view. The cross marks the center for scaling and rotation,
+as well as the position for translations. You can change the transformation with the mouse
+by dragging inside the whole view.</para>
+
+<para>Some objects like the bicubic patch support selection and modification of multiple
+control points.</para>
+
+<informaltable>
+<tgroup cols="2"><tbody>
+<row>
+  <entry>&LMB;</entry>
+  <entry>Selects one control point and deselects all others</entry>
+</row>
+<row>
+  <entry><keycombo
+  action="click">&Ctrl;<mousebutton>Left</mousebutton></keycombo>
+  Mouse Button</entry>
+  <entry>Selects or deselects one control point</entry>
+</row>
+<row>
+  <entry><keycombo
+  action="click">&Shift;<mousebutton>Left</mousebutton></keycombo>
+  Mouse Button</entry>
+  <entry>Drag a rectangle. All control points inside the rectangle are
+  selected, the others deselected</entry>
+</row>
+<row>
+  <entry><keycombo
+  action="click">&Shift;&Ctrl;<keycap>Left</keycap></keycombo> Mouse Button</entry>
+  <entry>Drag a rectangle. All control points inside the rectangle are selected</entry>
+</row>
+</tbody></tgroup>
+</informaltable>
+
+</sect3>
+
+<sect3 id="display-window-selection">
+<title>Display Window Selection</title>
+<para>You can zoom and translate the view to change the display window.</para>
+<informaltable>
+<tgroup cols="2"><tbody>
+<row>
+  <entry>&MMB;</entry>
+  <entry>Translates the view</entry>
+</row>
+<row>
+  <entry><mousebutton>wheel</mousebutton></entry>
+  <entry>Zooms the view around the mouse position</entry>
+</row>
+<row>
+  <entry><keycap>Left</keycap>, <keycap>Right</keycap>, <keycap>Up</keycap>, <keycap>Down</keycap> </entry>
+  <entry>Translates the view</entry>
+</row>
+<row>
+  <entry><keycombo action="simul"><keycap>Ctrl</keycap><keycap>Left</keycap></keycombo>,
+    <keycombo action="simul"><keycap>Ctrl</keycap><keycap>Right</keycap></keycombo></entry>
+  <entry>Zooms the view</entry>
+</row>
+</tbody></tgroup>
+</informaltable>
+
+</sect3>
+
+</sect2>
+
+<sect2 id="camera-view">
+<title>The Camera View</title>
+
+<para>The camera view displays the scene from the camera's point of view.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="cameraview.png" format="PNG"/></imageobject>
+<textobject><phrase>The camera view</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+<para>The blue box displays the field of view when the scene is rendered.</para>
+
+<para>You cannot change control points in the camera view.</para>
+
+</sect2>
+
+<sect2 id="visibility-levels">
+<title>Visibility Levels</title>
+
+<para>By default all objects are displayed in the wireframe views.</para>
+<para>Each object with a wire frame has a visibility level.
+You can specify a visibility level relative to the parent's visibility level
+or an absolute value. Objects are only displayed if they are selected or their visibility
+level is smaller or equal the chosen scene visibility level in the
+toolbar.</para>
+
+</sect2>
+
+</sect1>
+
+
+<sect1 id="view-layouts">
+<title>View Layouts</title>
+
+<para>&kappname; comes with a default view layout: The object tree and
+the object properties view to the left and four graphical views to the right.</para>
+
+<para>If you don't like the default layout, or need another layout, you can freely
+configure it. You can even save multiple view layouts and switch between them
+on the fly.</para>
+
+<sect2 id="change-the-view-layout">
+<title>Modifying the View Layout</title>
+
+<para>You can move the existing views by dragging the handle on top of the
+views around.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="dockwidget.png" format="PNG"/></imageobject>
+<textobject><phrase>The dock widget handle</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+<para>To dock a widget above or below an existing view, drag the handle to
+the top or bottom of a view. A rectangle will indicate the new position.</para>
+<para>To create a new column, drag the handle to the right or left side
+of another view. The view will then dock to the left or right side of the
+view and span the full height.</para>
+<para>If you want multiple views sharing the same space, drag the handle to
+the center of another view. You can then switch between the views by
+clicking the corresponding tab on top of the views.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="dockwidgettab.png" format="PNG"/></imageobject>
+<textobject><phrase>The tabbed view layout</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+<para>The last layout possibility are floating views: views that
+are not docked into the main view. To undock a view, drag the handle to the
+desktop or press the little arrow in the view handle that points to the 
+top left side.</para>
+
+<para>To close a view, click the little cross in the handle. To prevent closing,
+click the little box between the arrow and the cross.</para>
+
+<para>You can add additional views to the main window. The <guimenu>View</guimenu>
+menu contains entries for each type of view. New views will be created floating,
+which you can dock wherever you like.</para>
+
+</sect2>
+
+<sect2 id="save-a-view-layout">
+<title>Saving a View Layout</title>
+
+<para>You can save the current view layout with
+<menuchoice>
+<guimenu>View</guimenu>
+<guimenuitem>Save View Layout...</guimenuitem>
+</menuchoice> A dialog opens that lets you select an existing layout
+or create a new one.</para>
+
+<para>You can then fine-tune your view layout in the 
+<link linkend="configure-view-layout-tab">settings dialog</link>.
+
+</para>
+</sect2>
+
+<sect2 id="switching-between-view-layout">
+<title>Switching between View Layouts</title>
+<para>You can switch to a saved view layout by selecting the entry in the
+<menuchoice><guimenu>View</guimenu><guimenuitem>View Layout</guimenuitem></menuchoice>
+menu.</para>
+
+</sect2>
+
+</sect1>
+
+</chapter>
+
+
+<chapter id="Flightgear-interaction">
+<title>&flightgear; Interaction</title>
+
+<sect1 id="rendering-the-scene">
+<title>Rendering the Scene</title>
+
+<para>Once you have created a scene, you will want to render it. &kappname;
+uses &flightgear; 3.1g to render the scene, so you need a correct installation of &flightgear;.
+At the time of writing &flightgear; 3.5 was released. This version is not supported in
+the &kappname; 1.0 version.</para>
+<para>Go to <ulink url="http://www.Flightgear.org">www.Flightgear.org</ulink>
+to get a version of &flightgear; and for installation instructions.</para>
+
+<para>To render the current scene, press the render icon
+<inlinemediaobject>
+<imageobject><imagedata fileref="rendericon.png" format="PNG"/></imageobject>
+<textobject><phrase>The render icon</phrase></textobject>
+</inlinemediaobject>
+in the toolbar, or select the
+<menuchoice><guimenu>View</guimenu><guimenuitem>Render</guimenuitem></menuchoice>
+menu entry.</para>
+
+<sect2 id="render-modes">
+<title>Render Modes</title>
+
+<para>A render mode is similar to &flightgear;s ini file entries. It specifies the image size
+and quality levels for rendering. If you would like to render your scene with different
+qualities and sizes, you can add as many render modes as you need, from quick previews
+to fullscreen high quality images.</para>
+
+<sect3 id="render-modes-configuration">
+<title>Render Modes Configuration</title>
+
+<para>When you press the render settings icon
+<inlinemediaobject>
+<imageobject><imagedata fileref="rendersettingsicon.png" format="PNG"/></imageobject>
+<textobject><phrase>The render settings</phrase></textobject>
+</inlinemediaobject>
+in the toolbar or select the
+<menuchoice><guimenu>View</guimenu><guimenuitem>Render Modes...</guimenuitem></menuchoice>
+menu icon, the following dialog opens:</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="rendermodesselection.png" format="PNG"/></imageobject>
+<textobject><phrase>The render modes selection dialog</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+<para>This dialog shows the list of all available render modes.</para>
+
+<variablelist>
+
+<varlistentry><term><guibutton>Add</guibutton></term>
+<listitem><para><action>Adds a default render mode to the list</action>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><guibutton>Remove</guibutton></term>
+<listitem><para><action>Removes the selected render mode</action>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><guibutton>Edit</guibutton></term>
+<listitem><para><action>Opens a dialog to edit the selected render mode</action>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><guibutton>Up</guibutton></term>
+<listitem><para><action>Moves the selected render mode one position up</action>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><guibutton>Down</guibutton></term>
+<listitem><para><action>Moves the selected render mode one position down</action>.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+<para>The <guibutton>Edit</guibutton> Button opens the following
+configuration dialog:</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="rendermodesize.png" format="PNG"/></imageobject>
+<textobject><phrase>The render modes size tab</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+<para>Each render mode has a description. You can enter any description, but it should reflect
+the render mode's properties.</para>
+
+<para>In the <guilabel>Size</guilabel> tab you can enter the width and height of the rendered image. If
+you want to render only a small part of the image, check the
+<guilabel>Subselection</guilabel> check box and enter the part of the image
+in the fields below.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="rendermodequality.png" format="PNG"/></imageobject>
+<textobject><phrase>The render modes quality tab</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+<para>In the <guilabel>Quality</guilabel> tab you can select various quality levels
+for the rendered image.</para>
+
+<para>In the <guilabel>Quality</guilabel> combo box you can select the features
+&flightgear; uses while rendering. The possibilities range from a very simple coloring
+and lighting model, to one which has complex diffuse inter-reflection lighting.
+See the &flightgear; user documentation
+for a detailed description of the rendering features.</para>
+
+<para>If an image is rendered with only one sample per pixel, various errors can occur.
+These images often have moir&eacute; or stepped effects in curves and lines, and
+details can get lost if they are smaller in appearance then one pixel.
+This effect is called <quote>aliasing</quote>.</para>
+
+<para>&flightgear; uses a technique called <quote>anti-aliasing</quote> to reduce the impact
+of these errors. In general images will look smoother with this feature.</para>
+
+<para>If you enable anti-aliasing, &flightgear; will calculate and combine more then one
+sample per pixel. This is called <quote>super-sampling</quote>.</para>
+
+<para>&flightgear; supports two methods of super-sampling. The default 
+is an adaptive non-recursive method; <quote>adaptive</quote>
+because the super-sampling
+depends on the local neighborhood of the pixel. Not every
+pixel is super-sampled with this method. The second method is an adaptive
+recursive one; <quote>recursive</quote> because every pixel is divided and sub-divided
+recursively, and <quote>adaptive</quote> because the recursion depth depends on the
+computed color values.</para>
+
+<para>When you select the first method, Flightgear traces one ray per pixel. If the
+difference between its color value and that of its neighbor exceeds the given threshold,
+both pixels are super-sampled by tracing a fixed number of additional rays. If you set
+the depth value to 4, a 4x4 grid of additional points will be calculated, a depth
+value of 5 will result in 5x5 (25) samples per pixel.</para>
+
+<para>The difference between two pixels is computed as follows: r<subscript>1</subscript>,
+g<subscript>1</subscript> and b<subscript>1</subscript> are the
+red, green and blue values of the first pixel; r<subscript>2</subscript>,
+g<subscript>2</subscript> and b<subscript>2</subscript> are the red,
+green and blue values of the second pixel. The difference is then:
+</para>
+<para>diff = abs(r<subscript>1</subscript>-r<subscript>2</subscript>)
++ abs(g<subscript>1</subscript>-g<subscript>2</subscript>)
++ abs(b<subscript>1</subscript>-b<subscript>2</subscript>)</para>
+
+<para>The recursive method starts with 4 samples per pixel. If the resulting color values
+differ more than the given threshold, the pixel is sub-divided into 4 sub pixels that are
+separately traced and tested for further subdivision. You can specify the maximum
+recursive depth with the depth value.</para>
+
+<para>An additional method to reduce aliasing effects is to add noise to the
+sampling process, called <quote>jittering</quote>. If you enable
+jittering, &flightgear; jitters the samples a tiny amount to reduce
+regular patterns.</para>
+
+<para>The last quality setting is radiosity. Radiosity is an experimental
+&flightgear; feature that computes inter-diffuse light reflection. Be patient
+when rendering a scene with this feature.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="rendermodeoutput.png" format="PNG"/></imageobject>
+<textobject><phrase>The render modes output tab</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+<para>In the last tab, you can configure whether or not the
+alpha channel should be calculated by Flightgear.
+A pixel will then be transparent
+if the corresponding ray did not hit a single object.</para>
+
+</sect3>
+
+<sect3 id="choosing-a-render-mode">
+<title>Choosing a render mode</title>
+
+<para>You can select the render mode in the combo box in the rendering toolbar.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="rendermodestoolbar.png" format="PNG"/></imageobject>
+<textobject><phrase>The render modes toolbar</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+</sect3>
+
+</sect2>
+
+<sect2 id="the-render-window">
+<title>The Render Window</title>
+
+<para>When you started to render a scene, this window will open:</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="renderwindow.png" format="PNG"/></imageobject>
+<textobject><phrase>The render window</phrase></textobject>
+</mediaobject>
+</screenshot>
+
+<para>It shows the rendered image, the progress and the current rendering
+speed.</para>
+
+<variablelist>
+
+<varlistentry><term><guibutton>Stop</guibutton></term>
+<listitem><para><action>Terminates &flightgear;</action>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><guibutton>Suspend</guibutton></term>
+<listitem><para><action>Suspends rendering</action>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><guibutton>Resume</guibutton></term>
+<listitem><para><action>Resumes rendering</action>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><guibutton>Flightgear Output...</guibutton></term>
+<listitem><para><action>Opens another window that displays the &flightgear;
+console output</action>. If &flightgear; exits abnormally, you can find the reason
+in that window.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><guibutton>Save...</guibutton></term>
+<listitem><para><action>Lets you save the image when it is rendered.</action></para>
+</listitem>
+</varlistentry>
+
+<varlistentry><term><guibutton>Close</guibutton></term>
+<listitem><para><action>Closes the render window</action>.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="exporting-and-importing-Flightgear">
+<title>Exporting and Importing</title>
+
+<sect2 id="exporting-and-importing-a-whole-scene">
+<title>Exporting and Importing a Whole Scene</title>
+
+<para>You can export a scene to &flightgear; with the
+<menuchoice><guimenu>File</guimenu><guimenuitem>Export Flightgear...</guimenuitem></menuchoice>
+menu entry.</para>
+<para>The file save dialog will allow you to choose a name and
+location to save the file.</para>
+<note><para>&kappname; will automatically add the
+<literal role="extension">.pov</literal> extension.</para></note>
+
+<para>To import a &flightgear; scene select the 
+<menuchoice><guimenu>File</guimenu><guimenuitem>Import Flightgear...</guimenuitem></menuchoice>
+menu item and choose a file in the file open dialog.</para>
+
+<note><para>Not the full &flightgear; syntax is supported by &kappname; at the moment.
+If there are errors or warnings during importing, a dialog will show up that
+lists all messages.</para></note>
+
+<tip><para>If you want to import unsupported code to &kappname;, put
+the source between the two special comments <quote>//*PMRawBegin</quote>
+and <quote>//*PMRawEnd</quote>.</para></tip>
+
+</sect2>
+
+<sect2 id="exporting-and-importing-single-objects">
+<title>Exporting and Importing single Objects</title>
+
+<para>You can drag objects from the object tree to an editor
+to export &flightgear; code. This will insert the objects code into the current
+text file in the editor. To import objects into the scene, simply select
+the code in your editor and drag it on to the object tree.</para>
+<para>You can use the copy and paste functionality of &kappname; 
+and your editor to exchange &flightgear; code as well.</para>
+
+</sect2>
+
+</sect1>
+
+</chapter>
+
+
+<chapter id="customizing">
+<title>Configuring &kappname;</title>
+
+<sect1 id="configure-Flightgear-tab">
+<title>The <guilabel>Flightgear</guilabel> Tab</title>
+
+<sect2 id="configure-Flightgear-command">
+<title><guilabel>Flightgear Command</guilabel></title>
+
+<para>The Flightgear command is called when &kappname; renders a scene. Common commands
+are <quote>Flightgear</quote> or <quote>x-Flightgear</quote>.</para>
+
+</sect2>
+
+<sect2 id="configure-Flightgear-documentation">
+<title><guilabel>Flightgear User Documentation</guilabel></title>
+
+<para>If you press the <guibutton>Help</guibutton> button in the properties view, &kappname;
+opens the &flightgear; user documentation for the displayed object. Set here the path to your documentation
+and your documentation version. Supported versions are 3.1g and 3.5.</para>
+
+</sect2>
+
+<sect2 id="configure-Flightgear-library-paths">
+<title><guilabel>Library Paths</guilabel></title>
+
+<para>&flightgear; searches for external files (height field data as example) in the &flightgear; library paths.
+If you refer to files not in the scene's folder, you have to add the folder to the list. If a file
+exists in multiple library paths, that one in the first path is used.</para>
+<para>You can change the order with the <guibutton>Up</guibutton> and
+<guibutton>Down</guibutton> buttons.</para>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="configure-graphical-view-tab">
+<title>The <guilabel>Graphical view</guilabel> Tab</title>
+
+<sect2 id="configure-colors">
+<title><guilabel>Colors</guilabel></title>
+
+<para>The color tab lets you configure the used colors for the graphical views.</para>
+
+<variablelist>
+
+<varlistentry>
+<term><guilabel>Background:</guilabel></term>
+<listitem><para>The background color.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Wire frame:</guilabel></term>
+<listitem><para>The colors for wire frames. The second color is used if the object
+is selected.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Control points:</guilabel></term>
+<listitem><para>The color for control points. The second color is used if the control point
+is selected.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Axes:</guilabel></term>
+<listitem><para>The colors for the x-, y- and z-axis.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Field of view:</guilabel></term>
+<listitem><para>The color for the field of view rectangle in the camera view
+and the view type labels.</para></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+<sect2 id="configure-grid">
+<title>The Grid</title>
+
+<para>This page lets you configure the grid in the wire frame views.</para>
+
+<sect3 id="configure-displayed-grid">
+<title><guilabel>Displayed Grid</guilabel></title>
+
+<variablelist>
+
+<varlistentry>
+<term><guilabel>Color:</guilabel></term>
+<listitem><para>The grid color.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Distance:</guilabel></term>
+<listitem><para>The minimal distance of two grid lines.</para></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect3>
+
+<sect3 id="configure-control-point-grid">
+<title><guilabel>Control Point Grid</guilabel></title>
+
+<para>You can snap control points to the grid with the context menu in
+the wireframe views. You can configure the grid for translations, scales and rotations
+separately here.</para>
+
+</sect3>
+
+</sect2>
+
+<sect2 id="configure-detail-levels">
+<title><guilabel>Objects</guilabel></title>
+
+<sect3 id="configure-object-subdivisions">
+<title><guilabel>Subdivisions</guilabel></title>
+
+<para>You can configure the detail levels for various objects here.</para>
+
+<para>Higher values lead to a finer wireframe and therefore to a better approximation for
+the displayed objects, but slow down rendering. For some objects like the sphere you can
+configure the detail level for two directions separately.</para>
+
+</sect3>
+
+<sect3 id="configure-object-sizes">
+<title><guilabel>Sizes</guilabel></title>
+
+<para>Lets you configure the sizes in which infinite objects are displayed in
+the wireframe views.</para>
+
+</sect3>
+
+<sect3 id="configure-camera-views">
+<title><guilabel>Camera Views</guilabel></title>
+
+<para>If you check the <guilabel>High detail for enhanced projections</guilabel> check box,
+all wire frame lines are subdivided further if the camera uses an enhanced projection. Enhanced
+projections are all projections except the perspective and orthographic projections. This feature
+greatly improves the approximation of these projections but slows down rendering.</para>
+
+</sect3>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="configure-dialog-view-tab">
+<title>The <guilabel>Properties view</guilabel> Tab</title>
+
+<sect2 id="configure-texture-preview">
+<title><guilabel>Texture Preview</guilabel></title>
+
+<para>This page lets you configure the texture preview in the properties view.</para>
+
+<variablelist>
+
+<varlistentry>
+<term><guilabel>Size:</guilabel></term>
+<listitem><para>The preview image size.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Gamma:</guilabel></term>
+<listitem><para>The gamma correction.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Rendered Objects</guilabel></term>
+<listitem><para>Defines the small sample scene. At least one
+object has to be selected.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Wall</guilabel></term>
+<listitem><para>If the <guilabel>Enable wall</guilabel> check box is checked, a
+wall will be rendered behind the objects. The wall is textured with a checker pattern with the
+two configurable colors.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Floor</guilabel></term>
+<listitem><para>If the <guilabel>Enable floor</guilabel> check box is checked, a
+floor will be rendered below the objects. The floor is textured with a checker pattern with the
+two configurable colors.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Anti-Aliasing</guilabel></term>
+<listitem><para>If the <guilabel>Enable antialiasing</guilabel> check box is checked,
+the non-recursive antialiasing method will be used for rendering the scene. You can configure the
+depth and threshold values. See <link linkend="render-modes-configuration">render modes section</link>
+for a detailed description of the parameters.</para></listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+<sect1 id="configure-view-layout-tab">
+<title>The <guilabel>View Layout</guilabel> Tab</title>
+
+<para>In this page you can fine-tune existing view layouts or manually
+create new ones. See section <link linkend="view-layouts">View Layouts</link>
+how to create and save view layouts.</para>
+
+<sect2 id="configure-default-layout">
+<title>The default View Layout</title>
+
+<para>The combo box <guilabel>Default view layout:</guilabel>
+lists all available view layouts. &kappname; uses the selected
+view layout at program start.</para>
+
+</sect2>
+
+<sect2 id="configure-list-of-view-layouts">
+<title>List of View Layouts</title>
+
+<para>The list <guilabel>Available View Layouts</guilabel>
+shows all available view layouts. You can add a new layout with the
+<guibutton>Add</guibutton> button and remove the selected layout
+with the <guibutton>Remove</guibutton> button.</para>
+<para>The selected view layout is displayed in the box
+<guilabel>View Layout</guilabel></para>
+</sect2>
+
+<sect2 id="configure-view-layout-details">
+<title>View Layout Details</title>
+
+<para>Each view layout is identified by its name. The name has to
+be unique and must not be empty.</para>
+
+<para>The list below the name displays all views for the selected
+view layout. You can add new views with the
+<guibutton>Add</guibutton> button and remove the selected view
+with the <guibutton>Remove</guibutton> button.</para>
+
+<para>The attributes of the views are:</para>
+
+<variablelist>
+<varlistentry>
+<term><guilabel>Type:</guilabel></term>
+<listitem>
+<para>The view type. See <link linkend="the-interface">The &kappname; Interface</link>
+for a description of each view type.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>3D view type:</guilabel></term>
+<listitem>
+<para>The projection for wire frame views. You can choose one of the six
+orthographic projections or the camera mode.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Dock position:</guilabel></term>
+<listitem>
+<para>The position of the view. <guilabel>New Column</guilabel> will
+create a new column to the right side of the previous views,
+<guilabel>Below</guilabel> will dock the view below the previous view,
+<guilabel>Tabbed</guilabel> will create a tabbed view together with the previous one
+and <guilabel>Floating</guilabel> will not dock the view into the main
+window but create a separate window.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Column width:</guilabel></term>
+<listitem>
+<para>The width of the column in percent of the main view width.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>View height:</guilabel></term>
+<listitem>
+<para>The view height in percent of the main view height.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Width:</guilabel> and <guilabel>Height:</guilabel></term>
+<listitem>
+<para>The size in pixels for floating views.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Position x:</guilabel> and <guilabel>y:</guilabel></term>
+<listitem>
+<para>The position on the desktop for floating views.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect2>
+
+</sect1>
+
+</chapter>
+
+<chapter id="basic-tutorial">
+<title>Basic Tutorial: Creating your first Scene</title>
+
+<para>OK, that's it. You have just installed &flightgear; and &kappname;,
+and now you already want to start without much knowledge of any of the two
+softwares. Here we go now: If you follow the steps of this tutorial,
+you'll be able  to set the ultimate simple scene, very widespread among
+the newbies: A sphere over a plane.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="tutorial01-final-render.png" format="PNG"/>
+</imageobject>
+</mediaobject>
+</screenshot>
+
+<para>At any time you can render your scene using one of the following methods:</para>
+
+<para>Using the menu:
+<menuchoice><guimenu>Display</guimenu><guimenuitem>Render</guimenuitem></menuchoice></para>
+<para>Using the toolbar: Click on the
+<inlinemediaobject>
+<imageobject><imagedata fileref="cr22-action-pmrender.png" format="PNG"/></imageobject>
+</inlinemediaobject> icon</para>
+
+<para>But you should carefully consider the following warnings before complaining
+if all you get is a black screen. If this is the very first time you use a 3D software,
+you should be aware of these golden rules:</para>
+
+<itemizedlist>
+<listitem><para>If you set no camera, no rules apply to the render engine which can't
+render a proper picture, ending in a black picture.</para></listitem>
+<listitem><para>If you set no light system, all your scene is in the dark,
+ending in a black picture.</para></listitem>
+<listitem><para>The objects for which no material has been set won't show on the
+rendered picture, ever.</para></listitem>
+</itemizedlist>
+
+<sect1 id="basic-tutorial-step-1">
+<title>Step 1: Start &kappname;</title>
+
+<para>If you got everything installed fine, once &kappname;
+is loaded, you discover the following default windows setting:</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="defaultviewlayout.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>Take a few minutes to explore the menus and icons available.
+If you have time, please read the documentation in order to get a
+fair idea of what you can expect from this piece of software.</para>
+
+<itemizedlist>
+<listitem>
+<para><link linkend="menu-reference">Menubars (1)</link></para>
+</listitem>
+<listitem>
+<para>Toolbars (2)</para>
+</listitem>
+<listitem>
+<para><link linkend="the-object-tree">The object tree (3)</link></para>
+</listitem>
+<listitem>
+<para><link linkend="the-properties-view">The object properties
+view (4)</link></para>
+</listitem>
+<listitem>
+<para><link linkend="the-wireframe-views">The wireframe and camera views (5)</link></para>
+</listitem>
+</itemizedlist>
+
+<para>You will have to use each of them intensively from now on, so always keep them
+and their use in mind.</para>
+
+<para>&kappname; starts with a simple scene. In order to follow this tutorial
+you first have to remove all objects from the object tree. Select the scene
+and choose the <menuchoice><guimenu>Edit</guimenu><guimenuitem>Delete</guimenuitem></menuchoice> menu
+entry. You should now have an empty scene.</para>
+
+</sect1>
+
+<sect1 id="basic-tutorial-step-2">
+<title>Step 2: Setting the Camera</title>
+
+<para>First of all, we will set a camera. In order to do so, two convenient ways are available:</para>
+<para>Using the menu: <menuchoice><guimenu>Insert</guimenu><guimenuitem>Camera</guimenuitem></menuchoice></para>
+<para>Using the toolbar: Click on the
+<inlinemediaobject>
+<imageobject><imagedata fileref="cr22-action-pmcamera.png" format="PNG"/></imageobject>
+</inlinemediaobject> icon</para>
+
+<para>The wireframe view shows how the camera is set regarding the whole scene we are creating.
+In particular, we can now see something in the fourth wire frame view (right, bottom):
+This is the view of the scene from the camera point of view.
+This is what will be seen when you render the scene.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="tutorial01-camera-graphic.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>The object tree now shows a new entry, reading <quote>camera</quote>. If you click on it,
+it affects the content of the object properties view, where various parameters
+pertaining to the camera can be found.
+Referring to the &flightgear;'s documentation to learn more about these could be helpful.</para>
+
+<screenshot>
+<mediaobject>
+<imageobject><imagedata fileref="tutorial01-camera-dialog.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>We will change nothing to the basic settings of the camera,
+this will be the scope of later tutorials, but please note that in the graphic view,
+the camera has control points that let you control the point to which the camera points.
+You just have to left-click on one handle and move it to an appropriate location.</para>
+
+</sect1>
+
+<sect1 id="basic-tutorial-step-3">
+<title>Step 3: Setting a Light</title>
+
+<para>The same way we have set a camera, we will now set a light system:</para>
+<para>Using the menu:
+<menuchoice><guimenu>Insert</guimenu><guimenuitem>Light</guimenuitem></menuchoice></para>
+<para>Using the toolbar: Click on the
+<inlinemediaobject>
+<imageobject><imagedata fileref="cr22-action-pmlight.png" format="PNG"/></imageobject>
+</inlinemediaobject> icon</para>
+
+<para>A new entry features now in the object tree. If you click on the light entry,
+you see that the properties view changes in order to show the parameters available
+to the lighting system. We will change some parameters in order to set the
+light higher above the horizon (<guilabel>y</guilabel>=3), slightly on the right
+(<guilabel>x</guilabel>=1) and in the foreground (<guilabel>z</guilabel>=1).
+We can also rename the light system (<guilabel>Name</guilabel>=<quote>Main Light</quote>).
+Change the values in the object properties view as follows:</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-light-dialog.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>Once you press the <guilabel>Apply</guilabel> button (or hit Enter),
+the wire frame view and the object tree immediately
+change in order to comply to these settings, and here is what now should see the camera.</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-light-graphic.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+</sect1>
+
+<sect1 id="basic-tutorial-step-4">
+<title>Step 4: Creating the Ground</title>
+<para>There are many ways to create a ground for our scene.
+One method could have been to insert a box object
+(<menuchoice><guimenu>Insert</guimenu><guisubmenu>Finite Solid Primitives</guisubmenu>
+<guimenuitem>Box</guimenuitem></menuchoice>)
+and resize x to 100, y to 0 and z to 100, for example, but it's a cumbersome way to do this task.</para>
+
+<para>In fact, &kappname; offers you a convenient feature: You can create
+a infinite plane that will feature the ground:</para>
+
+<para>Using the menu:
+<menuchoice><guimenu>Insert</guimenu><guisubmenu>Infinite Solid Primitives</guisubmenu>
+<guimenuitem>Plane</guimenuitem></menuchoice></para>
+<para>Using the toolbar: Click on the
+<inlinemediaobject><imageobject><imagedata fileref="cr22-action-pmplane.png" format="PNG"/></imageobject>
+</inlinemediaobject> icon.</para>
+
+<para>Take a good custom: Having the plane selected in the object tree, please change its name
+in something that is convenient to you and then press the <guilabel>Apply</guilabel> button (or hit Enter).
+The object tree will update the name of the entry.</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-plane-dialog.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>The wire frame view also shows the plane now, even if it looks finite by now.
+But don't worry, it will spread up to the horizon line when you'll render the scene!</para>
+
+<para>If you pay attention to the object tree, you will notice that the ground entry
+can be expanded if you click on the <quote>plus</quote> icon standing just before the object.
+Once done, you see various settings parented to the object. In this case,
+there isn't much yet, apart from the standard options to any newly created object:
+Scale, rotate, and translate. Selecting each of these will change the settings
+available in the object properties view.</para>
+
+<screenshot>
+<mediaobject> <imageobject><imagedata fileref="tutorial01-plane-tree-expanded.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>In this scene, we will arbitrary translate the ground one unit lower than the horizon line,
+just for you to tweak some of these parameters. Select translate, and adjust the parameters as follow:</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-plane-tree-translate.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>Your scene should now look like the following picture.</para>
+<screenshot><mediaobject><imageobject><imagedata fileref="tutorial01-plane-graphic.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+</sect1>
+
+<sect1 id="basic-tutorial-step-5">
+<title>Step 5: Setting a Material for the Ground</title>
+
+<para>Please select the ground prior to adding any material properties to it.
+Many possibilities await us, but we will stay close to something quite easy for now.</para>
+
+<para>Using the menu: <menuchoice><guimenu>Insert</guimenu><guisubmenu>Textures</guisubmenu>
+<guimenuitem>Pigment</guimenuitem></menuchoice></para>
+<para>Using the toolbar: Click on the
+<inlinemediaobject>
+<imageobject><imagedata fileref="cr22-action-pmpigment.png" format="PNG"/></imageobject>
+</inlinemediaobject> icon.</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="insertaspopup.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>In both cases, a popup window will prompt you to choose the way the object should be inserted.
+Please choose <guilabel>First Child</guilabel>. The pigment now appears in the object tree.
+You can change its name
+in the properties view (<guilabel>Name</guilabel>=<quote>Ground Pigment</quote>), and click on the
+<guibutton>Preview</guibutton> button
+in order to see how the pigment looks like for now.</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-ground-pigment.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>Of course, the preview of the pigment shows nothing but a black matte material,
+because we need to refine the pigment settings. Anyway, keep in mind you always
+can preview the look and feel of your materials using the <guibutton>Preview</guibutton> button.
+We will now define the pigment colors. Again, many possibilities await us,
+but we will choose one of the most straightforward for now.</para>
+
+<para>Using the menu: <menuchoice><guimenu>Insert</guimenu><guisubmenu>Textures</guisubmenu>
+<guimenuitem>Color List</guimenuitem></menuchoice></para>
+<para>Using the toolbar: Click on the
+<inlinemediaobject>
+<imageobject><imagedata fileref="cr22-action-pmcolorlist.png" format="PNG"/></imageobject>
+</inlinemediaobject> icon</para>
+
+<para>If no color shows on the box and the sphere of the preview,
+click on the <guibutton>Apply</guibutton> button before calling for a preview.</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-ground-color-list.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>The ground material has been successfully set! If you render your picture now, using the
+<inlinemediaobject>
+<imageobject><imagedata fileref="cr22-action-pmrender.png" format="PNG"/></imageobject>
+</inlinemediaobject> render icon, you should get the following result:</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-ground-wrong-colors-render.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>Of course, these colors are not the ones you could have expected.
+We still have to see how we can customize them. In the case of the color list,
+you have to define two new sets of attributes, called <guilabel>Solid Color</guilabel>.
+In the Object Tree, make sure the color list entry is selected.
+Then go through this two times (you can't do it more, anyway,
+as the checkers color list can only afford the use of two solid colors):</para>
+
+<para>Using the menu: <menuchoice><guimenu>Insert</guimenu><guisubmenu>Textures</guisubmenu>
+<guimenuitem>Solid Color</guimenuitem></menuchoice></para>
+
+<para>Using the toolbar: Click on the
+<inlinemediaobject>
+<imageobject><imagedata fileref="cr22-action-pmsolidcolor.png" format="PNG"/></imageobject>
+</inlinemediaobject> icon.</para>
+
+<para>One after another, in the object tree, select the two solid colors
+and change their color attributes in the object properties view:</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-ground-solid-color-1.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>...these attributes are for the first solid color (press <guibutton>Apply</guibutton>!),</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-ground-solid-color-2.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>... and these attributes are for the second (press <guibutton>Apply</guibutton> again!).</para>
+
+<para>Of course, a new rendering of our scene will prove that everything has been
+taken into account accordingly:</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-ground-render.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+</sect1>
+
+<sect1 id="basic-tutorial-step-6">
+<title>Step 6: Creating the Sphere</title>
+
+<para>For this step, we should already be at ease, because we begin to understand
+&kappname;'s general behavior. In the object tree, select the scene entry.
+Creating the sphere is as easy as creating the ground:</para>
+
+<para>Using the menu: <menuchoice><guimenu>Insert</guimenu><guisubmenu>Finite Solid Primitives</guisubmenu>
+<guimenuitem>Sphere</guimenuitem></menuchoice></para>
+
+<para>Using the toolbar: Click on the 
+<inlinemediaobject>
+<imageobject><imagedata fileref="cr22-action-pmsphere.png" format="PNG"/></imageobject>
+</inlinemediaobject> icon.</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="insertaspopup.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>As before, select <guilabel>First Child</guilabel> when asked for.</para>
+
+<para>The object properties view offers you immediately to change its settings,
+which we'll do right now. By setting the <guilabel>Radius</guilabel> value to 1
+(don't forget to hit Enter or press <guibutton>Apply</guibutton>),
+we make sure that the sphere will be in contact
+with the ground. Otherwise, since we moved the ground one unit bottom,
+the sphere will look like floating above the ground.</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-sphere-dialog.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>Of course, a rendering now will give a strange result: As already seen before,
+the sphere appears with a black matte material. We will set a proper material in the following step.</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-sphere-render-nocolor.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+</sect1>
+
+<sect1 id="basic-tutorial-step-7">
+<title>Step 7: Setting a Material for the Sphere</title>
+
+<para>With the sphere selected, you can now set a material for it. As we already did for the ground,
+let's give to the sphere a pigment color:</para>
+
+<para>Using the menu: <menuchoice><guimenu>Insert</guimenu><guisubmenu>Textures</guisubmenu>
+<guimenuitem>Pigment</guimenuitem></menuchoice></para>
+
+<para>Using the toolbar: Click on the
+<inlinemediaobject><imageobject><imagedata fileref="cr22-action-pmpigment.png" format="PNG"/></imageobject>
+</inlinemediaobject> icon</para>
+
+<para>Select <guilabel>First Child</guilabel> and rename to <quote>Sphere pigment</quote>, for example.
+With the sphere pigment entry selected, insert a solid color and set the parameters as follow:</para>
+
+<para>Using the menu: <menuchoice><guimenu>Insert</guimenu><guisubmenu>Textures</guisubmenu>
+<guimenuitem>Solid Color</guimenuitem></menuchoice></para>
+
+<para>Using the toolbar: Click on the
+<inlinemediaobject><imageobject><imagedata fileref="cr22-action-pmsolidcolor.png" format="PNG"/></imageobject>
+</inlinemediaobject> icon</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-sphere-solid-color.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>You already can render the scene and get a first poor result:</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-sphere-render-solidcolor.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>But there are more interesting effects to achieve if we take time to set some finish attributes:</para>
+
+<para>Using the menu: <menuchoice><guimenu>Insert</guimenu><guisubmenu>Textures</guisubmenu>
+<guimenuitem>Finish</guimenuitem></menuchoice></para>
+<para>Using the toolbar: Click on the
+<inlinemediaobject>
+<imageobject><imagedata fileref="cr22-action-pmfinish.png" format="PNG"/></imageobject>
+</inlinemediaobject> icon.</para>
+
+<para>Then change the values according to the following snapshot and press
+<guibutton>Apply</guibutton> or hit Enter.</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-sphere-finish-dialog.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+<para>The <guilabel>Specular</guilabel> and <guilabel>Reflection</guilabel>
+parameters give particularly good visual effects,
+perfect for glass or chrome-like effects, even if <guilabel>Metallic</guilabel>
+hasn't been chosen at this step:</para>
+
+<screenshot>
+<mediaobject><imageobject><imagedata fileref="tutorial01-sphere-render-finish.png" format="PNG"/></imageobject>
+</mediaobject>
+</screenshot>
+
+</sect1>
+
+<sect1 id="basic-tutorial-conclusion">
+<title>Conclusion</title>
+
+<para>You should now have a fair glimpse of what is possible with kpovmodeler.
+Hopefully, you are already skilled enough to do simple but beautiful things.</para>
+
+</sect1>
+</chapter>
+
+<chapter id="concepts">
+<title>Basic Concepts</title>
+
+<sect1 id="what-is-raytracing">
+<title>What is Raytracing?</title>
+
+<para>Raytracing is a method of <link
+linkend="gloss-rendering">rendering</link>, that is, creating a 2D
+image out of a 3D scene or model.</para>
+
+<para>When raytracing a scene, the renderer shoots a hypothetical ray
+from the perspective of the viewer (that is, from the camera you are
+rendering the scene from) through each pixel in the scene. It
+calculates how this ray reflects and refracts from objects, the visual
+effects of the light sources in the scene and how atmospheric effects such
+as fog affect it. The scene is built up, pixel by pixel.</para>
+
+<para>As you may imagine, without a camera, you cannot see anything -
+the camera is your <quote>eye</quote> into the scene.  Furthermore,
+without any light, you still won't see anything - it would just be
+dark.  Obviously, any scene intended for raytracing must include
+some light, an object of some kind and at least one camera.</para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="objects-reference">
+<title>Objects Reference</title>
+
+<para>For a complete reference to all objects and attributes
+see the &flightgear; user documentation.</para>
+</chapter>
+
+
+<chapter id="menu-reference">
+<title>Menu Reference</title>
+
+<sect1 id="file-menu">
+<title>The <guimenu>File</guimenu> Menu</title>
+
+<variablelist>
+<varlistentry>
+<term><menuchoice><shortcut>
+<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
+</shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>New</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Create a new scene.</action></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>File</guimenu>
+<guimenuitem>Import Flightgear...</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Import a &flightgear; scene</action> created outside
+&kappname;.</para>
+<para>A normal file dialog will open, allowing you to choose your
+file.  Flightgear files usually have the extensions <literal
+role="extension">*.pov</literal> or <literal
+role="extension">*.inc</literal>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><shortcut>
+<keycombo action="simul">&Ctrl;<keycap>O</keycap></keycombo>
+</shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>Open...</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Open a file.</action> The standard file dialog will
+allow you to choose a file you have previously created with
+&kappname;</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>File</guimenu>
+<guisubmenu>Open Recent</guisubmenu>
+</menuchoice></term>
+<listitem>
+<para><action>Open a file from a list of the files you have been
+recently working on.</action></para>
+<para>Whenever you open or create a new model, it is added to this
+submenu, replacing the oldest entry in the list.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><shortcut>
+<keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>Save</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Save the currently active scene.</action></para>
+<para>If you have already saved this model, it will be saved with the
+same name.  If it is a new file, you will be asked to name it and
+choose a location to save it.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>File</guimenu>
+<guimenuitem>Save As...</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Save the currently active scene with a new
+name.</action></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>File</guimenu>
+<guimenuitem>Export Flightgear...</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Export the scene as a &flightgear; file.</action></para>
+<para>The file save dialog will allow you to choose a name and
+location to save the file.</para>
+<note><para>&kappname; will automatically add the
+<literal role="extension">.pov</literal> extension.</para></note>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>File</guimenu>
+<guimenuitem>Revert</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Revert the scene to the state it was in the last time
+you saved it.</action>  Changes you have made since the last save will
+be lost.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><shortcut>
+<keycombo action="simul">&Ctrl;<keycap>P</keycap></keycombo></shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>Print...</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>Printing is not implemented yet.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><shortcut>
+<keycombo action="simul">&Ctrl;<keycap>W</keycap></keycombo></shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>Close</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Close the current scene</action> without closing
+&kappname;</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><shortcut>
+<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></shortcut>
+<guimenu>File</guimenu>
+<guimenuitem>Quit</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Quit</action> &kappname;.  If you have any unsaved
+changes, you will be given a chance to save them.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+</sect1>
+
+<sect1 id="edit-menu">
+<title>The <guimenu>Edit</guimenu> Menu</title>
+
+<variablelist>
+<varlistentry>
+<term><menuchoice><shortcut>
+<keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo>
+</shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Undo</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Undo the last action you performed.</action></para>
+<para>This menu item is not available unless you have unsaved changes
+to the current scene.</para><!-- FIXME: is the number of items in the -->
+<!-- undo history configurable? -->
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><shortcut><keycombo action="simul">
+&Ctrl;&Shift;<keycap>Z</keycap></keycombo></shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Redo</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Redo the last action you undid.</action> This menu item
+is not available unless you have used
+<menuchoice><guimenu>Edit</guimenu>
+<guimenuitem>Undo</guimenuitem></menuchoice>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><shortcut><keycombo action="simul">
+&Ctrl;<keycap>X</keycap></keycombo></shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Cut</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Cut</action> the currently selected object(s) from the scene,
+and store them on the clipboard.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><shortcut><keycombo action="simul">
+&Ctrl;<keycap>C</keycap></keycombo></shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Copy</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Copy</action> the currently selected object(s), and
+store them on the clipboard.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><shortcut><keycombo action="simul">
+&Ctrl;<keycap>V</keycap></keycombo></shortcut>
+<guimenu>Edit</guimenu>
+<guimenuitem>Paste</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Paste</action> the contents of the clipboard.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Edit</guimenu>
+<guimenuitem>Delete</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para><action>Delete</action> the currently selected object(s) from
+the scene.</para>
+<!-- FIXME: Shouldn't this be bound to the delete key? -->
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect1>
+
+<sect1 id="view-menu">
+<title>The <guimenu>View</guimenu> Menu</title>
+
+<variablelist>
+
+<varlistentry>
+<term><guimenu>View</guimenu>
+<guimenuitem>New Object Tree</guimenuitem>
+</term>
+<listitem>
+<para><action>Create</action> a new <link linkend="the-object-tree">Object Tree</link>.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenu>View</guimenu>
+<guimenuitem>New Properties View</guimenuitem>
+</term>
+<listitem>
+<para><action>Create</action> a new <link linkend="the-properties-view">Object Properties View</link>.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenu>View</guimenu>
+<guimenuitem>New Top View</guimenuitem>
+</term>
+<listitem>
+<para><action>Create</action> a new
+<link linkend="orthographic-views">Orthographic Wireframe View</link>
+from the top perspective.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenu>View</guimenu>
+<guimenuitem>New Bottom View</guimenuitem>
+</term>
+<listitem>
+<para><action>Create</action> a new
+<link linkend="orthographic-views">Orthographic Wireframe View</link>
+from the bottom perspective.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenu>View</guimenu>
+<guimenuitem>New Left View</guimenuitem>
+</term>
+<listitem>
+<para><action>Create</action> a new
+<link linkend="orthographic-views">Orthographic Wireframe View</link>
+from the left perspective.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenu>View</guimenu>
+<guimenuitem>New Right View</guimenuitem>
+</term>
+<listitem>
+<para><action>Create</action> a new
+<link linkend="orthographic-views">Orthographic Wireframe View</link>
+from the right perspective.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenu>View</guimenu>
+<guimenuitem>New Front View</guimenuitem>
+</term>
+<listitem>
+<para><action>Create</action> a new
+<link linkend="orthographic-views">Orthographic Wireframe View</link>
+from the front perspective.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenu>View</guimenu>
+<guimenuitem>New Back View</guimenuitem>
+</term>
+<listitem>
+<para><action>Create</action> a new
+<link linkend="orthographic-views">Orthographic Wireframe View</link>
+from the back perspective.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenu>View</guimenu>
+<guimenuitem>New Camera View</guimenuitem>
+</term>
+<listitem>
+<para><action>Create</action> a new
+<link linkend="camera-view">Camera View</link>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenu>View</guimenu>
+<guimenuitem>View Layouts</guimenuitem>
+</term>
+<listitem>
+<para>Contains a list of all available view layouts. Switch to the 
+selected layout.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenu>View</guimenu>
+<guimenuitem>Save View Layout...</guimenuitem>
+</term>
+<listitem>
+<para>Save the current view layout. A dialog opens to choose a
+name for a new layout or to overwrite an existing one.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenu>View</guimenu>
+<guimenuitem>Render Modes...</guimenuitem>
+</term>
+<listitem>
+<para>Open the
+<link linkend="render-modes-configuration">render modes configuration</link>
+dialog.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenu>View</guimenu>
+<guimenuitem>Render</guimenuitem>
+</term>
+<listitem>
+<para>Render the scene.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenu>View</guimenu>
+<guimenuitem>Render Window</guimenuitem>
+</term>
+<listitem>
+<para>Show the &flightgear; render window.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guimenu>View</guimenu>
+<guimenuitem>Redisplay</guimenuitem>
+</term>
+<listitem>
+<para>Redisplay the wire frame views.</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect1>
+
+<sect1 id="insert-menu">
+<title>The <guimenu>Insert</guimenu> Menu</title>
+
+<para>Creation actions for all supported &flightgear; objects.</para>
+
+</sect1>
+
+<sect1 id="settings-menu">
+<title>The <guimenu>Settings</guimenu> Menu</title>
+<para>This menu provides options for configuring &kappname;, changing its
+appearance, shortcuts and standard behavior.</para>
+
+<variablelist>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show Statusbar</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Toggles the statusbar on/off.</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show Path</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Show/hide the path in the caption.</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Save settings</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Saves the current settings.</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Key Bindings...</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Opens a dialog for changing the key bindings.</action>
+Using this option you can change the standard key shortcut for &kappname;'s commands
+or create new ones.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Toolbars...</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Opens a dialog for configuring the toolbar.</action> You
+can add and remove toolbuttons for &kappname;'s commands with this
+option.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure KPovModeler...</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Opens a dialog to configure &kappname;.</action></para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect1>
+
+
+<sect1 id="help-menu">
+<title>The <guimenu>Help</guimenu> Menu</title>
+
+&help.menu.documentation;
+
+</sect1>
+
+</chapter>
+
+<chapter id="credits-and-licenses">
+<title>Credits and Licenses</title>
+
+<para>&kappname; copyright 2001,2002 the &kappname;
+authors.</para>
+
+<itemizedlist>
+<title>Authors</title>
+<listitem>
+<para>Andreas Zehender <email>zehender@kde.org</email></para>
+</listitem>
+<listitem>
+<para>Luis Passos Carvalho
+<email>lpassos@mail.telepac.pt</email></para>
+</listitem>
+<listitem>
+<para>Phillippe Van Hecke
+<email>lephiloux@tiscalinet.be</email></para>
+</listitem>
+<listitem>
+<para>Leonardo Skorianez <email>skorianez@bol.com.br</email></para>
+</listitem>
+</itemizedlist>
+
+<para>Documentation copyright 2002 Lauri Watts
+<email>lauri@kde.org</email></para>
+<para>Documentation copyright 2002 Andreas Zehender
+<email>zehender@kde.org</email></para>
+<para>Documentation copyright 2002 Olivier Saraja
+<email>olivier@linuxgraphic.org</email></para>
+
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+
+&underFDL;
+&underGPL;
+
+</chapter>
+
+<glossary id="glossary">
+<title>Glossary</title>
+
+<glossentry id="gloss-bump-map">
+<glossterm>Bump Map</glossterm>
+<glossdef>
+<para>A bump map is a way to simulate a rough surface, without having
+to model every single <quote>bump</quote> on the surface, and without
+changing the underlying geometric shape of the object itself.</para>
+<para>It is common to use the same file as both a bump map and a <link
+linkend="gloss-texture-map">texture map</link>.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-primitives">
+<glossterm>Primitives</glossterm>
+<glossdef>
+<para>Primitives are the basic geometric shapes that you can use as
+<quote>building blocks</quote>.  Most complex 3d models are created
+from many dozens, or even hundreds, of these primitives, which are
+then edited and manipulated to give a more realistic
+appearance.</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-rendering">
+<glossterm>Rendering</glossterm>
+<glossdef>
+<para>Not yet written</para>
+</glossdef>
+</glossentry>
+
+<glossentry id="gloss-texture-map">
+<glossterm>Texture Map</glossterm>
+<glossdef>
+<para>A texture map is a way of applying color to the surface of an
+object on a pixel by pixel basis, by applying an image file as a color
+map.</para>
+<para>It is common to use the same image file as a <link
+linkend="gloss-bump-map">bump map</link>.</para>
+</glossdef>
+</glossentry>
+
+
+
+</glossary>
+
+&documentation.index; 
+
+<appendix id="installation">
+<title>Installation</title>
+
+&install.intro.documentation;
+&install.compile.documentation;
+
+</appendix>
+
+</book>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+// vim:ts=2:sw=2:tw=78:noet
+-->

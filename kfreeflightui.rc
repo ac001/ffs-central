@@ -1,0 +1,16 @@
+<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
+<kpartgui name="KFreeFlight" version="1">
+	<MenuBar>
+		<Menu name="applications"><text>&amp;Applications</text>
+			<Action name="output" />
+			<Action name="calc" />
+		</Menu>
+	</MenuBar>
+	<ToolBar noMerge="1" name="mainToolBar">
+		<text>Main Toolbar</text>
+		<Action name="file_quit"/>
+		<Action name="file_save"/>
+		<Action name="output"/>
+		<Action name="calc"/>
+	</ToolBar>
+</kpartgui>
