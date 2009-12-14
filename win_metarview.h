@@ -36,57 +36,10 @@
 
 #include <QWidget>
 #include <QFtp>
-#include <QThread>
 #include <QFile>
-
-class DownloadThread;
 
 class KFF_Metar;
 
-class DownloadThread : public QThread
-{
-	Q_OBJECT
-
-public:
-	/**
-	 * Constructor
-	 */
-	DownloadThread();
-	/**
-	 * Destructor
-	 */
-	~DownloadThread();
-
-public slots:
-	virtual void abort();
-	virtual void setAirportID ( QString id );
-
-protected:
-	/**
-	 * The code to execute when thread is active
-	 */
-	void run();
-
-private:
-	QString m_id;
-	QString m_state;
-	QFtp m_ftp;
-	bool totalSetted;
-	QFile m_file;
-
-private slots:
-	void setProgress ( qint64, qint64 );
-	void cmdFinished ( int, bool );
-	void cmdStarted ( int );
-
-signals:
-	void state ( QString& );
-	void progress ( qint64 );
-	void totalProgress ( qint64 );
-	void finished ( int );
-};
-
-/******************************************************************************/
 /**
  * @author
  */
@@ -106,16 +59,19 @@ public slots:
 
 private:
 	Ui::win_metarview ui_widget;
-	DownloadThread m_thread;
+	QFtp m_ftp;
+	QFile m_file;
 	KProgressDialog* m_progress;
 	KFFMetar m_metar;
+	int m_id;
+	int m_currentID;
 
 private slots:
 	void setFavorite ( const QString & );
-	void setProgress ( qint64 );
-	void setTotalProgress ( qint64 );
-	void setProgressText ( QString& );
-	void display ( int );
+	void setProgress ( qint64, qint64 );
+	void display ( bool );
+	void cmdFinished ( int, bool );
+	void cmdStarted ( int );
 };
 
 

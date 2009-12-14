@@ -38,33 +38,15 @@ KFFWin_metarView::KFFWin_metarView ( QWidget *parent )
 	QStringList::Iterator it;
 
 	ui_widget.setupUi ( this );
-	list = Settings::airport_favorite();
 	m_progress = 0;
+	m_id = 0;
 
+	list = Settings::airport_favorite();
 	for ( it = list.begin() ; it != list.end() ; it++ )
 	{
 		ui_widget.comboBox_favorite->addItem ( it->replace ( ":", " : " ) );
 	}
 
-	connect ( &m_thread,
-	          SIGNAL ( progress ( qint64 ) ),
-	          SLOT ( setProgress ( qint64 ) )
-	        );
-
-	connect ( &m_thread,
-	          SIGNAL ( totalProgress ( qint64 ) ),
-	          SLOT ( setTotalProgress ( qint64 ) )
-	        );
-
-	connect ( &m_thread,
-	          SIGNAL ( finished ( int ) ),
-	          SLOT ( display ( int ) )
-	        );
-
-	connect ( &m_thread,
-	          SIGNAL ( state ( QString& ) ),
-	          SLOT ( setProgressText ( QString& ) )
-	        );
 	connect ( ui_widget.comboBox_favorite,
 
 	          SIGNAL ( activated ( const QString & ) ),
@@ -74,6 +56,23 @@ KFFWin_metarView::KFFWin_metarView ( QWidget *parent )
 	connect ( ui_widget.pushButton_download,
 	          SIGNAL ( clicked() ),
 	          SLOT ( download() )
+	        );
+
+	connect ( &m_ftp,
+	          SIGNAL ( dataTransferProgress ( qint64, qint64 ) ),
+	          SLOT ( setProgress ( qint64, qint64 ) )
+	        );
+	connect ( &m_ftp,
+	          SIGNAL ( commandStarted ( int ) ),
+	          SLOT ( cmdStarted ( int ) )
+	        );
+	connect ( &m_ftp,
+	          SIGNAL ( commandFinished ( int, bool ) ),
+	          SLOT ( cmdFinished ( int, bool ) )
+	        );
+	connect ( &m_ftp,
+	          SIGNAL ( done ( bool ) ),
+	          SLOT ( display ( bool ) )
 	        );
 }
 
@@ -94,8 +93,8 @@ void KFFWin_metarView::setFavorite ( const QString & favorite )
 
 void KFFWin_metarView::download()
 {
-	QFile file;
 	QString buffer = i18n ( "the METAR file already exists\nTry to download an up-to-date METAR ?" );
+	QString icao;
 	/*if ( !m_progress )
 	{
 		m_progress = new KProgressDialog ( this,
@@ -117,11 +116,13 @@ void KFFWin_metarView::download()
 	//m_progress->setAllowCancel ( true );
 	//m_progress->show();
 
-	file.setFileName ( "/tmp/" + ui_widget.lineEdit_AirportID->text() + ".txt" );
-	if ( file.open ( QFile::ReadOnly ) )
+	icao = ui_widget.lineEdit_AirportID->text();
+	m_file.setFileName ( "/tmp/" + icao + ".txt" );
+	if ( m_file.open ( QFile::ReadOnly ) )
 	{
-		file.close();
-		switch (KMessageBox::questionYesNo( this, buffer ) )
+		//return;
+		m_file.close();
+		switch ( KMessageBox::questionYesNo ( this, buffer ) )
 		{
 			case KMessageBox::Yes:
 			{
@@ -129,36 +130,78 @@ void KFFWin_metarView::download()
 			}
 			case KMessageBox::No:
 			{
-				display( -1 );
+				display ( true );
 				return;
 			}
 		}
 	}
-	m_thread.setAirportID ( ui_widget.lineEdit_AirportID->text() );
-	m_thread.start();
-	m_thread.setPriority ( QThread::NormalPriority );
-}
-
-void KFFWin_metarView::setTotalProgress ( qint64 totalStep )
-{
-	if ( m_progress )
+	else
 	{
-		m_progress->progressBar()->setRange ( 0, totalStep );
+		qDebug() << "Cannot open file in read mode : " << m_file.fileName();
 	}
-	qDebug() << "totalStep=" << totalStep;
-}
 
-void KFFWin_metarView::setProgress ( qint64 step )
-{
-	if ( m_progress )
+	if ( !m_file.open ( QFile::WriteOnly ) )
 	{
-		m_progress->progressBar()->setValue ( step );
+		qDebug() << "Cannot open file in write mode : " << m_file.fileName();
+		return;
 	}
-	qDebug() << "step=" << step;
+
+	m_ftp.connectToHost ( Settings::metar_website() );
+	m_ftp.login();
+	m_ftp.cd ( Settings::metar_website_dir() );
+	m_ftp.get ( icao + Settings::metar_website_extension(), &m_file );
+	m_ftp.close();
 }
 
-void KFFWin_metarView::setProgressText ( QString& text )
+void KFFWin_metarView::cmdStarted ( int cmdID )
 {
+	QString text;
+
+	switch ( cmdID - m_id )
+	{
+
+		case 1:
+		{
+			text = i18n ( "Connection" );
+			m_currentID = 1;
+			break;
+		}
+
+		case 2:
+		{
+			text = i18n ( "Login" );
+			m_currentID = 2;
+			break;
+		}
+
+		case 3:
+		{
+			text = i18n ( "Change directory" );
+			m_currentID = 3;
+			break;
+		}
+
+		case 4:
+		{
+			text = i18n ( "Download" );
+			m_currentID = 4;
+			break;
+		}
+
+		case 5:
+		{
+			text = i18n ( "Close" );
+			m_currentID = 5;
+			break;
+		}
+		default:
+		{
+			text.setNum ( cmdID );
+			text.prepend ( "id of ftp command : " );
+			break;
+		}
+	}
+
 	if ( m_progress )
 	{
 		m_progress->setLabelText ( text );
@@ -166,7 +209,27 @@ void KFFWin_metarView::setProgressText ( QString& text )
 	qDebug() << text;
 }
 
-void KFFWin_metarView::display ( int returned )
+void KFFWin_metarView::cmdFinished ( int cmdID, bool error )
+{
+	if ( error )
+	{
+		qDebug() << "FTP error on ID " << cmdID;
+		/*m_ftp.abort();
+		m_ftp.clearPendingCommands();*/
+	}
+}
+
+void KFFWin_metarView::setProgress ( qint64 step, qint64 totalStep )
+{
+	if ( m_progress )
+	{
+		m_progress->progressBar()->setRange ( 0, totalStep );
+		m_progress->progressBar()->setValue ( step );
+	}
+	qDebug() << "total step = " << totalStep << ", step=" << step;
+}
+
+void KFFWin_metarView::display ( bool error_encoured )
 {
 	QFile file;
 	QTextStream stream;
@@ -181,11 +244,10 @@ void KFFWin_metarView::display ( int returned )
 		m_progress = 0;
 	}*/
 	//m_progress->hide();
-	if ( returned >= 0 )
-	{
-		m_thread.wait();
-	}
-	
+
+	m_id += m_currentID;
+	m_file.close();
+
 	ui_widget.lineEdit_Temperature->clear();
 	ui_widget.lineEdit_TemperatureMin->clear();
 	ui_widget.lineEdit_Presure->clear();
@@ -207,27 +269,27 @@ void KFFWin_metarView::display ( int returned )
 	ui_widget.textEdit_METAR->clear();
 	m_metar.clear();
 
-	if ( returned > 0 )
+	if ( error_encoured )
 	{
-		qDebug() << "RETURN=" << returned;
-		//return;
+		qDebug() << "RETURN after error";
+		return;
 	}
 
-	file.setFileName ( "/tmp/" + ui_widget.lineEdit_AirportID->text() + ".txt" );
+	//m_file.setFileName ( "/tmp/" + ui_widget.lineEdit_AirportID->text() + ".txt" );
 
-	if ( !file.open ( QFile::ReadOnly ) )
+	if ( !m_file.open ( QFile::ReadOnly ) )
 	{
 		qDebug() << "metar file can not be opened";
 		return;
 	}
 
-	stream.setDevice ( &file );
+	stream.setDevice ( &m_file );
 
 	while ( !stream.atEnd() )
 	{
 		buffer.append ( stream.readLine() + "\n" );
 	}
-	file.close();
+	m_file.close();
 	m_metar.setMetar ( buffer );
 	ui_widget.textEdit_METAR->insertPlainText ( buffer );
 	ui_widget.lineEdit_Airport->setText ( m_metar.getID() );
@@ -260,7 +322,7 @@ void KFFWin_metarView::display ( int returned )
 /******************************************************************************
  *                                                                            *
  ******************************************************************************/
-DownloadThread::DownloadThread()
+/*DownloadThread::DownloadThread()
 {
 	totalSetted = false;
 	connect ( &m_ftp,
@@ -285,6 +347,8 @@ void DownloadThread::setAirportID ( QString id )
 {
 	m_id = id.toUpper();
 	qDebug() << "ID = " << m_id;
+	m_done = 0;
+	m_total = 0;
 }
 
 void DownloadThread::abort()
@@ -298,11 +362,12 @@ void DownloadThread::abort()
 
 void DownloadThread::setProgress ( qint64 done, qint64 total )
 {
-	if ( !totalSetted )
+	if ( !m_total )
 	{
+		m_total = total;
 		emit ( totalProgress ( total ) );
 	}
-
+	m_done = done;
 	emit ( progress ( done ) );
 }
 
@@ -312,12 +377,20 @@ void DownloadThread::cmdFinished ( int cmdID, bool error )
 	{
 		// stop thread
 		qDebug() << "FTP error";
+	m_file.close();
+	m_ftp.abort();
+	m_ftp.close();
+	qDebug() << "FTP closed";
 		abort();
 	}
-	if ( cmdID == 5 )
+	if ( cmdID == 4 )
 	{
-		m_file.close();
-		emit ( finished ( 0 ) );
+		if ( (m_done == m_total) && ( m_done ) )
+		{
+			m_file.close();
+			m_ftp.close();
+			emit ( finished ( 0 ) );
+		}
 	}
 }
 
@@ -353,7 +426,6 @@ void DownloadThread::cmdStarted ( int cmdID )
 		case 5:
 		{
 			m_state = i18n ( "Close" );
-			m_file.close();
 			break;
 		}
 	}
@@ -373,7 +445,6 @@ void DownloadThread::run()
 	}
 	m_ftp.clearPendingCommands();
 
-	//TODO make settings with website
 	//m_ftp.connectToHost ( "tgftp.nws.noaa.gov" ); //newest weather.noaa.gov
 	m_ftp.connectToHost( Settings::metar_website() );
 
@@ -395,6 +466,5 @@ void DownloadThread::run()
 	msleep ( 50 );
 	QCoreApplication::processEvents();
 
-	m_ftp.close();
 	qDebug() << "End of thread run";
-}
+}*/
