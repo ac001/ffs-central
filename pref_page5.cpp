@@ -31,6 +31,7 @@
 KFFPref_page5::KFFPref_page5( QWidget *parent )
 		: QFrame( parent )
 {
+	ui_prefs5_base.setupUi( this );
 }
 
 

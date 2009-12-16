@@ -46,6 +46,8 @@ public:
 
 	~KFFPref_page5();
 
+private:
+	Ui::prefs_page5_base ui_prefs5_base;
 };
 
 #endif // PREF_PAGE5_H

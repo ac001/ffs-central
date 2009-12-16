@@ -108,7 +108,7 @@ public:
 	void setSize( int width, int height );
 	
 public slots:
-	virtual bool loadModel( QString name );
+	virtual bool loadModel( const QString & name );
 	virtual void changeSettings();
 
 };
@@ -126,7 +126,7 @@ class KFFWidget_Render : public QLabel
 		void setSize( int width, int height );
 	
 	public slots:
-		virtual bool loadModel( QString name );
+		virtual bool loadModel( const QString & name );
 		virtual void changeSettings();
 
 private:

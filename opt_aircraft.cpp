@@ -54,6 +54,8 @@ KFFOpt_aircraft::KFFOpt_aircraft( QWidget *parent )
 	                   ui_widget.widget_scene->height()
 	                 );
 
+	m_url = KUrl::fromPath ( Settings::fg_root() );
+	
 	connect( ui_widget.btn_Reload,
 	         SIGNAL( clicked() ),
 	         SLOT( reload() )
@@ -192,13 +194,14 @@ bool KFFOpt_aircraft::getOptions( QStringList & list )
 void KFFOpt_aircraft::loadModel()
 {
 	QString buffer;
-	KUrl url = KUrl::fromPath ( Settings::fg_root() );
 
-	buffer = KFileDialog::getOpenFileName ( url, QString(), this );
+	buffer = KFileDialog::getOpenFileName ( m_url, QString(), this );
 	if ( !buffer.isEmpty() )
 	{
 		m_render->loadModel( buffer );
 	}
+	buffer.truncate( buffer.lastIndexOf("/") );
+	m_url = KUrl::fromPath ( buffer );
 }
 
 void KFFOpt_aircraft::getAircraft()

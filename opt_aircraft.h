@@ -76,6 +76,7 @@ private:
 	KFFWidget_Render *m_render;
 	QString m_input;
 	QString m_error;
+	KUrl m_url;
 	QMap< QString, KFFAircraftData> modelfile;
 
 	void reloadList( bool showMessage = false );

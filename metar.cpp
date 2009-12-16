@@ -839,8 +839,7 @@ void KFFMetar::decode()
 
 					if ( it->toDouble() )
 					{
-						buf1 = it->toDouble();
-						i--;
+						setVisibility ( *it );
 						break;
 					}
 
@@ -874,7 +873,7 @@ void KFFMetar::decode()
 
 				default:
 				{
-					//qDebug() << *it;
+					qDebug() << *it;
 					buffer.clear();
 					searchAltitude = false;
 					cloudsLayer.clear();
@@ -996,6 +995,7 @@ void KFFMetar::decode()
 					{
 						buffer = i18n ( "Sandstorm or Duststorm" );
 					}
+					qDebug() << "phenomena = " << buffer;
 					phenomena.phenomena = buffer;
 
 
@@ -1040,6 +1040,7 @@ void KFFMetar::decode()
 					{
 						buffer = i18n ( "Freezing" );
 					}
+					qDebug() << "descriptor = " << buffer;
 					phenomena.descriptor = buffer;
 
 					// Prefix
@@ -1058,6 +1059,7 @@ void KFFMetar::decode()
 					{
 						buffer = i18n ( "Since Last report" ) + " : " ;
 					}
+					qDebug() << "prefix = " << buffer;
 					phenomena.prefix = buffer;
 
 					if ( !phenomena.phenomena.isEmpty() )

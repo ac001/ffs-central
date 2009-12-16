@@ -25,9 +25,8 @@
     </entry>
     <entry name="data_dir" type="String">
     </entry>
-    <entry name="marble_theme" type="Int">
-	    <default>0</default>
-    </entry>
+  </group>
+  <group name="Advanced">
     <entry name="metar_website" type="String">
 	    <default>tgftp.nws.noaa.gov</default>
     </entry>
@@ -36,6 +35,9 @@
     </entry>
     <entry name="metar_website_extension" type="String">
 	    <default>.TXT</default>
+    </entry>
+    <entry name="marble_theme" type="Int">
+	    <default>0</default>
     </entry>
   </group>
   <group name="FlightGear">
