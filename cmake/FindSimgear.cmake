@@ -1,11 +1,7 @@
 ################################################################################
+#                                   SIMGEAR                                    #
+################################################################################
 # SIMGEAR
-set(SEARCH_INCLUDE_PATH
-    /usr/include/simgear
-    /usr/local/include/simgear
-    /opt/include/simgear
-    /opt/simgear/include/simgear
-   )
 
 set(SEARCH_LIBRARIES_PATH
     /usr/lib
@@ -18,20 +14,53 @@ set(SEARCH_LIBRARIES_PATH
     /opt/simgear/lib64
    )
 
+set(SEARCH_INCLUDE_PATH
+    /usr/include/simgear
+    /usr/local/include/simgear
+    /opt/include/simgear
+    /opt/simgear/include/simgear
+   )
+
+set( ALL_LIBRARIES_FOUND TRUE )
+
 find_path(SIMGEAR_INCLUDE_DIR version.h ${SEARCH_INCLUDE_PATH} )
 
+#
+# -lsgroute -lsgsky -lsgsound -lsgephem -lsgtgdb -lsgmodel -lsgbvh
+# -lsgmaterial -lsgutil -lsgtiming -lsgio -lsgscreen -lsgmath -lsgbucket
+#  -lsgprops -lsgdebug -lsgmagvar -lsgmisc -lsgnasal -lsgxml -lsgsound
+#  -lsgserial -lsgstructure -lsgenvironment -lplibpuaux -lplibpu -lplibfnt
+#  -lplibjs -lplibnet -lplibsg -lplibul   -lsgthreads
+#
+
 set( SIMGEAR_TO_FOUND_LIBRARIES
+     lsgroute
+     lsgskysgsound
+     sgephem
+     sgtgdb
      sgmodel
-     sgdebug
-     sgmisc
+     sgbvh
+     sgmaterial
      sgutil
-     sgxml
+     sgtiming
+     sgio
+     sgscreen
+     sgmath
+     sgbucket
      sgprops
+     sgdebug
+     sgmagvar
+     sgmisc
+     sgnasal
+     sgxml
+     sgsound
+     sgserial
+     sgstructure
+     sgenvironment
+     sgthreads
    )
-# ${SIMGEAR_MISC_LIBRARY} ${SIMGEAR_UTIL_LIBRARY} ${SIMGEAR_XML_LIBRARY} ${SIMGEAR_DEBUG_LIBRARY} ${SIMGEAR_PROPS_LIBRARY} ${SIMGEAR_MODEL_LIBRARY}
-set( ALL_LIBRARIES_FOUND TRUE )
+
 foreach( loop_var ${SIMGEAR_TO_FOUND_LIBRARIES} )
-    message(STATUS "search for ${loop_var}")
 	find_library(SIMGEAR_LIBRARY NAMES ${loop_var} PATH ${SEARCH_LIBRARIES_PATH} )
 	if (NOT SIMGEAR_LIBRARY MATCHES "-NOTFOUND")
 	    set(SIMGEAR_LIBRARIES ${SIMGEAR_LIBRARIES} ${SIMGEAR_LIBRARY} )

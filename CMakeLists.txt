@@ -33,12 +33,13 @@ find_package (Marble REQUIRED)
 find_package (MarbleWidget REQUIRED)
 find_package(Msgfmt REQUIRED)
 find_package(Gettext REQUIRED)
-SET(CMAKE_MODULE_PATH "${kfreeflight_SOURCE_DIR};${CMAKE_MODULE_PATH}")
+SET(CMAKE_MODULE_PATH "${kfreeflight_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 
 if ( WITH_OSG_RENDERING )
     set( WITH_OPENSCENEGRAPH_ENABLED TRUE )
     find_package (OpenGL REQUIRED)
     find_package(OpenSceneGraph REQUIRED COMPONENTS osgGA osgDB osgUtil osgViewer osgAnimation)
+    find_package (Plib REQUIRED)
     find_package (Simgear REQUIRED)
     message(STATUS "3D rendering is active")
 else( WITH_OSG_RENDERING )
@@ -123,9 +124,7 @@ set(kfreeflight_SRCS
     shared.h
    )
 
-# ${SIMGEAR_MISC_LIBRARY} ${SIMGEAR_UTIL_LIBRARY} ${SIMGEAR_XML_LIBRARY} ${SIMGEAR_DEBUG_LIBRARY} ${SIMGEAR_PROPS_LIBRARY} ${SIMGEAR_MODEL_LIBRARY}
-
-set (LIBRARIES
+set (LIBRARIES_TO_LINK
      ${MARBLE_LIBRARY}
      ${LIBMARBLEWIDGET_LIBRARY}
      ${KDE4_KDEUI_LIBS}
@@ -134,30 +133,31 @@ set (LIBRARIES
     )
 
 if( WITH_OSG_RENDERING )
-    set (LIBRARIES
-         ${LIBRARIES}
+    set (LIBRARIES_TO_LINK
+         ${LIBRARIES_TO_LINK}
          ${OPENGL_gl_LIBRARY}
          ${OPENGL_glu_LIBRARY}
          ${OPENSCENEGRAPH_LIBRARIES}
          ${QT_QTOPENGL_LIBRARY}
+         ${PLIB_LIBRARIES}
          ${SIMGEAR_LIBRARIES}
         )
 else()
     unset ( OPENSCENEGRAPH_INCLUDE_DIRS )
     unset ( SIMGEAR_INCLUDE_DIR )
+    unset ( PLIB_INCLUDE_DIR )
 endif()
 
 
 include_directories(${kfreeflight_SOURCE_DIR}
                     ${kfreeflight_BINARY_DIR}
                     ${OPENSCENEGRAPH_INCLUDE_DIRS}
+                    ${PLIB_INCLUDE_DIR}
                     ${SIMGEAR_INCLUDE_DIR}
                     ${MARBLE_INCLUDE_DIR}
                     ${KDE4_INCLUDES}
                     ${QT_INCLUDES}
                    )
-
-#kde4_automoc(${kfreeflight_SRCS})
 
 kde4_add_ui_files(kfreeflight_SRCS
                   kfreeflightview_base.ui
@@ -194,7 +194,7 @@ kde4_add_kcfg_files(kfreeflight_SRCS settings.kcfgc )
 
 kde4_add_executable(kfreeflight ${kfreeflight_SRCS})
 
-target_link_libraries(kfreeflight ${LIBRARIES} )
+target_link_libraries(kfreeflight ${LIBRARIES_TO_LINK} )
 
 install(TARGETS kfreeflight DESTINATION ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

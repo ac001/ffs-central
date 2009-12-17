@@ -126,8 +126,8 @@ bool KFFWidget_Render::loadModel ( const QString & name )
 {
 #ifdef WITH_OPENSCENEGRAPH_ENABLED
 	QString buffer;
-	/*logbuf log;
-	SGPropertyNode propNode;*/
+	//logbuf log;
+	//SGPropertyNode propNode;
 	osg::ref_ptr<osg::Node> loadedModel;
 
 	/*

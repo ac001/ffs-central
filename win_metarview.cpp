@@ -114,6 +114,7 @@ void KFFWin_metarView::download()
 	m_progress->setAutoClose ( false );
 	m_progress->setAutoReset ( false );
 	m_progress->setAllowCancel ( true );
+	m_progress->progressBar()->setValue ( 0 );
 	m_progress->show();
 
 	icao = ui_widget.lineEdit_AirportID->text().toUpper();
