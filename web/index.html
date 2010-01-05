@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>KFreeFlight</title>
+	<meta name="AUTHOR" content="Didier Fabert">
+	<meta http-equiv="Content-Script-Type" content="text/javascript">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="./kfreeflight.css">
+	<!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> /-->
+	<script type="text/javascript" src="./jquery-1.3.2.min.js"> </script>
+	<script type="text/javascript" src="./jquery.li-scroller.1.0.js"> </script>
+	<script type="text/javascript" src="./kfreeflight.js"> </script>
+	<script type="text/javascript">
+		window.onload = function() { showTab(1, 8) };
+	</script>
+</head>
+<body>
+	<div class="main">
+		<div class="header">
+			<span class="headerleft"></span>
+			<span class="headermiddle">KFreeFlight<!-- KFreeFl<img src="./tower.png" alt="OK">ght /--></span>
+			<span class="headerright"></span>
+		</div>
+		<div class="language">
+			<a class="lang" href="./index.php?lang=en"><img src="./en.png" alt="en" class="flag"></a>
+			<a class="lang" href="./index.php?lang=fr"><img src="./fr.png" alt="fr" class="flag"></a>
+			<a class="lang" href="./index.php?lang=it"><img src="./it.png" alt="it" class="flag"></a>
+			<a class="lang" href="./index.php?lang=de"><img src="./de.png" alt="de" class="flag"></a>
+		</div>
+		<div class="ticker">
+			<ul id="ticker01">
+				<li><span>01/01/2010</span><a href="#">A new SVN repository is available (KDE4 version)</a></li>
+				<li><span>01/01/2010</span><a href="#">CVS repository is out of date</a></li>
+				<!-- eccetera -->
+			</ul>
+		</div>
+		<div class="menu">
+			<a class="tabmenu" onClick="javascript:showTab(1, 8);">Introduction</a>
+			<a class="tabmenu" onClick="javascript:showTab(2, 8);">News</a>
+			<a class="tabmenu" onClick="javascript:showTab(3, 8);">Download</a>
+			<a class="tabmenu" onClick="javascript:showTab(4, 8);">Manual</a>
+			<a class="tabmenu" onClick="javascript:showTab(5, 8);">FAQ</a>
+			<a class="tabmenu" onClick="javascript:showTab(6, 8);">Mailing List</a>
+			<a class="tabmenu" onClick="javascript:showTab(7, 8);">TODO</a>
+			<a class="tabmenu" onClick="javascript:showTab(8, 8);">Thanks</a>
+		</div>
+		<div class="menubottom">
+			<span class="bottommenu bottommenuinactive" id="menu1"></span>
+			<span class="bottommenu bottommenuinactive" id="menu2"></span>
+			<span class="bottommenu bottommenuinactive" id="menu3"></span>
+			<span class="bottommenu bottommenuinactive" id="menu4"></span>
+			<span class="bottommenu bottommenuinactive" id="menu5"></span>
+			<span class="bottommenu bottommenuinactive" id="menu6"></span>
+			<span class="bottommenu bottommenuinactive" id="menu7"></span>
+			<span class="bottommenu bottommenuinactive" id="menu8"></span>
+		</div>
+		<hr class="menu">
+		<div id="tab1" class="tabcontent">
+			<div class="inside">
+				<img src="./tux.png" width="150" height="150" alt="Tux : Linux inside">
+				<h3>What is it ?</h3>
+				<p>
+					KFreeFlight is a FlightGear GUI-frontend designed for KDE users. It can
+					launch FlightGear with the most options without writting a very long
+					command line.
+				</p>
+				<p>
+					This application is integrated as well as possible on the KDE environment, so KDE dependency will never be removed.
+				</p>
+				<h3>Disclaimer</h3>
+				<p>
+					All KFreeFlight tools musn't be use for real navigation. This application is made only for entertainment.
+				</p>
+				<p>
+					<strong>Using KFreeFlight for aviation navigation is in fact illegal.</strong>
+				</p>
+				<h3>License</h3>
+				<p>
+					KFreeFlight is free software; you can redistribute it and/or modify it under the terms of the GNU
+					General Public License as published by the Free Software Foundation, version 2.<br>
+					This program is distributed in the hope that it will be useful,
+					but WITHOUT ANY WARRANTY; without even the implied warranty of
+					MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License (COPYING file) for
+					more details.
+				</p>
+				<p>
+					Actually, the application is available in languages : 
+				</p>
+				<ul>
+					<li>English</li>
+					<li>French</li>
+					<li>Italian</li>
+					<li>German</li>
+				</ul>
+			</div>
+		</div>
+		<div id="tab2" class="tabcontent">
+			<div class="inside">
+				<p>Ver 0.3.2-r2 Updated Dev release</p>
+				<ul>
+				<li><strong>Critic bugs fix</strong></li>
+				</ul>
+
+				<p>Ver 0.3.2 Updated Dev release</p>
+				<ul>
+				<li><strong>Need zlib, glut, plib-1.8.4 and simgear-0.3.10 libraries to compile</strong></li>
+				<li><strong>KWeather and KWorldWatch (all in kde-toys package) must be installed</strong></li>
+				<li>Add Aircraft 3D render thumbnail (by plib or simgear)</li>
+				<li>Add KDE system tray integration option</li>
+
+				<li>Fix some bugs</li>
+				</ul>
+				<p>Ver 0.3.1 Updated Dev release</p>
+				<ul>
+				<li><strong>Need zlib library to compile</strong></li>
+				<li><strong>KWeather and KWorldWatch (all in kde-toys package) must be installed</strong></li>
+				<li>Add real weather window : download the metar and make a report</li>
+
+				<li>Add Find an airport by ICAO code, by name or coordinates window in the apt.dat.gz file and KWeather database</li>
+				<li>Add personnal screen resolution (settable by the settings menu)</li>
+				<li>Update multiplayer options</li>
+				<li>Add lightning and precipitation rendering option</li>
+				</ul>
+				<p>Ver 0.2.1 - Updated Stable release</p>
+				<ul>
+				<li>Add shadows(aircraft, ai objects, scenery objects) options</li>
+				<li>Add bump mapped clouds option</li>
+				<li>Add reload aircraft list button</li>
+				<li>Add ATC-Chatter option (FlightGear CVS)</li>
+				</ul>
+				<p>Ver 0.2 - First Stable release</p>
+
+				<ul>
+					<li>Adding GPS starting position</li>
+					<li>Adding french language</li>
+					<li>Fixing locale bug (locale with comma decimal point)</li>
+					<li>Adding refresh button in toolbar</li>
+				</ul>
+				<p>Ver 0.1.4 - Dev release</p>
+
+				<ul>
+					<li>More than one config can be saved</li>
+					<li>Adding a toolbar and a statusbar</li>
+					<li>Carrier is now working</li>
+					<li>You can choose your FlightGear executable file and pass it personnal parameters</li>
+					<li>Adding Comm tab (in use and standby)</li>
+
+					<li>Update Radio tab with NAV and ADF standby and adding TACAN</li>
+					<li>Adding season (summer - winter)</li>
+					<li>Adding Atlas settings</li>
+				</ul>
+				<p>Ver 0.1.2 - First Dev release.</p>
+			</div>
+		</div>
+		<div id="tab3" class="tabcontent">
+			<p>
+				CSS information can be provided by various sources. CSS style information can be either attached as a separate document
+				or embedded in the HTML document. Multiple style sheets can be imported. Different styles can be applied
+				depending on the output device being used; for example, the screen version can be quite different from the
+				printed version, so that authors can tailor the presentation appropriately for each medium.
+			</p>
+		</div>
+		<div id="tab4" class="tabcontent">
+			<p>
+			</p>
+		</div>
+		<div id="tab5" class="tabcontent">
+			<p>
+			</p>
+		</div>
+		<div id="tab6" class="tabcontent">
+			<p>
+			</p>
+		</div>
+		<div id="tab7" class="tabcontent">
+			<p>
+			</p>
+		</div>
+		<div id="tab8" class="tabcontent">
+			<p>
+			</p>
+		</div>
+		<hr class="menu">
+		<div class="logo" onClick="javascript:$('#rfid').show();">
+			<a href="http://sourceforge.net/projects/kfreeflight" target="_blank">
+				<img src="http://sflogo.sourceforge.net/sflogo.php?group_id=157130&amp;type=11" width="120" height="31"
+					alt="Get KFreeFlight at SourceForge.net. Fast, secure and Free Open Source software downloads">
+			</a>
+			<!-- Old logo <a href="http://sourceforge.net" target="_blank">
+				<img src="http://sflogo.sourceforge.net/sflogo.php?group_id=157130&amp;type=1"
+					width="88" height="31" alt="SourceForge.net Logo">
+			</a> /-->
+			<a href="http://validator.w3.org/check?uri=referer" target="_blank">
+				<img src="http://www.w3.org/Icons/valid-html401"
+					alt="Valid HTML 4.01 Transitional" height="31" width="88">
+			</a>
+			<a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank">
+				<img style="border:0;width:88px;height:31px"
+					src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Valide !" />
+			</a>
+
+
+		</div>
+		<div class="viewercontainer" id="rfid" onClick="javascript:$('#rfid').hide();">
+			<div class="viewer">
+				<h1>RFID tag</h1>
+				<img src="./rfid.png" alt="RFID">
+				<p>Click on the window to close it</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
