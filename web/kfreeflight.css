@@ -353,7 +353,7 @@ strong
 ul.newsticker { /* that's your list */
 	position: relative;
 	left: 750px;
-	font: bold 10px Verdana;
+	font-weight : bold;
 	list-style-type: none;
 	margin: 0px;
 	padding: 0px;
@@ -370,7 +370,7 @@ ul.newsticker a {
 	padding: 0px;
 	color: #FFD659;
 	background: #0056ff;
-	font: bold 10px Verdana;
+	font-weight : bold;
 	margin: 0px 50px 0px 0px;
 }
 ul.newsticker span {
@@ -389,16 +389,58 @@ ul.newsticker span {
 	float : left;
 	text-align : justify;
 	vertical-align : top;
-	padding : 0px;
+	padding-top : 0px;
+	padding-bottom : 20px;
+	padding-left : 0px;
+	padding-right : 0px;
 	margin : 0px;
 	border-color : #0056ff;
 	border-width : 3px 3px 3px 3px;
 	border-style : solid;
 	width : 934px;
 }
-.noborder
+.nothingbutleft
 {
+	float : left;
 	border-width : 0px;
-	margin: 0px;
+	margin-left: 22px;
+	margin-right: 0px;
+	margin-top: 20px;
+	margin-bottom: 0px;
 	padding: 0px;
+	text-align : center;
+	font-weight : bold;
+}
+
+p.thumb
+{
+	text-align : center;
+	font-weight : bold;
+	padding: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 5px;
+	margin-bottom: 2px;
+}
+
+img.thumb
+{
+	width : 200px;
+	height : 140px;
+	border : none;
+}
+
+div.cleared
+{
+	display : block;
+	
+	clear : left;
+	float : right;
+	background-image : url("./shadow.png");
+	top : -60px;
+	right : 20px;
+	position : relative;
+	z-index : 10;
+	padding : 5px;
+	margin : 0px;
 }

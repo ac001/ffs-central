@@ -6,12 +6,15 @@
 	<meta http-equiv="Content-Script-Type" content="text/javascript">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" type="text/css" href="./kfreeflight.css">
-	<!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> /-->
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
 	<script type="text/javascript" src="./jquery-1.3.2.min.js"> </script>
 	<script type="text/javascript" src="./jquery.li-scroller.1.0.js"> </script>
 	<script type="text/javascript" src="./kfreeflight.js"> </script>
 	<script type="text/javascript">
-		window.onload = function() { showTab(1, 8, 2) };
+		manualind = 0;
+		totalmanual = 7;
+		totaltab = 8;
+		window.onload = function() { showTab(1, totaltab, totalmanual) };
 	</script>
 </head>
 <body>
@@ -35,14 +38,14 @@
 			</ul>
 		</div>
 		<div class="menu">
-			<a class="tabmenu activated" onClick="javascript:showTab(1, 8, 2);">Introduction</a>
-			<a class="tabmenu" onClick="javascript:showTab(2, 8, 2);">News</a>
-			<a class="tabmenu" onClick="javascript:showTab(3, 8, 2);">Download</a>
-			<a class="tabmenu" onClick="javascript:showTab(4, 8, 2);">Manual</a>
-			<a class="tabmenu" onClick="javascript:showTab(5, 8, 2);">FAQ</a>
-			<a class="tabmenu" onClick="javascript:showTab(6, 8, 2);">Mailing List</a>
-			<a class="tabmenu" onClick="javascript:showTab(7, 8, 2);">TODO</a>
-			<a class="tabmenu" onClick="javascript:showTab(8, 8, 2);">Thanks</a>
+			<a href="#" class="tabmenu activated" onClick="javascript:showTab(1, totaltab, totalmanual);">Introduction</a>
+			<a href="#" class="tabmenu" onClick="javascript:showTab(2, totaltab, totalmanual);">News</a>
+			<a href="#" class="tabmenu" onClick="javascript:showTab(3, totaltab, totalmanual);">Download</a>
+			<a href="#" class="tabmenu" onClick="javascript:showTab(4, totaltab, totalmanual);">Manual</a>
+			<a href="#" class="tabmenu" onClick="javascript:showTab(5, totaltab, totalmanual);">FAQ</a>
+			<a href="#" class="tabmenu" onClick="javascript:showTab(6, totaltab, totalmanual);">Mailing List</a>
+			<a href="#" class="tabmenu" onClick="javascript:showTab(7, totaltab, totalmanual);">TODO</a>
+			<a href="#" class="tabmenu" onClick="javascript:showTab(8, totaltab, totalmanual);">Thanks</a>
 		</div>
 		<div class="menubottom">
 			<span class="bottommenu bottommenuinactive" id="menu1"></span>
@@ -62,11 +65,16 @@
 					<p>
 						KFreeFlight is a FlightGear GUI-frontend designed for KDE users. It can
 						launch FlightGear with the most options without writting a very long
-						command line.
+						command line.<br>
+						It was made for GNU/Linux, but it may run on other *nix-like system (not-tested yet).
 					</p>
 					<p>
 						This application is integrated as well as possible on the KDE environment, so KDE dependency will never be removed.
 					</p>
+				<p>
+					A new version (for KDE4) is in the pipe, but no release was done yet. This version is only available with the subversion
+					tool (SVN). This version is operationnal but a lot of work must be done before a release.
+				</p>
 					<h3>Disclaimer</h3>
 					<p>
 						All KFreeFlight tools musn't be use for real navigation. This application is made only for entertainment.
@@ -157,24 +165,95 @@
 		</div>
 		<div id="tab3" class="tabcontent">
 			<div class="inside">
-				<p>
-				</p>
+				<div class="textinside">
+					<h3>Sources tarball</h3>
+					<p>You can find it at <a
+					href="http://sourceforge.net/project/showfiles.php?group_id=157130">Sourceforge release
+					repository</a></p>
+					<h3>By distribution</h3>
+					<p><strong>Don't have any hesitation, You can make package for your favorite distribution.</strong></p>
+					<p>The best way to share it is upload package in a related website of your favorite distribution.<br />
+					But don't forget to send us an email, and we put its path on the web site.</p>
+
+					<p><strong>Available</strong></p>
+					<ul>
+					<li>Slackware package at 
+					<a href="http://www.slacky.it/index.php?option=com_remository&amp;Itemid=1&amp;func=fileinfo&amp;filecatid=922&amp;parent=category" target="new">
+					www.slacky.it</a> making by Andrea.</li>
+					<li>Gentoo ebuild at <a href="http://bugs.gentoo.org/show_bug.cgi?id=125381" target="new">
+						bugs.gentoo.org</a> making by Mauro.</li>
+
+					<li> Suse 10.0 rpm package on <a href="http://home.tiscali.be/raoul.linux/downloadSuSE10.0.htm">home.tiscali.be/raoul.linux</a> making by Raoul.</li>
+					</ul>
+					<h3>SVN Version</h3>
+					<p>
+					</p>
+					<h3>CVS Version (deprecated)</h3>
+					<p>A CVS version is now available<br /><a href="http://kfreeflight.cvs.sourceforge.net/kfreeflight/" target="new">
+					CVS Web browser</a></p>
+
+					<h4>Get a local copy</h4>
+					<p>To check out a new copy of KFreeFlight from CVS,open a terminal, cd into the directory where you want the new 
+					KFreeFlight directory to be created and run the commands listed below. When prompted for the password, just press 
+					the Enter key. The necessary commands are:</p>
+					<p><strong>cvs -d:pserver:anonymous@kfreeflight.cvs.sourceforge.net:/cvsroot/kfreeflight login</strong></p>
+					<p><strong>cvs -z3 -d:pserver:anonymous@kfreeflight.cvs.sourceforge.net:/cvsroot/kfreeflight co -P kfreeflight</strong></p>
+					<p>And then :</p>
+					<p><strong>cd kfreeflight</strong></p>
+
+					<p><strong>gmake -f Makefile.cvs</strong></p>
+					<p><strong>./configure</strong></p>
+					<p><strong>make</strong></p>
+					<p><strong>make install</strong> as root</p>
+					<h4>Update your CVS copy</h4>
+					<p><strong>cvs update -dP</strong></p>
+				</div>
 			</div>
 		</div>
 		<div id="tab4" class="tabcontent">
 			<div class="thumbnail" id="manual0">
-				<a href="#" onClick="javascript:showManual(1,5);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-				<a href="#" onClick="javascript:showManual(2,5);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-				<a href="#" onClick="javascript:showManual(3,5);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-				<a href="#" onClick="javascript:showManual(4,5);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-				<a href="#" onClick="javascript:showManual(5,5);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-				<a href="#" onClick="javascript:showManual(6,5);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-				<a href="#" onClick="javascript:showManual(7,5);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-				<a href="#" onClick="javascript:showManual(8,5);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-				<a href="#" onClick="javascript:showManual(9,5);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-				<a href="#" onClick="javascript:showManual(10,5);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
+				<div class="nothingbutleft">
+					<a href="#" onClick="javascript:showManual(1,totalmanual);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 1</p>
+				</div>
+				<div class="nothingbutleft">
+					<a href="#" onClick="javascript:showManual(2,totalmanual);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 2</p>
+				</div>
+				<div class="nothingbutleft">
+					<a href="#" onClick="javascript:showManual(3,totalmanual);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 2</p>
+				</div>
+				<div class="nothingbutleft">
+					<a href="#" onClick="javascript:showManual(4,totalmanual);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 2</p>
+				</div>
+				<div class="nothingbutleft">
+					<a href="#" onClick="javascript:showManual(5,totalmanual);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 2</p>
+				</div>
+				<div class="nothingbutleft">
+					<a href="#" onClick="javascript:showManual(6,totalmanual);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 2</p>
+				</div>
+				<div class="nothingbutleft">
+					<a href="#" onClick="javascript:showManual(7,totalmanual);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 2</p>
+				</div>
+				<div class="nothingbutleft">
+					<a href="#" onClick="javascript:showManual(8,totalmanual);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 2</p>
+				</div>
+				<div class="nothingbutleft">
+					<a href="#" onClick="javascript:showManual(9,totalmanual);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 2</p>
+				</div>
+				<div class="nothingbutleft">
+					<a href="#" onClick="javascript:showManual(10,totalmanual);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 2</p>
+				</div>
 			</div>
-			<div class="inside">
+			<div class="inside" id="manualcontainer">
 				<div id="manual1" class="textinside">
 					<img src="./tux.png" width="300" height="140" alt="KFF thumbnail">
 					<h3>General Tab</h3>
@@ -223,6 +302,18 @@
 						scenery objects, ai objects)</li>
 					</ul>
 				</div>
+				<div id="manual3" class="textinside">
+				</div>
+				<div id="manual4" class="textinside">
+				</div>
+				<div id="manual5" class="textinside">
+				</div>
+			</div>
+			<div class="cleared">
+				<a href="#" onClick="javascript:manualPrevious(manualind,totalmanual);"><img src="./go-previous.png" width="32" height="32" alt="prev"></a>
+				<a href="#" onClick="javascript:manualTop(manualind,totalmanual);"><img src="./go-up.png" width="32" height="32" alt="top"></a>
+				<a href="#" onClick="javascript:manualNext(manualind,totalmanual);"><img src="./go-next.png" width="32" height="32" alt="next"></a>
+				</div>
 			</div>
 		</div>
 		<div id="tab5" class="tabcontent">
@@ -254,6 +345,7 @@
 				<img src="http://sflogo.sourceforge.net/sflogo.php?group_id=157130&amp;type=11" width="120" height="31"
 					alt="Get KFreeFlight at SourceForge.net. Fast, secure and Free Open Source software downloads">
 			</a>
+			<a href="http://sourceforge.net" target="_blank">
 			<a href="http://validator.w3.org/check?uri=referer" target="_blank">
 				<img src="http://www.w3.org/Icons/valid-html401"
 					alt="Valid HTML 4.01 Transitional" height="31" width="88">
@@ -271,5 +363,6 @@
 			</div> /-->
 		</div>
 	</div>
+	<div id="debug">-1</div>
 </body>
 </html>

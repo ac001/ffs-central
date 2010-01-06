@@ -5,6 +5,14 @@ function showManual(clicked, total)
 		if (i == clicked)
 		{
 			$('#manual'+i).show();
+			if ( i == 0 )
+			{
+				$('#manualcontainer').hide();
+			}
+			else
+			{
+				$('#manualcontainer').show();
+			}
 		}
 		else
 		{
@@ -33,6 +41,39 @@ function showTab(clicked, total, maxmanual)
 			$('#menu'+i).addClass('bottommenuinactive');
 		}
 	}
+	$('#debug').text("val="+clicked+" total="+total+" maxmanual="+maxmanual);
+}
+function manualNext(ind, total)
+{
+	if ( ind < total )
+	{
+		ind++;
+		showManual(ind, total);
+	}
+	else
+	{
+		deb="error";
+	}
+	$('#debug').text(deb+", ind="+ind+", total="+total);
+}
+function manualPrevious(ind, total)
+{
+	if ( ind > 1 )
+	{
+		ind--;
+		showManual(ind, total);
+	}
+	else
+	{
+		deb="error";
+	}
+	$('#debug').text(deb+", ind="+ind+", total="+total);
+}
+function manualTop(ind, total)
+{
+	ind = 0;
+	showManual(ind, total);
+	$('#debug').text("ind="+ind+" total="+total);
 }
 $(function()
 {
