@@ -1,12 +1,30 @@
-function showTab(clicked, nbtab)
+function showManual(clicked, total)
 {
-	for ( i = 1 ; i < nbtab ; i++)
+	for ( var i = 0 ; i <= total ; i++)
+	{
+		if (i == clicked)
+		{
+			$('#manual'+i).show();
+		}
+		else
+		{
+			$('#manual'+i).hide();
+		}
+	}
+}
+function showTab(clicked, total, maxmanual)
+{
+	for ( var i = 1 ; i <= total ; i++)
 	{
 		if (i == clicked)
 		{
 			$('#tab'+i).show();
 			$('#menu'+i).removeClass('bottommenuinactive');
 			$('#menu'+i).addClass('bottommenuactive');
+			if (i == 4)
+			{
+				showManual(0,maxmanual);
+			}
 		}
 		else
 		{
