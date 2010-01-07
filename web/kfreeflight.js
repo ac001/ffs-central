@@ -1,6 +1,15 @@
-function showManual(clicked, total)
+function showManual(clicked)
 {
-	for ( var i = 0 ; i <= total ; i++)
+	if( clicked < 0 )
+	{
+		for ( var i = 0 ; i <= totalmanual ; i++)
+		{
+			$('#manual'+i).hide();
+		}
+		$('#manualcontainer').hide();
+		return;
+	}
+	for ( var i = 0 ; i <= totalmanual ; i++)
 	{
 		if (i == clicked)
 		{
@@ -18,20 +27,48 @@ function showManual(clicked, total)
 		{
 			$('#manual'+i).hide();
 		}
+		if ( manualind == totalmanual )
+		{
+			// Grey the next button
+			$('#nextenable').hide();
+			$('#nextdisable').show();
+		}
+		else
+		{
+			// Grey the next button
+			$('#nextenable').show();
+			$('#nextdisable').hide();
+		}
+		if ( manualind == 1 )
+		{
+			// Grey the previous button
+			$('#prevenable').show();
+			$('#prevdisable').hide();
+		}
+		else
+		{
+			// Grey the next button
+			$('#prevenable').hide();
+			$('#prevdisable').show();
+		}
 	}
 }
-function showTab(clicked, total, maxmanual)
+function showTab(clicked)
 {
-	for ( var i = 1 ; i <= total ; i++)
+	for ( var i = 1 ; i <= totaltab ; i++)
 	{
 		if (i == clicked)
 		{
 			$('#tab'+i).show();
 			$('#menu'+i).removeClass('bottommenuinactive');
 			$('#menu'+i).addClass('bottommenuactive');
-			if (i == 4)
+			if (i == manualtab)
 			{
-				showManual(0,maxmanual);
+				showManual(0);
+			}
+			else
+			{
+				showManual(-1);
 			}
 		}
 		else
@@ -41,41 +78,25 @@ function showTab(clicked, total, maxmanual)
 			$('#menu'+i).addClass('bottommenuinactive');
 		}
 	}
-	$('#debug').text("val="+clicked+" total="+total+" maxmanual="+maxmanual);
 }
-function manualNext(ind, total)
+function manualNext()
 {
-	if ( ind < total )
+	if ( manualind < totalmanual )
 	{
-		ind++;
-		showManual(ind, total);
+		manualind++;
+		showManual(manualind);
 	}
-	else
-	{
-		deb="error";
-	}
-	$('#debug').text(deb+", ind="+ind+", total="+total);
 }
-function manualPrevious(ind, total)
+function manualPrevious()
 {
-	if ( ind > 1 )
+	if ( manualind > 1 )
 	{
-		ind--;
-		showManual(ind, total);
+		manualind--;
+		showManual(manualind);
 	}
-	else
-	{
-		deb="error";
-	}
-	$('#debug').text(deb+", ind="+ind+", total="+total);
 }
-function manualTop(ind, total)
+function manualTop()
 {
-	ind = 0;
-	showManual(ind, total);
-	$('#debug').text("ind="+ind+" total="+total);
+	manualind = 0;
+	showManual(manualind);
 }
-$(function()
-{
-	$('#ticker01').liScroll();
-});
