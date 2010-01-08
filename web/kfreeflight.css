@@ -280,9 +280,10 @@ hr
 }
 .language
 {
-	padding-left : 5px;
+	padding-left : 0px;
 	padding-top : 5px;
 	padding-bottom : 5px;
+	padding-right : 0px;
 	float : right;
 }
 img.flag
@@ -303,6 +304,7 @@ div.logos
 img
 {
 	border-width : 0px;
+	z-index : 10;
 }
 .inside, .inside img, .textinside img
 {
@@ -310,7 +312,10 @@ img
 	float : right;
 	text-align : justify;
 	vertical-align : top;
-	padding : 0px;
+	padding-left : 0px;
+	padding-top : 0px;
+	padding-bottom : 0px;
+	padding-right : 0px;
 	margin : 0px;
 	border-color : #0056ff;
 	border-width : 3px 3px 3px 3px;
@@ -372,7 +377,7 @@ ul.newsticker a {
 	margin: 0px 50px 0px 0px;
 }
 ul.newsticker span {
-	margin: 0px 10px 0px 0px;
+	margin: 0px 15px 0px 15px;
 }
 .textinside
 {
@@ -516,9 +521,27 @@ div.cleared
 	margin-left: 0px;
 	padding: 0px;
 }
-h3
+h3, h4, h5
 {
-	text-decoration : underline;
+	text-decoration : none;
+	padding-left : 20px;
+	padding-right : 20px;
+	padding-top : 5px;
+	padding-bottom : 5px;
+	background-color : #0056ff;
+	border-width : 1px;
+	border-style : solid;
+	border-color : #002e84;
+	color : #ffffff;
+	margin-left : 0px;
+	margin-right : 0px;
+	margin-top : 0px;
+	margin-bottom : 10px;	
+}
+h4
+{
+	margin-left : 10px;
+	width : 30%;
 }
 p.faqquestion
 {

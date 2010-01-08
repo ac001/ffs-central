@@ -55,7 +55,7 @@ function showManual(clicked)
 }
 function showTab(clicked)
 {
-	for ( var i = 1 ; i <= totaltab ; i++)
+	for ( var i = 0 ; i < totaltab ; i++)
 	{
 		if (i == clicked)
 		{
