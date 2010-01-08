@@ -22,14 +22,42 @@
 	<div class="main">
 		<div class="header">
 			<span class="headerleft"></span>
-			<span class="headermiddle"><img src="./logo.png" class="logo" >KFreeFlight<!-- KFreeFl<img src="./tower.png" alt="OK">ght /--></span>
+			<span class="headermiddle"><img src="./logo.png" class="logo" >&nbsp;KFreeFlight<!-- KFreeFl<img src="./tower.png" alt="OK">ght /--></span>
 			<span class="headerright"></span>
 		</div>
 		<div class="language">
-			<a class="lang" href="./index.php?lang=en"><img src="./en.png" alt="en" class="flag"></a>
-			<a class="lang" href="./index.php?lang=fr"><img src="./fr.png" alt="fr" class="flag"></a>
-			<a class="lang" href="./index.php?lang=it"><img src="./it.png" alt="it" class="flag"></a>
-			<a class="lang" href="./index.php?lang=de"><img src="./de.png" alt="de" class="flag"></a>
+			<a class="lang" href="./index.php?lang=en" onMouseOver="javascript:$('#lang1').show();" onMouseOut="javascript:$('#lang1').hide();">
+				<img src="./en.png" alt="en" class="flag">
+			</a>
+			<div class="viewercontainer langview" id="lang1">
+				<div class="viewer">
+					<p>English / American language</p>
+				</div>
+			</div>
+			<a class="lang" href="./index.php?lang=fr" onMouseOver="javascript:$('#lang2').show();" onMouseOut="javascript:$('#lang2').hide();">
+				<img src="./fr.png" alt="fr" class="flag">
+			</a>
+			<div class="viewercontainer langview" id="lang2">
+				<div class="viewer">
+					<p>French language</p>
+				</div>
+			</div>
+			<a class="lang" href="./index.php?lang=it" onMouseOver="javascript:$('#lang3').show();" onMouseOut="javascript:$('#lang3').hide();">
+				<img src="./it.png" alt="it" class="flag">
+			</a>
+			<div class="viewercontainer langview" id="lang3">
+				<div class="viewer">
+					<p>Italian language</p>
+				</div>
+			</div>
+			<a class="lang" href="./index.php?lang=de" onMouseOver="javascript:$('#lang4').show();" onMouseOut="javascript:$('#lang4').hide();">
+				<img src="./de.png" alt="de" class="flag">
+			</a>
+			<div class="viewercontainer langview" id="lang4">
+				<div class="viewer">
+					<p>German language</p>
+				</div>
+			</div>
 		</div>
 		<div class="ticker">
 			<ul id="ticker01">
@@ -47,6 +75,7 @@
 			<a href="#" class="tabmenu" onClick="javascript:manualtab=6;showTab(manualtab);">TODO</a>
 			<a href="#" class="tabmenu" onClick="javascript:manualtab=7;showTab(manualtab);">Manual</a>
 			<a href="#" class="tabmenu" onClick="javascript:manualtab=8;showTab(manualtab);">Thanks</a>
+			&nbsp;<img src="./logo.png" class="logo" >
 		</div>
 		<div class="menubottom">
 			<span class="bottommenu bottommenuinactive" id="menu1"></span>
@@ -107,48 +136,54 @@
 		<div id="tab2" class="tabcontent">
 			<div class="inside">
 				<div class="textinside">
-					<p>Ver 0.3.2-r2 Updated Dev release</p>
+					<p>Upper version</p>
 					<ul>
-					<li><strong>Critic bugs fix</strong></li>
+						<li>Dev version are available via SVN</li>
+						<li>Dev version are available via CVS (deprecated now)</li>
 					</ul>
-
-					<p>Ver 0.3.2 Updated Dev release</p>
+					<hr>
+					<p>Ver 0.3.2-r2 Updated Dev release (2006-04-19)</p>
 					<ul>
-					<li><strong>Need zlib, glut, plib-1.8.4 and simgear-0.3.10 libraries to compile</strong></li>
-					<li><strong>KWeather and KWorldWatch (all in kde-toys package) must be installed</strong></li>
-					<li>Add Aircraft 3D render thumbnail (by plib or simgear)</li>
-					<li>Add KDE system tray integration option</li>
-
-					<li>Fix some bugs</li>
+						<li><strong>Critic bugs fix</strong></li>
 					</ul>
-					<p>Ver 0.3.1 Updated Dev release</p>
+					<hr>
+					<p>Ver 0.3.2 Updated Dev release (2006-04-16)</p>
 					<ul>
-					<li><strong>Need zlib library to compile</strong></li>
-					<li><strong>KWeather and KWorldWatch (all in kde-toys package) must be installed</strong></li>
-					<li>Add real weather window : download the metar and make a report</li>
-
-					<li>Add Find an airport by ICAO code, by name or coordinates window in the apt.dat.gz file and KWeather database</li>
-					<li>Add personnal screen resolution (settable by the settings menu)</li>
-					<li>Update multiplayer options</li>
-					<li>Add lightning and precipitation rendering option</li>
+						<li><strong>Need zlib, glut, plib-1.8.4 and simgear-0.3.10 libraries to compile</strong></li>
+						<li><strong>KWeather and KWorldWatch (all in kde-toys package) must be installed</strong></li>
+						<li>Add Aircraft 3D render thumbnail (by plib or simgear)</li>
+						<li>Add KDE system tray integration option</li>
+						<li>Fix some bugs</li>
 					</ul>
-					<p>Ver 0.2.1 - Updated Stable release</p>
+					<hr>
+					<p>Ver 0.3.1 Updated Dev release (2006-03-23)</p>
 					<ul>
-					<li>Add shadows(aircraft, ai objects, scenery objects) options</li>
-					<li>Add bump mapped clouds option</li>
-					<li>Add reload aircraft list button</li>
-					<li>Add ATC-Chatter option (FlightGear CVS)</li>
+						<li><strong>Need zlib library to compile</strong></li>
+						<li><strong>KWeather and KWorldWatch (all in kde-toys package) must be installed</strong></li>
+						<li>Add real weather window : download the metar and make a report</li>
+						<li>Add Find an airport by ICAO code, by name or coordinates window in the apt.dat.gz file and KWeather database</li>
+						<li>Add personnal screen resolution (settable by the settings menu)</li>
+						<li>Update multiplayer options</li>
+						<li>Add lightning and precipitation rendering option</li>
 					</ul>
-					<p>Ver 0.2 - First Stable release</p>
-
+					<hr>
+					<p>Ver 0.2.1 - Updated Stable release (2006-03-01)</p>
+					<ul>
+						<li>Add shadows(aircraft, ai objects, scenery objects) options</li>
+						<li>Add bump mapped clouds option</li>
+						<li>Add reload aircraft list button</li>
+						<li>Add ATC-Chatter option (FlightGear CVS)</li>
+					</ul>
+					<hr>
+					<p>Ver 0.2 - First Stable release (2006-02-07)</p>
 					<ul>
 						<li>Adding GPS starting position</li>
 						<li>Adding french language</li>
 						<li>Fixing locale bug (locale with comma decimal point)</li>
 						<li>Adding refresh button in toolbar</li>
 					</ul>
-					<p>Ver 0.1.4 - Dev release</p>
-
+					<hr>
+					<p>Ver 0.1.4 - Dev release (2006-02-07)</p>
 					<ul>
 						<li>More than one config can be saved</li>
 						<li>Adding a toolbar and a statusbar</li>
@@ -160,7 +195,8 @@
 						<li>Adding season (summer - winter)</li>
 						<li>Adding Atlas settings</li>
 					</ul>
-					<p>Ver 0.1.2 - First Dev release.</p>
+					<hr>
+					<p>Ver 0.1.2 - First Dev release (2006-01-18)</p>
 				</div>
 			</div>
 		</div>
@@ -171,9 +207,10 @@
 					<p>You can find it at <a
 					href="http://sourceforge.net/project/showfiles.php?group_id=157130">Sourceforge release
 					repository</a></p>
+					<hr>
 					<h3>By distribution</h3>
-					<p><strong>Don't have any hesitation, You can make package for your favorite distribution.</strong></p>
-					<p>The best way to share it is upload package in a related website of your favorite distribution.<br />
+					<p><strong>Don't have any hesitation, make package for your favorite GNU/Linux distribution.</strong></p>
+					<p>The best way to share it is to upload package on a related website of your favorite distribution.<br />
 					But don't forget to send us an email, and we put its path on the web site.</p>
 
 					<p><strong>Available</strong></p>
@@ -186,14 +223,16 @@
 
 					<li> Suse 10.0 rpm package on <a href="http://home.tiscali.be/raoul.linux/downloadSuSE10.0.htm">home.tiscali.be/raoul.linux</a> making by Raoul.</li>
 					</ul>
+					<hr>
 					<h3>SVN Version</h3>
 					<p>
 					</p>
+					<hr>
 					<h3>CVS Version (deprecated)</h3>
 					<p>A CVS version is now available<br /><a href="http://kfreeflight.cvs.sourceforge.net/kfreeflight/" target="new">
 					CVS Web browser</a></p>
 
-					<h3>Get a local copy</h3>
+					<h4>Get a local copy</h4>
 					<p>To check out a new copy of KFreeFlight from CVS,open a terminal, cd into the directory where you want the new 
 					KFreeFlight directory to be created and run the commands listed below. When prompted for the password, just press 
 					the Enter key. The necessary commands are:</p>
@@ -206,7 +245,7 @@
 					<p><strong>./configure</strong></p>
 					<p><strong>make</strong></p>
 					<p><strong>make install</strong> as root</p>
-					<h3>Update your CVS copy</h3>
+					<h4>Update your CVS copy</h4>
 					<p><strong>cvs update -dP</strong></p>
 				</div>
 			</div>
@@ -278,10 +317,9 @@
 						<a href="http://sourceforge.net/forum/forum.php?forum_id=528355">developers forum</a></p>
 					<h3>Otherwise, it rest a lot of things</h3>
 					<ul>
-					<li>Others languages traductions (need help)</li>
-					<li>Finish and translate this web page (need help for translation)</li>
-
-					<li>etc ...</li>
+						<li>Others languages traductions (need help)</li>
+						<li>Finish and translate this web page (need help for translation)</li>
+						<li>etc ...</li>
 					</ul>
 					<h3>How to translate KFreeFlight ?</h3>
 					<p>This part is very simple : KFreeFlight put pot file in your $KDE/share/apps/kfreeflight directory (min version 0.2).<br />
@@ -297,94 +335,265 @@
 		</div>
 		<div id="tab7" class="tabcontent">
 			<div class="thumbnail" id="manual0">
+				<div class="textinside"><h3>Click on thumbnail to open the page</h3></div>
 				<div class="nothingbutleft">
-					<a href="#" onClick="javascript:manualind=1;showManual(manualind);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
+					<a href="#" onClick="javascript:manualind=1;showManual(manualind);"><img src="./tux.png" class="thumb" alt="KFF thumbnail"></a>
 					<p class="thumb">Page 1</p>
 				</div>
 				<div class="nothingbutleft">
-					<a href="#" onClick="javascript:manualind=2;showManual(manualind);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
+					<a href="#" onClick="javascript:manualind=2;showManual(manualind);"><img src="./tux.png" class="thumb" alt="KFF thumbnail"></a>
 					<p class="thumb">Page 2</p>
 				</div>
 				<div class="nothingbutleft">
-					<a href="#" onClick="javascript:manualind=3;showManual(manualind);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-					<p class="thumb">Page 2</p>
+					<a href="#" onClick="javascript:manualind=3;showManual(manualind);"><img src="./tux.png" class="thumb" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 3</p>
 				</div>
 				<div class="nothingbutleft">
-					<a href="#" onClick="javascript:manualind=4;showManual(manualind);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-					<p class="thumb">Page 2</p>
+					<a href="#" onClick="javascript:manualind=4;showManual(manualind);"><img src="./tux.png" class="thumb" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 4</p>
 				</div>
 				<div class="nothingbutleft">
-					<a href="#" onClick="javascript:manualind=5;showManual(manualind);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-					<p class="thumb">Page 2</p>
+					<a href="#" onClick="javascript:manualind=5;showManual(manualind);"><img src="./tux.png" class="thumb" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 5</p>
 				</div>
 				<div class="nothingbutleft">
-					<a href="#" onClick="javascript:manualind=6;showManual(manualind);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-					<p class="thumb">Page 2</p>
+					<a href="#" onClick="javascript:manualind=6;showManual(manualind);"><img src="./tux.png" class="thumb" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 6</p>
 				</div>
 				<div class="nothingbutleft">
-					<a href="#" onClick="javascript:manualind=7;showManual(manualind);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-					<p class="thumb">Page 2</p>
+					<a href="#" onClick="javascript:manualind=7;showManual(manualind);"><img src="./tux.png" class="thumb" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 7</p>
 				</div>
 				<div class="nothingbutleft">
-					<a href="#" onClick="javascript:manualind=8;showManual(manualind);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-					<p class="thumb">Page 2</p>
+					<a href="#" onClick="javascript:manualind=8;showManual(manualind);"><img src="./tux.png" class="thumb" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 8</p>
 				</div>
 				<div class="nothingbutleft">
-					<a href="#" onClick="javascript:manualind=9;showManual(manualind);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-					<p class="thumb">Page 2</p>
+					<a href="#" onClick="javascript:manualind=9;showManual(manualind);"><img src="./tux.png" class="thumb" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 9</p>
 				</div>
 				<div class="nothingbutleft">
-					<a href="#" onClick="javascript:manualind=10;showManual(manualind);"><img src="./tux.png" width="200" height="140" alt="KFF thumbnail"></a>
-					<p class="thumb">Page 2</p>
+					<a href="#" onClick="javascript:manualind=10;showManual(manualind);"><img src="./tux.png" class="thumb" alt="KFF thumbnail"></a>
+					<p class="thumb">Page 10</p>
 				</div>
 			</div>
 			<div class="inside" id="manualcontainer">
 				<div id="manual1" class="textinside">
-					<img src="./tux.png" width="300" height="140" alt="KFF thumbnail">
-					<h3>Page 1</h3>
+					<a href="#" onClick="javascript:$('#app1').show();">
+						<span class="zoom">
+							<img src="./tux.png" class="thumb" alt="KFF thumbnail">
+							Click to enlarge
+							<img src="./zoom.png" class="zoom" alt="Zoom">
+						</span>
+					</a>
+					<h3>General Tab</h3>
+					<p>In general settings</p>
+					<ul>
+						<li>Splashscreen : let you see a splashscreen when FlightGear starting.</li>
+						<li>Game mode : Launch FlightGear in true fullscreen mode.</li>
+						<li>Fullscreen : Launch FlightGear in a maximised window.</li>
+						<li>Intro music : let you ear a music at startup.</li>
+						<li>Joystick : make joystick the main input device.</li>
+						<li>Unit meter : The unit are in feet by default but you can overwrite this setting here</li>
+					</ul>
+					<p>In advanced settings</p>
+					<ul>
+						<li>NMEA protocol : usefull option for Atlas which let you see your position in real time.</li>
+						<li>http server : Let you change flying values through a web browser. (by default : http://localhost:5500)</li>
+						<li>Atlas too : launch Atlas and FlightGear together</li>
+						<li>Wireframe and objects wireframe options : let you discover the FlightGear's internal world.</li>
+					</ul>
+					<div class="viewercontainer appview" id="app1" onClick="javascript:$('#app1').hide();">
+						<div class="viewer">
+							<h1>Page 1</h1>
+							<img src="./tux.png" class="appview" alt="KFF thumbnail">
+							<p>Click on the window to close it</p>
+						</div>
+					</div>
 				</div>
 				<div id="manual2" class="textinside">
-					<img src="./tux.png" width="200" height="140" alt="KFF thumbnail">
-					<h3>Page 2</h3>
+					<a href="#" onClick="javascript:$('#app2').show();">
+						<span class="zoom">
+							<img src="./tux.png" class="thumb" alt="KFF thumbnail">
+							Click to enlarge
+							<img src="./zoom.png" class="zoom" alt="Zoom">
+						</span>
+					</a>
+					<h3>Render Tab</h3>
+					<p>Rendering options</p>
+					<ul>
+						<li>Specular highlight : Enable specular reflections on textured objects</li>
+						<li>Distance attenuation : Enable runway light distance attenuation</li>
+						<li>Enhanced lightning : Enable enhanced runway lighting</li>
+						<li>Clouds : Enable 2D (flat) cloud layers</li>
+						<li>Bump mapped clouds : </li>
+						<li>Cloud 3D : Enable 3D (volumetric) cloud layers</li>
+						<li>Random objects : Include random scenery objects (buildings, etc.)</li>
+						<li>Mouse pointer : Enable extra mouse pointer (i.e. for full screen Voodoo based cards)</li>
+						<li>Sky blend : Enable sky blending</li>
+						<li>Horizon effect : Enable celestial body growth illusion near the horizon</li>
+						<li>Textures : Enable textures</li>
+						<li>Lightning : Enable lightning rendering</li>
+						<li>Precipitations : Enable precipitations endering</li>
+					</ul>
+					<p>Display resolution, shading and shadows</p>
+					<ul>
+						<li>You can choose here the screen resolution and the color depth. This is the place of your personnal screen resolution defined 
+						in the settings window.</li>
+						<li>Shading : choose the shading level. Smooth is more beautiful, but need more processor ressource.</li>
+						<li>Shadows : choose the objects which must have a shadow (plane, transparency: plane have shadow on ground only, 
+						scenery objects, ai objects)</li>
+					</ul>
+					<div class="viewercontainer appview" id="app2" onClick="javascript:$('#app2').hide();">
+						<div class="viewer">
+							<h1>Page 2</h1>
+							<img src="./tux.png" class="appview" alt="KFF thumbnail">
+							<p>Click on the window to close it</p>
+						</div>
+					</div>
 				</div>
 				<div id="manual3" class="textinside">
-					<img src="./tux.png" width="200" height="140" alt="KFF thumbnail">
+					<a href="#" onClick="javascript:$('#app3').show();">
+						<span class="zoom">
+							<img src="./tux.png" class="thumb" alt="KFF thumbnail">
+							Click to enlarge
+							<img src="./zoom.png" class="zoom" alt="Zoom">
+						</span>
+					</a>
 					<h3>Page 3</h3>
+					<div class="viewercontainer appview" id="app3" onClick="javascript:$('#app3').hide();">
+						<div class="viewer">
+							<h1>Page 3</h1>
+							<img src="./tux.png" class="appview" alt="KFF thumbnail">
+							<p>Click on the window to close it</p>
+						</div>
+					</div>
 				</div>
 				<div id="manual4" class="textinside">
-					<img src="./tux.png" width="200" height="140" alt="KFF thumbnail">
+					<a href="#" onClick="javascript:$('#app4').show();">
+						<span class="zoom">
+							<img src="./tux.png" class="thumb" alt="KFF thumbnail">
+							Click to enlarge
+							<img src="./zoom.png" class="zoom" alt="Zoom">
+						</span>
+					</a>
 					<h3>Page 4</h3>
+					<div class="viewercontainer appview" id="app4" onClick="javascript:$('#app4').hide();">
+						<div class="viewer">
+							<h1>Page 4</h1>
+							<img src="./tux.png" class="appview" alt="KFF thumbnail">
+							<p>Click on the window to close it</p>
+						</div>
+					</div>
 				</div>
 				<div id="manual5" class="textinside">
-					<img src="./tux.png" width="200" height="140" alt="KFF thumbnail">
+					<a href="#" onClick="javascript:$('#app5').show();">
+						<span class="zoom">
+							<img src="./tux.png" class="thumb" alt="KFF thumbnail">
+							Click to enlarge
+							<img src="./zoom.png" class="zoom" alt="Zoom">
+						</span>
+					</a>
 					<h3>Page 5</h3>
+					<div class="viewercontainer appview" id="app5" onClick="javascript:$('#app5').hide();">
+						<div class="viewer">
+							<h1>Page 5</h1>
+							<img src="./tux.png" class="appview" alt="KFF thumbnail">
+							<p>Click on the window to close it</p>
+						</div>
+					</div>
 				</div>
 				<div id="manual6" class="textinside">
-					<img src="./tux.png" width="200" height="140" alt="KFF thumbnail">
+					<a href="#" onClick="javascript:$('#app6').show();">
+						<span class="zoom">
+							<img src="./tux.png" class="thumb" alt="KFF thumbnail">
+							Click to enlarge
+							<img src="./zoom.png" class="zoom" alt="Zoom">
+						</span>
+					</a>
 					<h3>Page 6</h3>
+					<div class="viewercontainer appview" id="app6" onClick="javascript:$('#app6').hide();">
+						<div class="viewer">
+							<h1>Page 6</h1>
+							<img src="./tux.png" class="appview" alt="KFF thumbnail">
+							<p>Click on the window to close it</p>
+						</div>
+					</div>
 				</div>
 				<div id="manual7" class="textinside">
-					<img src="./tux.png" width="200" height="140" alt="KFF thumbnail">
+					<a href="#" onClick="javascript:$('#app7').show();">
+						<span class="zoom">
+							<img src="./tux.png" class="thumb" alt="KFF thumbnail">
+							Click to enlarge
+							<img src="./zoom.png" class="zoom" alt="Zoom">
+						</span>
+					</a>
 					<h3>Page 7</h3>
+					<div class="viewercontainer appview" id="app7" onClick="javascript:$('#app7').hide();">
+						<div class="viewer">
+							<h1>Page 7</h1>
+							<img src="./tux.png" class="appview" alt="KFF thumbnail">
+							<p>Click on the window to close it</p>
+						</div>
+					</div>
 				</div>
 				<div id="manual8" class="textinside">
-					<img src="./tux.png" width="200" height="140" alt="KFF thumbnail">
+					<a href="#" onClick="javascript:$('#app8').show();">
+						<span class="zoom">
+							<img src="./tux.png" class="thumb" alt="KFF thumbnail">
+							Click to enlarge
+							<img src="./zoom.png" class="zoom" alt="Zoom">
+						</span>
+					</a>
 					<h3>Page 8</h3>
+					<div class="viewercontainer appview" id="app8" onClick="javascript:$('#app8').hide();">
+						<div class="viewer">
+							<h1>Page 8</h1>
+							<img src="./tux.png" class="appview" alt="KFF thumbnail">
+							<p>Click on the window to close it</p>
+						</div>
+					</div>
 				</div>
 				<div id="manual9" class="textinside">
-					<img src="./tux.png" width="200" height="140" alt="KFF thumbnail">
+					<a href="#" onClick="javascript:$('#app9').show();">
+						<span class="zoom">
+							<img src="./tux.png" class="thumb" alt="KFF thumbnail">
+							Click to enlarge
+							<img src="./zoom.png" class="zoom" alt="Zoom">
+						</span>
+					</a>
 					<h3>Page 9</h3>
+					<div class="viewercontainer appview" id="app9" onClick="javascript:$('#app9').hide();">
+						<div class="viewer">
+							<h1>Page 9</h1>
+							<img src="./tux.png" class="appview" alt="KFF thumbnail">
+							<p>Click on the window to close it</p>
+						</div>
+					</div>
 				</div>
 				<div id="manual10" class="textinside">
-					<img src="./tux.png" width="200" height="140" alt="KFF thumbnail">
+					<a href="#" onClick="javascript:$('#app10').show();">
+						<span class="zoom">
+							<img src="./tux.png" class="thumb" alt="KFF thumbnail">
+							Click to enlarge
+							<img src="./zoom.png" class="zoom" alt="Zoom">
+						</span>
+					</a>
 					<h3>Page 10</h3>
+					<div class="viewercontainer appview" id="app10" onClick="javascript:$('#app10').hide();">
+						<div class="viewer">
+							<h1>Page 10</h1>
+							<img src="./tux.png" class="appview" alt="KFF thumbnail">
+							<p>Click on the window to close it</p>
+						</div>
+					</div>
 				</div>
 				<div class="cleared">
-					<span class="nothing" id="nextenable"><a href="#" onClick="javascript:manualNext();"><img src="./go-next.png" width="32" height="32" alt="&nbsp;&lt;"></a></span>
+					<span class="nothing" id="nextenable"><a href="#" onClick="javascript:manualNext();"><img src="./go-next.png" alt="&nbsp;&lt;"></a></span>
 					<span class="nothing" id="nextdisable"><img src="./go-next-wb.png" width="32" height="32" alt="&nbsp;&lt;"></span>
-					<span class="nothing"><a href="#" onClick="javascript:manualind=0;manualTop();"><img src="./go-up.png" width="32" height="32" alt="&nbsp;top&nbsp;"></a></span>
+					<span class="nothing"><a href="#" onClick="javascript:manualind=0;manualTop();"><img src="./go-up.png" alt="&nbsp;top&nbsp;"></a></span>
 					<span class="nothing" id="prevenable"><img src="./go-previous-wb.png" width="32" height="32" alt="&gt;&nbsp;"></span>
-					<span class="nothing" id="prevdisable"><a href="#" onClick="javascript:manualPrevious();"><img src="./go-previous.png" width="32" height="32" alt="&gt;&nbsp;"></a></span>
+					<span class="nothing" id="prevdisable"><a href="#" onClick="javascript:manualPrevious();"><img src="./go-previous.png" alt="&gt;&nbsp;"></a></span>
 				</div>
 			</div>
 		</div>
@@ -416,15 +625,16 @@
 			<a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank">
 				<img style="border:0;width:88px;height:31px"
 					src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Valide !" />
-			</a>
+			</a> /-->
 		</div>
+		<!--
 		<div class="viewercontainer" id="rfid" onClick="javascript:$('#rfid').hide();">
 			<div class="viewer">
 				<h1>RFID tag</h1>
 				<img src="./rfid.png" alt="RFID">
 				<p>Click on the window to close it</p>
-			</div> /-->
-		</div>
+			</div>
+		</div> /-->
 	</div>
 </body>
 </html>

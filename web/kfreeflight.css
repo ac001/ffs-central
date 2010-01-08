@@ -175,13 +175,12 @@ a.tabmenu:hover
 	border-width : 0px;
 	width: 100px;
 }
-hr.menu
+hr
 {
 	color: #0056ff;
 	border-width : 2px;
 	border-color : #0056ff;
 	border-style: solid;
-	clear : left;
 	padding : 0px;
 	margin : 0px;
 }
@@ -248,8 +247,6 @@ hr.menu
 	position : absolute;
 	margin-left : auto;
 	margin-right : auto;
-	top : 200px;
-	left : 220px;
 	z-index : 10;
 	padding : 10px;
 }
@@ -260,7 +257,7 @@ hr.menu
 	padding : 0px;
 	margin : 0px;
 	border-width : 1px;
-	border-style:ridge;
+	border-style: solid;
 	border-collapse : collapse;
 	border-color : #002e84;
 }
@@ -384,6 +381,36 @@ ul.newsticker span {
 	margin: 10px;
 	padding: 0px;
 }
+
+span.zoom
+{
+	width : 200px;
+	clear : right;
+	float : right;
+	padding : 0px;
+	margin-right : 0px;
+	margin-bottom : 0px;
+	margin-left : 0px;
+	margin-top : 0px;
+	text-decoration : none;
+	text-align : center;
+	vertical-align : middle;
+	display : inline-block;
+}
+
+img.zoom
+{
+	width : 16px;
+	height : 16px;
+	margin-bottom : 0px;
+	margin-left : 0px;
+	margin-top : 0px;
+	margin-right : 40px;
+	padding : 0px;
+	vertical-align : middle;
+	float : right;
+}
+
 .thumbnail
 {
 	float : left;
@@ -430,6 +457,26 @@ img.thumb
 	border : none;
 }
 
+img.appview
+{
+	width : 816px;
+	height : 682px;
+	border : none;
+}
+
+div.appview
+{
+	top : 20px;
+	left : 42px;
+}
+
+div.langview
+{
+	top : 70px;
+	left : 740px;
+	width : 250px;
+}
+
 div.cleared
 {
 	display : block;
@@ -446,15 +493,15 @@ div.cleared
 	margin : 5px;
 }
 
-.cleared  img, .logo
+.cleared  img, .logo, span img.logo
 {
-	width : 32px;
-	height : 32px;
+	width : 16px;
+	height : 16px;
 	margin-left: 1px;
 	margin-right: 1px;
 	margin-top: 1px;
 	margin-bottom: 1px;
-	vertical-align : bottom;
+	vertical-align : middle;
 	
 }
 .logo
@@ -497,4 +544,16 @@ p.faqanswser
 	padding-right: 10px;
 	padding-top: 0px;
 	padding-bottom: 0px;
+}
+
+p
+{
+	padding-left: 10px;
+}
+
+li
+{
+	color: #002e84;
+	display : list-item;
+	padding-left: 20px;
 }
