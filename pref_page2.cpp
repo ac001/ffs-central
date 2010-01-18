@@ -79,7 +79,7 @@ void KFFPref_page2::chooseScenerySlot()
 	QString buffer = FG_SCENERY, dirname;
 	KUrl url;
 	QDir dir;
-	bool found = false, valid;
+	bool found = false;
 	
 	if ( buffer.isEmpty() )
 	{

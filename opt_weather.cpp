@@ -263,7 +263,7 @@ void KFFOpt_weather::addCeilingSlot()
 	QStringList itemdata;
 	QString buffer;
 	QTreeWidgetItem* clouditem;
-	int index;
+	//unused int index;
 
 	//index = ui_widget.treeWidget_clouds->indexOfTopLevelItem(  );
 	if ( m_update || ( ui_widget.treeWidget_clouds->topLevelItemCount() < 6 ) )
