@@ -34,8 +34,8 @@ find_path(SIMGEAR_INCLUDE_DIR version.h ${SEARCH_INCLUDE_PATH} )
 #
 
 set( SIMGEAR_TO_FOUND_LIBRARIES
-     lsgroute
-     lsgskysgsound
+     #lsgroute - seems to be not required
+     #lsgskysgsound - seems to be not required
      sgephem
      sgtgdb
      sgmodel
