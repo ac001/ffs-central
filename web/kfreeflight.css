@@ -23,7 +23,7 @@ body
 	margin-left : auto;
 	margin-right : auto;
 	display: none;
-	background-image : url("./shadow.png");
+	background-image : url("./img/shadow.png");
 	top : 200px;
 	left : 220px;
 	z-index : 10;
@@ -71,7 +71,7 @@ body
 	width : 100px;
 	height : 28px;
 	text-align : center;
-	background-image : url("./button.png");
+	background-image : url("./img/button.png");
 	background-repeat : no-repeat;
 	padding : 0px;
 	margin-left : 10px;
@@ -86,7 +86,7 @@ body
 
 .button:hover
 {
-	background-image : url("./button_over.png");
+	background-image : url("./img/button_over.png");
 }
 
 .button:active
@@ -118,7 +118,7 @@ div.menu
 
 a.tabmenu
 {
-	background-image : url("./tab.png");
+	background-image : url("./img/tab.png");
 	background-repeat : no-repeat;
 	width: 100px;
 	height: 28px;
@@ -137,7 +137,7 @@ a.tabmenu
 
 a.tabmenu:hover
 {
-	background-image : url("./tab_over.png");
+	background-image : url("./img/tab_over.png");
 }
 
 .menubottom
@@ -208,7 +208,7 @@ hr
 	line-height : 40px;
 	height : 40px;
 	width : 920px;
-	background-image : url("./headermiddle.png");
+	background-image : url("./img/headermiddle.png");
 	background-repeat : repeat-x;
 	padding : 0px;
 	margin : 0px;
@@ -220,7 +220,7 @@ hr
 	border-width : 0px;
 	height : 40px;
 	width : 10px;
-	background-image : url("./headerleft.png");
+	background-image : url("./img/headerleft.png");
 	background-repeat : no-repeat;
 	padding : 0px;
 	margin : 0px;
@@ -232,7 +232,7 @@ hr
 	border-width : 0px;
 	height : 40px;
 	width : 10px;
-	background-image : url("./headerright.png");
+	background-image : url("./img/headerright.png");
 	background-repeat : no-repeat;
 	padding : 0px;
 	margin : 0px;
@@ -241,8 +241,8 @@ hr
 }
 .viewercontainer
 {
-	background-image : url("./shadow.png");
-	/*-moz-border-radius : 12px;*/
+	background-image : url("./img/shadow.png");
+	-moz-border-radius : 12px;
 	display: none;
 	position : absolute;
 	margin-left : auto;
@@ -305,6 +305,8 @@ img
 {
 	border-width : 0px;
 	z-index : 10;
+	padding : 0px;
+	margin : 0px;
 }
 .inside, .inside img, .textinside img
 {
@@ -352,7 +354,7 @@ strong
 .tickercontainer .mask
 { /* that serves as a mask. so you get a sort of padding both left and right */
 	position: relative;
-	left: 10px;
+	left: 4px;
 	top: 8px;
 	overflow: hidden;
 }
@@ -392,13 +394,13 @@ span.zoom
 	width : 200px;
 	clear : right;
 	float : right;
-	padding : 0px;
+	padding : 2px;
 	margin-right : 0px;
 	margin-bottom : 0px;
 	margin-left : 0px;
 	margin-top : 0px;
 	text-decoration : none;
-	text-align : center;
+	text-align : right;
 	vertical-align : middle;
 	display : inline-block;
 }
@@ -455,24 +457,163 @@ p.thumb
 	margin-bottom: 2px;
 }
 
-img.thumb
+img.thumb, span.thumbcontainer
 {
+	float : left;
+	clear : left;
+	display : inline-block;
 	width : 200px;
 	height : 140px;
-	border : none;
+	border : none;/*1px solid black;*/
+	z-index : -5;
+}
+
+img.allthumb
+{
+	z-index : 15;
+	padding : 0px;
+	margin : 0px;
+	margin-top : auto;
+	margin-bottom : auto;
+}
+
+img.appthumb
+{
+	width : 179px;
+	height : 140px;
+}
+img.airportthumb
+{
+	width : 140px;
+	height : 140px;
+}
+img.worldthumb
+{
+	width : 163px;
+	height : 140px;
+}
+img.flightplaneditorthumb
+{
+	width : 200px;
+	height : 99px;
+}
+img.metareditorthumb
+{
+	width : 143px;
+	height : 140px;
+}
+img.metarreaderthumb
+{
+	width : 165px;
+	height : 140px;
+}
+img.configthumb
+{
+	width : 152px;
+	height : 140px;
+}
+img.calcthumb
+{
+	width : 200px;
+	height : 69px;
+}
+img.logthumb
+{
+	width : 187px;
+	height : 140px;
 }
 
 img.appview
 {
-	width : 816px;
-	height : 682px;
-	border : none;
+	width : 800px;
+	height : 625px;
+}
+img.airportview
+{
+	width : 600px;
+	height : 600px;
+}
+img.worldview
+{
+	width : 700px;
+	height : 600px;
+}
+img.flightplaneditorview
+{
+	width : 800px;
+	height : 395px;
+}
+img.metareditorview
+{
+	width : 720px;
+	height : 705px;
+}
+img.metarreaderview
+{
+	width : 723px;
+	height : 615px;
+}
+img.configview
+{
+	width : 684px;
+	height : 631px;
+}
+img.calcview
+{
+	width : 520px;
+	height : 180px;
+}
+img.logview
+{
+	width : 640px;
+	height : 480px;
 }
 
 div.appview
 {
 	top : 20px;
-	left : 42px;
+	left : 50px;
+}
+
+div.airportview
+{
+	top : 20px;
+	left : 150px;
+}
+div.worldview
+{
+	top : 20px;
+	left : 110px;
+}
+div.flightplaneditorview
+{
+	top : 20px;
+	left : 55px;
+}
+div.metareditorview
+{
+	top : 20px;
+	left : 95px;
+}
+div.metarreaderview
+{
+	top : 20px;
+	left : 95px;
+}
+div.configview
+{
+	top : 20px;
+	left : 110px;
+}
+div.calcview
+{
+	top : 110px;
+	left : 190px;
+}
+div.logview
+{
+	top : 20px;
+	left : 130px;
 }
 
 div.langview
@@ -488,7 +629,7 @@ div.cleared
 	clear : left;
 	clear : right;
 	float : right;
-	background-image : url("./shadow.png");
+	background-image : url("./img/shadow.png");
 	-moz-border-radius : 6px;
 	/*top : 5px;*/
 	/*right : 5px;*/
@@ -580,3 +721,34 @@ li
 	display : list-item;
 	padding-left: 20px;
 }
+.subtitle
+{
+	width : 150px;
+	padding : 0;
+	display: none;
+	position : relative;
+	top : 28px;
+	margin : 0;
+}
+
+.subtitle, .subtitle ul, .subtitle li
+{
+}
+
+.subtitle ul
+{
+	background-color : #0056ff;
+	border-width : 1px;
+	border-style : solid;
+	border-color : #002e84;
+	padding : 0;
+	margin : 0;
+}
+.subtitle li
+{
+	padding : 5px;
+	margin : 0;
+	background-color : #0056ff;
+	color : #ffffff;
+}
+	

@@ -6,7 +6,7 @@
 			for ( $it = 0 ; $it < count( $langlist ) ; $it++ )
 			{
 				echo "<a class=\"lang\" href=\"./index.php?lang=".$langlist[$it]["lang"]."\" onMouseOver=\"javascript:$('#lang".$it."').show();\" onMouseOut=\"javascript:$('#lang".$it."').hide();\">\n";
-				echo "<img src=\"./".$langlist[$it]["lang"].".png\" alt=\"en\" class=\"flag\">\n";
+				echo "<img src=\"./img/".$langlist[$it]["lang"].".png\" alt=\"en\" class=\"flag\">\n";
 				echo "</a>\n";
 				echo "<div class=\"viewercontainer langview\" id=\"lang".$it."\">\n";
 				echo "<div class=\"viewer\">\n";
@@ -17,22 +17,24 @@
 			echo "</div>\n";
 	}
 	
-	function getManualPage($it, $title, $type, $imgname, $text)
+	function getManualPage($it, $manualpagelist, $text)
 	{
 		$page = "<div id=\"manual".$it."\" class=\"textinside\">\n";
-		$page .= "<a href=\"#\" onClick=\"javascript:$('#".$type.$it."').show();\">\n";
+		$page .= "<a href=\"#\" onClick=\"javascript:$('#".$manualpagelist[($it-1)]["type"].$it."').show();\">\n";
 		$page .= "<span class=\"zoom\">\n";
-		$page .= "<img src=\"./".$imgname."-tn.png\" class=\"thumb\" alt=\"KFF thumbnail\">\n";
-		$page .= "Click to enlarge\n";
-		$page .= "<img src=\"./zoom.png\" class=\"zoom\" alt=\"Zoom\">\n";
+		$page .= "<span class=\"thumbcontainer\">\n";
+		$page .= "<img src=\"./img/thumbnails/screenshot".$it.".jpeg\" class=\"allthumb ".$manualpagelist[($it-1)]["type"]."thumb\" alt=\"KFF screenshot\">\n";
+		$page .= "</span>\n";
+		$page .= "Click to enlarge&nbsp;\n";
+		$page .= "<img src=\"./img/zoom.png\" class=\"zoom\" alt=\"Zoom\">\n";
 		$page .= "</span>\n";
 		$page .= "</a>\n";
-		$page .= "<h3>".$title."</h3>\n";
+		$page .= "<h4>".$manualpagelist[($it-1)]["title"]."</h4>\n";
 		$page .= $text."\n";
-		$page .= "<div class=\"viewercontainer ".$type."view\" id=\"".$type.$it."\" onClick=\"javascript:$('#".$type.$it."').hide();\">\n";
+		$page .= "<div class=\"viewercontainer ".$manualpagelist[($it-1)]["type"]."view\" id=\"".$manualpagelist[($it-1)]["type"].$it."\" onClick=\"javascript:$('#".$manualpagelist[($it-1)]["type"].$it."').hide();\">\n";
 		$page .= "<div class=\"viewer\">\n";
-		$page .= "<h1>".$title."</h1>\n";
-		$page .= "<img src=\"./".$imgname.".png\" class=\"".$type."view\" alt=\"KFF thumbnail\">\n";
+		$page .= "<h1>".$manualpagelist[($it-1)]["title"]."</h1>\n";
+		$page .= "<img src=\"./img/screenshot".$it.".jpeg\" class=\"".$manualpagelist[($it-1)]["type"]."view\" alt=\"KFF screenshot\">\n";
 		$page .= "<p>Click on the window to close it</p>\n";
 		$page .= "</div>\n";
 		$page .= "</div>\n";
@@ -70,9 +72,28 @@
 			{
 				$act = "";
 			}
-			echo "<a href=\"#\" class=\"tabmenu".$act."\" onClick=\"javascript:manualtab=".$it.";showTab(manualtab);\">".$titlelist[$it]."</a>\n";
+			echo "<a href=\"#\" class=\"tabmenu".$act."\" onClick=\"javascript:manualtab=".$it.";showTab(manualtab);\"";
+			if ( count( $titlelist[$it]["sub"] ) )
+			{
+				echo " onMouseOver=\"javascript:$('#sub".$it."').show();\"";
+			}
+			echo ">".$titlelist[$it]["title"]."</a>\n";
+			for ( $it2 = 0 ; $it2 < count( $titlelist[$it]["sub"] ) ; $it2++ )
+			{
+				if ( $it2 == 0)
+				{
+					echo "<div id=\"sub".$it."\" class=\"subtitle\" onMouseOut=\"javascript:$('#sub".$it."').hide();\">\n";
+					echo "<ul>\n";
+				}
+				echo "<li>".$titlelist[$it]["sub"][$it2]."</li>\n";
+				if ( $it2 == ( count( $titlelist[$it]["sub"] ) -1 ) )
+				{
+					echo "</ul>\n";
+					echo "</div>\n";
+				}
+			}
 		}
-		echo "&nbsp;<img src=\"./logo.png\" class=\"logo\" >\n";
+		echo "&nbsp;<img src=\"./img/logo.png\" class=\"logo\" >\n";
 		echo "</div>\n";
 		echo "<div class=\"menubottom\">\n";
 		for ( $it = 0 ; $it < count( $titlelist ) ; $it++ )
@@ -89,7 +110,7 @@
 		for ( $it = 0 ; $it < count( $tickerlist ) ; $it++ )
 		{
 			echo "<li>\n";
-			echo "<img src=\"./plane.png\" alt=\"\" width=\"68\" height=\"18\">\n";
+			echo "<img src=\"./img/plane.png\" alt=\"\" width=\"68\" height=\"18\">\n";
 			echo "<span>".$tickerlist[$it]["date"]."\n";
 			echo "</span>\n";
 			echo "<a href=\"#\">".$tickerlist[$it]["text"]."</a>\n";
@@ -104,26 +125,49 @@
 	{
 		echo "<div class=\"header\">\n";
 		echo "<span class=\"headerleft\"></span>\n";
-		echo "<span class=\"headermiddle\"><img src=\"./logo.png\" class=\"logo\" >&nbsp;KFreeFlight</span>\n";
+		echo "<span class=\"headermiddle\"><img src=\"./img/logo.png\" class=\"logo\" >&nbsp;KFreeFlight</span>\n";
 		echo "<span class=\"headerright\"></span>\n";
 		echo "</div>\n";
 	}
 	
 	$titlelist = array();
-	$titlelist[0] = "Introduction";
-	$titlelist[1] = "News";
-	$titlelist[2] = "Download";
-	$titlelist[3] = "FAQ";
-	$titlelist[4] = "Mailing List";
-	$titlelist[5] = "TODO";
-	$titlelist[6] = "Manual";
-	$titlelist[7] = "Thanks";
+	$subtitle = array();
+	$titlelist[0]["title"] = "Introduction";
+	$subtitle = array();
+	$titlelist[0]["sub"] = $subtitle;
+	$titlelist[1]["title"] = "News";
+	$subtitle = array();
+	$titlelist[1]["sub"] = $subtitle;
+	$titlelist[2]["title"] = "Download";
+	$subtitle = array();
+	array_push($subtitle, "Source tarball");
+	array_push($subtitle, "Binary package");
+	array_push($subtitle, "SVN");
+	array_push($subtitle, "CVS");
+	$titlelist[2]["sub"] = $subtitle;
+	$titlelist[3]["title"] = "FAQ";
+	$subtitle = array();
+	$titlelist[3]["sub"] = $subtitle;
+	$titlelist[4]["title"] = "Mailing List";
+	$subtitle = array();
+	$titlelist[4]["sub"] = $subtitle;
+	$titlelist[5]["title"] = "TODO";
+	$subtitle = array();
+	$titlelist[5]["sub"] = $subtitle;
+	$titlelist[6]["title"] = "Manual";
+	$subtitle = array();
+	$titlelist[6]["sub"] = $subtitle;
+	$titlelist[7]["title"] = "Thanks";
+	$subtitle = array();
+	$titlelist[7]["sub"] = $subtitle;
 	
 	$tickerlist = array();
 	$tickerlist[0]["date"] = "01/01/2010";
-	$tickerlist[0]["text"] = "A new SVN repository is available (KDE4 version)";
+	$tickerlist[0]["text"] = "A new SVN repository is available ( KDE4 version )";
 	$tickerlist[1]["date"] = "01/01/2010";
 	$tickerlist[1]["text"] = "CVS repository is out of date";
+	$tickerlist[2]["date"] = "01/08/2010";
+	$tickerlist[2]["text"] = "Last website update";
 	
 	$langlist = array();
 	$langlist[0]["lang"] = "en";
@@ -134,7 +178,61 @@
 	$langlist[2]["text"] = "Italian language";
 	$langlist[3]["lang"] = "de";
 	$langlist[3]["text"] = "German language";
-	$maxmanualpage = 10;
+	
+	$manualpagelist = array();
+	$manualpagelist[0]["title"] = "Common Options";
+	$manualpagelist[0]["type"] = "app";
+	$manualpagelist[1]["title"] = "Rendering Options";
+	$manualpagelist[1]["type"] = "app";
+	$manualpagelist[2]["title"] = "Airport Options";
+	$manualpagelist[2]["type"] = "app";
+	$manualpagelist[3]["title"] = "Carrier Options";
+	$manualpagelist[3]["type"] = "app";
+	$manualpagelist[4]["title"] = "Aircraft Options";
+	$manualpagelist[4]["type"] = "app";
+	$manualpagelist[5]["title"] = "Start Position Options";
+	$manualpagelist[5]["type"] = "app";
+	$manualpagelist[6]["title"] = "Date Time Options";
+	$manualpagelist[6]["type"] = "app";
+	$manualpagelist[7]["title"] = "Weather Options";
+	$manualpagelist[7]["type"] = "app";
+	$manualpagelist[8]["title"] = "Flightplan Options";
+	$manualpagelist[8]["type"] = "app";
+	$manualpagelist[9]["title"] = "Network Options";
+	$manualpagelist[9]["type"] = "app";
+	$manualpagelist[10]["title"] = "NAV and COM Options";
+	$manualpagelist[10]["type"] = "app";
+	$manualpagelist[11]["title"] = "Scenario Options";
+	$manualpagelist[11]["type"] = "app";
+	$manualpagelist[12]["title"] = "Property Options";
+	$manualpagelist[12]["type"] = "app";
+	$manualpagelist[13]["title"] = "Personnal Options";
+	$manualpagelist[13]["type"] = "app";
+	$manualpagelist[14]["title"] = "Airport Search Tools";
+	$manualpagelist[14]["type"] = "airport";
+	$manualpagelist[15]["title"] = "World View";
+	$manualpagelist[15]["type"] = "world";
+	$manualpagelist[16]["title"] = "METAR Reader";
+	$manualpagelist[16]["type"] = "metarreader";
+	$manualpagelist[17]["title"] = "METAR Editor";
+	$manualpagelist[17]["type"] = "metareditor";
+	$manualpagelist[18]["title"] = "Flightplan Editor";
+	$manualpagelist[18]["type"] = "flightplaneditor";
+	$manualpagelist[19]["title"] = "KFreeFlight Configuration";
+	$manualpagelist[19]["type"] = "config";
+	$manualpagelist[20]["title"] = "FlightGear Path Configuration";
+	$manualpagelist[20]["type"] = "config";
+	$manualpagelist[21]["title"] = "FlightGear Configuration";
+	$manualpagelist[21]["type"] = "config";
+	$manualpagelist[22]["title"] = "Atlas Configuration";
+	$manualpagelist[22]["type"] = "config";
+	$manualpagelist[23]["title"] = "Advanced Configuration";
+	$manualpagelist[23]["type"] = "config";
+	$manualpagelist[24]["title"] = "KFreeFlight Calculator";
+	$manualpagelist[24]["type"] = "calc";
+	$manualpagelist[25]["title"] = "KFreeFlight Log Window";
+	$manualpagelist[25]["type"] = "log";
+	
 	$currentmanualpage = 0;
 	
 ?>
@@ -153,7 +251,7 @@
 	<script type="text/javascript" src="./kfreeflight.js"> </script>
 	<script type="text/javascript">
 		var manualind = 0;
-		var totalmanual = <?php echo $maxmanualpage; ?>;
+		var totalmanual = <?php echo count( $manualpagelist ); ?>;
 		var totaltab = <?php echo count( $titlelist ); ?>;
 		var manualtab = <?php echo $currentmanualpage; ?>;
 		window.onload = function() { showTab(manualtab); $(function(){$('#ticker01').liScroll();}); };
@@ -167,7 +265,7 @@
 			printTicker( $tickerlist );
 			printMenu( $titlelist );
 			$text = "
-				<img src=\"./tux.png\" width=\"150\" height=\"150\" alt=\"Tux : Linux inside\">
+				<img src=\"./img/tux.png\" width=\"150\" height=\"150\" alt=\"Tux : Linux inside\">
 				<h3>What is it ?</h3>
 				<p>
 				KFreeFlight is a FlightGear GUI-frontend designed for KDE users. It can
@@ -294,12 +392,26 @@
 				<h3>SVN Version</h3>
 				<p>
 				</p>
+				<h4>Get a local copy</h4>
+				<p>To check out a new copy of KFreeFlight from Subversion, open a terminal, cd into the directory where you want the new 
+				KFreeFlight directory to be created and run the commands listed below. When prompted for the password, just press 
+				the Enter key. The necessary commands are:</p>
+				<p><strong>svn co https://kfreeflight.svn.sourceforge.net/svnroot/kfreeflight kfreeflight</strong></p>
+				<p>And then :</p>
+				<p><strong>cd kfreeflight</strong></p>
+				<p><strong>mkdir build</strong></p>
+				<p><strong>cd build</strong></p>
+				<p><strong>cmake ..</strong></p>
+				<p><strong>make</strong></p>
+				<p><strong>make install</strong> as root</p>
+				<h4>Update your SVN copy</h4>
+				<p><strong>svn update</strong></p>
 				<h3>CVS Version (deprecated)</h3>
 				<p>A CVS version is now available<br /><a href=\"http://kfreeflight.cvs.sourceforge.net/kfreeflight/\" target=\"new\">
 				CVS Web browser</a></p>
 
 				<h4>Get a local copy</h4>
-				<p>To check out a new copy of KFreeFlight from CVS,open a terminal, cd into the directory where you want the new 
+				<p>To check out a new copy of KFreeFlight from CVS, open a terminal, cd into the directory where you want the new 
 				KFreeFlight directory to be created and run the commands listed below. When prompted for the password, just press 
 				the Enter key. The necessary commands are:</p>
 				<p><strong>cvs -d:pserver:anonymous@kfreeflight.cvs.sourceforge.net:/cvsroot/kfreeflight login</strong></p>
@@ -383,11 +495,15 @@
 			printTab( 5, $text );
 				$page = "<div class=\"thumbnail\" id=\"manual0\">\n";
 				$page .= "<div class=\"textinside\"><h3>Click on thumbnail to open the page</h3></div>\n";
-				for( $i = 1 ; $i <= $maxmanualpage ; $i++)
+				for( $i = 1 ; $i <= count ( $manualpagelist ) ; $i++)
 				{
 					$page .=  "<div class=\"nothingbutleft\">\n";
-					$page .=  "<a href=\"#\" onClick=\"javascript:manualind=".$i.";showManual(manualind);\"><img src=\"./tux.png\" class=\"thumb\" alt=\"KFF thumbnail\"></a>\n";
-					$page .=  "<p class=\"thumb\">Page ".$i."</p>\n";
+					$page .=  "<a href=\"#\" onClick=\"javascript:manualind=".$i.";showManual(manualind);\">\n";
+					$page .= "<span class=\"thumbcontainer\">\n";
+					$page .= "<img src=\"./img/thumbnails/screenshot".$i.".jpeg\" class=\"allthumb ".$manualpagelist[($i-1)]["type"]."thumb\" alt=\"KFF thumbnail\">\n";
+					$page .= "</span>\n";
+					$page .= "</a>\n";
+					$page .=  "<p class=\"thumb\">".$manualpagelist[($i-1)]["title"]."</p>\n";
 					$page .=  "</div>\n";
 				}
 				$page .= "</div>\n";
@@ -400,6 +516,8 @@
 						<li>Fullscreen : Launch FlightGear in a maximised window.</li>\n
 						<li>Intro music : let you ear a music at startup.</li>\n
 						<li>Joystick : make joystick the main input device.</li>\n
+						<li>Sound : enable sound in FlightGear.</li>\n
+						<li>Auto-coordination : enable auto-coordination (usefull if you don't have a more than 3 axes joystick).</li>\n
 						<li>Unit meter : The unit are in feet by default but you can overwrite this setting here</li>\n
 					</ul>\n
 					<p>In advanced settings</p>\n
@@ -408,8 +526,9 @@
 						<li>http server : Let you change flying values through a web browser. (by default : http://localhost:5500)</li>\n
 						<li>Atlas too : launch Atlas and FlightGear together</li>\n
 						<li>Wireframe and objects wireframe options : let you discover the FlightGear's internal world.</li>\n
+						<li>Stop terrasync : By default, Terrasync will still running when FlightGear stop. You can stop it here.</li>\n
 					</ul>\n";
-				$page .= getManualPage(1, "General Tab", "app", "tux", $text);
+				$page .= getManualPage(1, $manualpagelist, $text);
 				$text = "
 					<p>Rendering options</p>\n
 					<ul>\n
@@ -417,7 +536,6 @@
 						<li>Distance attenuation : Enable runway light distance attenuation</li>\n
 						<li>Enhanced lightning : Enable enhanced runway lighting</li>\n
 						<li>Clouds : Enable 2D (flat) cloud layers</li>\n
-						<li>Bump mapped clouds : </li>\n
 						<li>Cloud 3D : Enable 3D (volumetric) cloud layers</li>\n
 						<li>Random objects : Include random scenery objects (buildings, etc.)</li>\n
 						<li>Mouse pointer : Enable extra mouse pointer (i.e. for full screen Voodoo based cards)</li>\n
@@ -426,30 +544,47 @@
 						<li>Textures : Enable textures</li>\n
 						<li>Lightning : Enable lightning rendering</li>\n
 						<li>Precipitations : Enable precipitations endering</li>\n
+						<li>AI traffic : Enable artificial intelligence traffic</li>\n
+						<li>Wireframe : disable texturing</li>\n
 					</ul>\n
 					<p>Display resolution, shading and shadows</p>\n
 					<ul>\n
 						<li>You can choose here the screen resolution and the color depth. This is the place of your personnal screen resolution defined in the settings window.</li>\n
 						<li>Shading : choose the shading level. Smooth is more beautiful, but need more processor ressource.</li>\n
-						<li>Shadows : choose the objects which must have a shadow (plane, transparency: plane have shadow on ground only, 
-						scenery objects, ai objects)</li>\n
+						<li>Fog : choose the fog level. Nicest is more beautiful, but need more processor ressource.</li>\n
 					</ul>\n";
-				$page .= getManualPage(2, "Render Tab", "app", "tux", $text);
+				$page .= getManualPage(2, $manualpagelist, $text);
 				$text = "";
-				$page .= getManualPage(3, "Page 3", "app", "tux", $text);
-				$page .= getManualPage(4, "Page 4", "app", "tux", $text);
-				$page .= getManualPage(5, "Page 5", "app", "tux", $text);
-				$page .= getManualPage(6, "Page 6", "app", "tux", $text);
-				$page .= getManualPage(7, "Page 7", "app", "tux", $text);
-				$page .= getManualPage(8, "Page 8", "app", "tux", $text);
-				$page .= getManualPage(9, "Page 9", "app", "tux", $text);
-				$page .= getManualPage(10, "Page 10", "app", "tux", $text);
+				$page .= getManualPage(3, $manualpagelist, $text);
+				$page .= getManualPage(4, $manualpagelist, $text);
+				$page .= getManualPage(5, $manualpagelist, $text);
+				$page .= getManualPage(6, $manualpagelist, $text);
+				$page .= getManualPage(7, $manualpagelist, $text);
+				$page .= getManualPage(8, $manualpagelist, $text);
+				$page .= getManualPage(9, $manualpagelist, $text);
+				$page .= getManualPage(10, $manualpagelist, $text);
+				$page .= getManualPage(11, $manualpagelist, $text);
+				$page .= getManualPage(12, $manualpagelist, $text);
+				$page .= getManualPage(13, $manualpagelist, $text);
+				$page .= getManualPage(14, $manualpagelist, $text);
+				$page .= getManualPage(15, $manualpagelist, $text);
+				$page .= getManualPage(16, $manualpagelist, $text);
+				$page .= getManualPage(17, $manualpagelist, $text);
+				$page .= getManualPage(18, $manualpagelist, $text);
+				$page .= getManualPage(19, $manualpagelist, $text);
+				$page .= getManualPage(20, $manualpagelist, $text);
+				$page .= getManualPage(21, $manualpagelist, $text);
+				$page .= getManualPage(22, $manualpagelist, $text);
+				$page .= getManualPage(23, $manualpagelist, $text);
+				$page .= getManualPage(24, $manualpagelist, $text);
+				$page .= getManualPage(25, $manualpagelist, $text);
+				$page .= getManualPage(26, $manualpagelist, $text);
 				$page .= "<div class=\"cleared\">\n";
-				$page .= "<span class=\"nothing\" id=\"nextenable\"><a href=\"#\" onClick=\"javascript:manualNext();\"><img src=\"./go-next.png\" alt=\"&nbsp;&lt;\"></a></span>\n";
-				$page .= "<span class=\"nothing\" id=\"nextdisable\"><img src=\"./go-next-wb.png\" width=\"32\" height=\"32\" alt=\"&nbsp;&lt;\"></span>\n";
-				$page .= "<span class=\"nothing\"><a href=\"#\" onClick=\"javascript:manualind=0;manualTop();\"><img src=\"./go-up.png\" alt=\"&nbsp;top&nbsp;\"></a></span>\n";
-				$page .= "<span class=\"nothing\" id=\"prevenable\"><img src=\"./go-previous-wb.png\" width=\"32\" height=\"32\" alt=\"&gt;&nbsp;\"></span>\n";
-				$page .= "<span class=\"nothing\" id=\"prevdisable\"><a href=\"#\" onClick=\"javascript:manualPrevious();\"><img src=\"./go-previous.png\" alt=\"&gt;&nbsp;\"></a></span>\n";
+				$page .= "<span class=\"nothing\" id=\"nextenable\"><a href=\"#\" onClick=\"javascript:manualNext();\"><img src=\"./img/go-next.png\" alt=\"&nbsp;&lt;\"></a></span>\n";
+				$page .= "<span class=\"nothing\" id=\"nextdisable\"><img src=\"./img/go-next-wb.png\" width=\"32\" height=\"32\" alt=\"&nbsp;&lt;\"></span>\n";
+				$page .= "<span class=\"nothing\"><a href=\"#\" onClick=\"javascript:manualind=0;manualTop();\"><img src=\"./img/go-up.png\" alt=\"&nbsp;top&nbsp;\"></a></span>\n";
+				$page .= "<span class=\"nothing\" id=\"prevenable\"><img src=\"./img/go-previous-wb.png\" width=\"32\" height=\"32\" alt=\"&gt;&nbsp;\"></span>\n";
+				$page .= "<span class=\"nothing\" id=\"prevdisable\"><a href=\"#\" onClick=\"javascript:manualPrevious();\"><img src=\"./img/go-previous.png\" alt=\"&gt;&nbsp;\"></a></span>\n";
 				$page .= "</div>\n";
 				$page .= "</div>\n";
 			printTab( 6, $page, true );
@@ -467,7 +602,7 @@
 		?>
 			
 		<div class="logos" onClick="javascript:$('#rfid').show();">
-
+<!--
 			<a href="http://sourceforge.net/projects/kfreeflight" target="_blank">
 				<img src="http://sflogo.sourceforge.net/sflogo.php?group_id=157130&amp;type=11" width="120" height="31"
 					alt="Get KFreeFlight at SourceForge.net. Fast, secure and Free Open Source software downloads">
@@ -481,6 +616,7 @@
 				<img style="border:0;width:88px;height:31px"
 					src="http://jigsaw.w3.org/css-validator/images/vcss" alt="CSS Valide !" />
 			</a>
+/-->
 		</div>
 	</div>
 </body>
