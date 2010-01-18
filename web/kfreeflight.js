@@ -79,6 +79,21 @@ function showTab(clicked)
 		}
 	}
 }
+function initSubtitle()
+{
+	var wi, to, tm;
+	wi = $('a.tabmenu').css( 'width' );
+	wi = wi.substr( 0, wi.length - 2 );
+	tm = $('a.tabmenu').css( 'height' );
+	tm = tm.substr( 0, tm.length - 2 );
+	to = $('a.tabmenu').offset().top;
+	to = parseInt( tm, 10 ) + parseInt( to , 10 ) - 10;
+	for ( var i = 0 ; i < totaltab ; i++)
+	{
+		$('#sub'+i).css( 'left', ( wi * i ) + "px" );
+		$('#sub'+i).css( 'top', to + "px" );
+	}
+}
 function manualNext()
 {
 	if ( manualind < totalmanual )
@@ -99,4 +114,8 @@ function manualTop()
 {
 	manualind = 0;
 	showManual(manualind);
+}
+function moveSubtitle(id)
+{
+	alert(subid);
 }

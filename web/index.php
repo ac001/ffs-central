@@ -85,7 +85,7 @@
 					echo "<div id=\"sub".$it."\" class=\"subtitle\" onMouseOut=\"javascript:$('#sub".$it."').hide();\">\n";
 					echo "<ul>\n";
 				}
-				echo "<li>".$titlelist[$it]["sub"][$it2]."</li>\n";
+				echo "<li><a href=\"#".$titlelist[$it]["sub"][$it2]["link"]."\">".$titlelist[$it]["sub"][$it2]["text"]."</a></li>\n";
 				if ( $it2 == ( count( $titlelist[$it]["sub"] ) -1 ) )
 				{
 					echo "</ul>\n";
@@ -131,35 +131,52 @@
 	}
 	
 	$titlelist = array();
-	$subtitle = array();
+	$subtitlelist = array();
 	$titlelist[0]["title"] = "Introduction";
-	$subtitle = array();
-	$titlelist[0]["sub"] = $subtitle;
+	$subtitlelist = array();
+	$subtitle["text"] = "What is it ?";
+	$subtitle["link"] = "whatisit";
+	array_push($subtitlelist, $subtitle);
+	$subtitle["text"] = "Disclaimer";
+	$subtitle["link"] = "disclaimer";
+	array_push($subtitlelist, $subtitle);
+	$subtitle["text"] = "License";
+	$subtitle["link"] = "license";
+	array_push($subtitlelist, $subtitle);
+	$titlelist[0]["sub"] = $subtitlelist;
 	$titlelist[1]["title"] = "News";
-	$subtitle = array();
-	$titlelist[1]["sub"] = $subtitle;
+	$subtitlelist = array();
+	$titlelist[1]["sub"] = $subtitlelist;
 	$titlelist[2]["title"] = "Download";
-	$subtitle = array();
-	array_push($subtitle, "Source tarball");
-	array_push($subtitle, "Binary package");
-	array_push($subtitle, "SVN");
-	array_push($subtitle, "CVS");
-	$titlelist[2]["sub"] = $subtitle;
+	$subtitlelist = array();
+	$subtitle["text"] = "Source tarball";
+	$subtitle["link"] = "";
+	array_push($subtitlelist, $subtitle);
+	$subtitle["text"] = "Binary package";
+	$subtitle["link"] = "";
+	array_push($subtitlelist, $subtitle);
+	$subtitle["text"] = "SVN";
+	$subtitle["link"] = "";
+	array_push($subtitlelist, $subtitle);
+	$subtitle["text"] = "CVS";
+	$subtitle["link"] = "";
+	array_push($subtitlelist, $subtitle);
+	$titlelist[2]["sub"] = $subtitlelist;
 	$titlelist[3]["title"] = "FAQ";
-	$subtitle = array();
-	$titlelist[3]["sub"] = $subtitle;
+	$subtitlelist = array();
+	$titlelist[3]["sub"] = $subtitlelist;
 	$titlelist[4]["title"] = "Mailing List";
-	$subtitle = array();
-	$titlelist[4]["sub"] = $subtitle;
+	$subtitlelist = array();
+	$titlelist[4]["sub"] = $subtitlelist;
 	$titlelist[5]["title"] = "TODO";
-	$subtitle = array();
-	$titlelist[5]["sub"] = $subtitle;
+	$subtitlelist = array();
+	$titlelist[5]["sub"] = $subtitlelist;
 	$titlelist[6]["title"] = "Manual";
-	$subtitle = array();
-	$titlelist[6]["sub"] = $subtitle;
+	$subtitlelist = array();
+	$titlelist[6]["sub"] = $subtitlelist;
 	$titlelist[7]["title"] = "Thanks";
-	$subtitle = array();
-	$titlelist[7]["sub"] = $subtitle;
+	$subtitlelist = array();
+	$titlelist[7]["sub"] = $subtitlelist;
 	
 	$tickerlist = array();
 	$tickerlist[0]["date"] = "01/01/2010";
@@ -254,7 +271,7 @@
 		var totalmanual = <?php echo count( $manualpagelist ); ?>;
 		var totaltab = <?php echo count( $titlelist ); ?>;
 		var manualtab = <?php echo $currentmanualpage; ?>;
-		window.onload = function() { showTab(manualtab); $(function(){$('#ticker01').liScroll();}); };
+		window.onload = function() { showTab(manualtab); $(function(){$('#ticker01').liScroll();});initSubtitle(); };
 	</script>
 </head>
 <body>
