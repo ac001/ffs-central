@@ -3,7 +3,7 @@ project(kfreeflight)
 include(version.cmake)
 option( WITH_OSG_RENDERING "Activate Aircraft 3D rendering with OpenSceneGraph" ON )
 
-set(CMAKE_INSTALL_PREFIX "/usr")
+set(CMAKE_INSTALL_PREFIX "/usr/local")
 
 # FG_ROOT
 if ( NOT WITH_FG_ROOT )
@@ -40,7 +40,7 @@ if ( WITH_OSG_RENDERING )
     find_package (OpenGL REQUIRED)
     find_package(OpenSceneGraph REQUIRED COMPONENTS osgGA osgDB osgUtil osgViewer osgAnimation)
     find_package (Plib REQUIRED)
-    find_package (Simgear REQUIRED)
+    #find_package (Simgear REQUIRED)
     message(STATUS "3D rendering is active")
 else( WITH_OSG_RENDERING )
     set(WITH_OPENSCENEGRAPH_ENABLED FALSE)

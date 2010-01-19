@@ -35,6 +35,7 @@
 #include <QDomNode>
 #include <QDomElement>
 #include <QDir>
+#include <QTreeWidgetItem>
 
 #include <kmessagebox.h>
 #include <kfiledialog.h>
@@ -60,10 +61,17 @@ KFFOpt_aircraft::KFFOpt_aircraft( QWidget *parent )
 	         SIGNAL( clicked() ),
 	         SLOT( reload() )
 	       );
+	/*
 	connect( ui_widget.combo_Aircraft,
 	         SIGNAL( activated( QString ) ),
 	         SLOT( setAircraft( QString ) )
-	       );
+	       ); 
+	*/
+		
+	connect( ui_widget.tree_Aircraft,
+	         SIGNAL( itemSelectionChanged() ),
+	         SLOT( setAircraft() )
+	       );		   
 	connect( ui_widget.btn_LoadModel,
 	         SIGNAL( clicked() ),
 	         SLOT( loadModel() )
@@ -95,15 +103,16 @@ void KFFOpt_aircraft::reload()
 	reloadList( true );
 }
 
-void KFFOpt_aircraft::setAircraft( QString aircraft )
+void KFFOpt_aircraft::setAircraft()
 {
 	QString buffer;
-	
+	QString *aircraft = new QString("aircraft");
 	buffer = Settings::fg_root();
 	buffer.append( "/Aircraft/");
 	buffer.append( aircraft );
 	buffer.append( "/thumbnail.jpg" );
-	m_render->loadModel( aircraft.section( " - ", 0, 0 ) );
+	
+	//m_render->loadModel( aircraft.section( " - ", 0, 0 ) );
 }
 
 void KFFOpt_aircraft::reloadList( bool showMessage )
@@ -124,7 +133,7 @@ void KFFOpt_aircraft::saveSettings()
 	Settings::setAircraftFailure_Vacuum( ui_widget.kcfg_aircraftFailure_Vacuum->isChecked() );
 	Settings::setAircraftFuelFreeze( ui_widget.kcfg_aircraftFuelFreeze->isChecked() );
 	Settings::setAircraftFreeze( ui_widget.kcfg_aircraftFreeze->isChecked() );
-	Settings::setAircraft_selected( ui_widget.combo_Aircraft->currentIndex() );
+	//Settings::setAircraft_selected( ui_widget.combo_Aircraft->currentIndex() );
 	Settings::self()->writeConfig();
 }
 
@@ -137,18 +146,18 @@ void KFFOpt_aircraft::loadSettings()
 	ui_widget.kcfg_aircraftFailure_Vacuum->setChecked( Settings::aircraftFailure_Vacuum() );
 	ui_widget.kcfg_aircraftFuelFreeze->setChecked( Settings::aircraftFuelFreeze() );
 	ui_widget.kcfg_aircraftFreeze->setChecked( Settings::aircraftFreeze() );
-	setAircraft( ui_widget.combo_Aircraft->currentText() );
+	//setAircraft( ui_widget.combo_Aircraft->currentText() );
 	emit( settingsChanged() );
 }
 
 bool KFFOpt_aircraft::getOptions( QStringList & list )
 {
-	if ( ui_widget.combo_Aircraft->currentIndex() == 0 )
+	if ( !ui_widget.tree_Aircraft->selectionModel()->hasSelection() )
 	{
 		KMessageBox::sorry( this, i18n( "No aircraft selected" ) );
 	}
-
-	list << "--aircraft=" + ui_widget.combo_Aircraft->currentText().section( ' ', 0, 0 );
+	//return;
+	//list << "--aircraft=" + ui_widget.combo_Aircraft->currentText().section( ' ', 0, 0 );
 
 	if ( ui_widget.kcfg_aircraftFreeze->isChecked() )
 	{
@@ -321,7 +330,8 @@ void KFFOpt_aircraft::closeProcess( int code, QProcess::ExitStatus status )
 	if ( status == QProcess::NormalExit && code == 0 )
 	{
 		list = m_input.split( '\n' );
-		ui_widget.combo_Aircraft->clear();
+		//ui_widget.combo_Aircraft->clear();
+		//ui_widget.tree_Aircraft->model()->removeRows(0, 
 
 		for ( it = list.begin() ; it != list.end() ; it++ )
 		{
@@ -329,16 +339,22 @@ void KFFOpt_aircraft::closeProcess( int code, QProcess::ExitStatus status )
 
 			if ( it == list.begin() )
 			{
-				ui_widget.combo_Aircraft->insertItem( i++, buffer );
+				//ui_widget.combo_Aircraft->insertItem( i++, buffer );
+				// add widget
 			}
 			else if ( !buffer.isEmpty() )
 			{
-				aircraft = buffer.section( ' ', 0, 0 ) + " - " + buffer.section( ' ', 1 );
-				ui_widget.combo_Aircraft->insertItem( i++, aircraft );
+				//aircraft = buffer.section( ' ', 0, 0 ) + " - " + buffer.section( ' ', 1 );
+				//ui_widget.combo_Aircraft->insertItem( i++, aircraft );
+				//* Insert new node in tree, col 0 = model, 1 == Descrption?
+				QTreeWidgetItem *aItem = new QTreeWidgetItem();
+				aItem->setText(0, buffer.section( ' ', 0, 0 ));
+				aItem->setText(1, buffer.section( ' ', 1 ));
+				ui_widget.tree_Aircraft->addTopLevelItem(aItem);
 			}
 		}
 
-		ui_widget.combo_Aircraft->setCurrentIndex( Settings::aircraft_selected() );
+		//ui_widget.combo_Aircraft->setCurrentIndex( Settings::aircraft_selected() );
 	}
 	else
 	{

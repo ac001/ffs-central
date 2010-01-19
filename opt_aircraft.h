@@ -85,7 +85,7 @@ private:
 private slots:
 	void reload();
 	void getAircraft();
-	void setAircraft( QString );
+	void setAircraft();
 	void loadModel();
 
 	void readData();
