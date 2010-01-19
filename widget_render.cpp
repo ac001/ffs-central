@@ -198,7 +198,9 @@ bool KFFWidget_Render::loadModel ( const QString & name )
 void KFFWidget_Render::changeSettings()
 {
 #ifdef WITH_OPENSCENEGRAPH_ENABLED
-	double r = 0.0, g = 0.0, b = 0.0;
+	double r = 0.0;
+	double g = 0.0;
+	double b = 0.0;
 
 	r = ( Settings::render_color().red() / 255.0 );
 	g = ( Settings::render_color().green() / 255.0 );

@@ -33,9 +33,14 @@
 #include "opt_skeleton.h"
 #include "widget_render.h"
 
-#include "widget_render.h"
+//#include "widget_render.h" ? uhh twice
 
 #include <QWidget>
+
+#include <QStandardItemModel>
+#include <QStandardItem>
+#include <QSortFilterProxyModel>
+
 
 #include <KProcess>
 
@@ -78,6 +83,9 @@ private:
 	QString m_error;
 	KUrl m_url;
 	QMap< QString, KFFAircraftData> modelfile;
+	
+	QStandardItemModel *model_Aircraft;
+	QSortFilterProxyModel *pmodel_Aircraft;
 
 	void reloadList( bool showMessage = false );
 	bool searchData( QString file, KFFAircraftData & data );

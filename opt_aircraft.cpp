@@ -35,7 +35,7 @@
 #include <QDomNode>
 #include <QDomElement>
 #include <QDir>
-#include <QTreeWidgetItem>
+#include <QStringList>
 
 #include <kmessagebox.h>
 #include <kfiledialog.h>
@@ -67,11 +67,27 @@ KFFOpt_aircraft::KFFOpt_aircraft( QWidget *parent )
 	         SLOT( setAircraft( QString ) )
 	       ); 
 	*/
-		
-	connect( ui_widget.tree_Aircraft,
-	         SIGNAL( itemSelectionChanged() ),
+	
+	
+	//** Setup Main Model
+	model_Aircraft = new QStandardItemModel(this);
+	model_Aircraft->setColumnCount(2);
+	QStringList headerLabelsList;
+	headerLabelsList << "Aircraft" << "Description";
+	model_Aircraft->setHorizontalHeaderLabels(headerLabelsList);
+	
+	//** Setup Proxy filter model
+	pmodel_Aircraft = new QSortFilterProxyModel(this);
+	pmodel_Aircraft->setSourceModel(model_Aircraft);
+	
+	//** Setup Tree view + events
+	ui_widget.tree_Aircraft->setModel(pmodel_Aircraft);
+	connect( ui_widget.tree_Aircraft->selectionModel(),
+	         SIGNAL( selectionChanged (const QItemSelection&, const QItemSelection&) ),
 	         SLOT( setAircraft() )
-	       );		   
+	       );
+		   
+	//* other events
 	connect( ui_widget.btn_LoadModel,
 	         SIGNAL( clicked() ),
 	         SLOT( loadModel() )
@@ -332,7 +348,7 @@ void KFFOpt_aircraft::closeProcess( int code, QProcess::ExitStatus status )
 		list = m_input.split( '\n' );
 		//ui_widget.combo_Aircraft->clear();
 		//ui_widget.tree_Aircraft->model()->removeRows(0, 
-
+		int row_count = 0;
 		for ( it = list.begin() ; it != list.end() ; it++ )
 		{
 			buffer = it->simplified();
@@ -346,11 +362,20 @@ void KFFOpt_aircraft::closeProcess( int code, QProcess::ExitStatus status )
 			{
 				//aircraft = buffer.section( ' ', 0, 0 ) + " - " + buffer.section( ' ', 1 );
 				//ui_widget.combo_Aircraft->insertItem( i++, aircraft );
+				
+				model_Aircraft->insertRow(row_count);
 				//* Insert new node in tree, col 0 = model, 1 == Descrption?
-				QTreeWidgetItem *aItem = new QTreeWidgetItem();
-				aItem->setText(0, buffer.section( ' ', 0, 0 ));
-				aItem->setText(1, buffer.section( ' ', 1 ));
-				ui_widget.tree_Aircraft->addTopLevelItem(aItem);
+				QStandardItem *aircraftItem = new QStandardItem();
+				//#TODO - set icon + check favourite
+				aircraftItem->setText( buffer.section( ' ', 0, 0 ) );
+				model_Aircraft->setItem(row_count, 0, aircraftItem);
+
+				QStandardItem *descriptionItem = new QStandardItem();
+				descriptionItem->setText( buffer.section( ' ', 1 ) );
+				model_Aircraft->setItem(row_count, 1, descriptionItem);
+				
+				//ui_widget.tree_Aircraft->addTopLevelItem(aItem);
+				row_count++;
 			}
 		}
 
