@@ -156,7 +156,7 @@ void KFFOpt_aircraft::saveSettings()
 	Settings::setAircraftFailure_Vacuum( ui_widget.kcfg_aircraftFailure_Vacuum->isChecked() );
 	Settings::setAircraftFuelFreeze( ui_widget.kcfg_aircraftFuelFreeze->isChecked() );
 	Settings::setAircraftFreeze( ui_widget.kcfg_aircraftFreeze->isChecked() );
-	//Settings::setAircraft_selected( ui_widget.combo_Aircraft->currentIndex() );
+	//Settings::setAircraft_selected( ui_widget.combo_Aircraft->currentIndex() ); #TODO
 	Settings::self()->writeConfig();
 }
 
@@ -169,7 +169,7 @@ void KFFOpt_aircraft::loadSettings()
 	ui_widget.kcfg_aircraftFailure_Vacuum->setChecked( Settings::aircraftFailure_Vacuum() );
 	ui_widget.kcfg_aircraftFuelFreeze->setChecked( Settings::aircraftFuelFreeze() );
 	ui_widget.kcfg_aircraftFreeze->setChecked( Settings::aircraftFreeze() );
-	//setAircraft( ui_widget.combo_Aircraft->currentText() );
+	//setAircraft( ui_widget.combo_Aircraft->currentText() ); #TODO
 	emit( settingsChanged() );
 }
 
@@ -363,7 +363,7 @@ void KFFOpt_aircraft::closeProcess( int code, QProcess::ExitStatus status )
 			if ( it == list.begin() )
 			{
 				//ui_widget.combo_Aircraft->insertItem( i++, buffer );
-				// add widget
+				// add widget ?? dont understand when this is called
 			}
 			else if ( !buffer.isEmpty() )
 			{
