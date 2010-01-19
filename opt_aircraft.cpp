@@ -81,11 +81,18 @@ KFFOpt_aircraft::KFFOpt_aircraft( QWidget *parent )
 	pmodel_Aircraft->setSourceModel(model_Aircraft);
 	
 	//** Setup Tree view + events
+	ui_widget.tree_Aircraft->setAlternatingRowColors(true);
 	ui_widget.tree_Aircraft->setModel(pmodel_Aircraft);
 	connect( ui_widget.tree_Aircraft->selectionModel(),
 	         SIGNAL( selectionChanged (const QItemSelection&, const QItemSelection&) ),
 	         SLOT( setAircraft() )
 	       );
+		   
+	//** Connect txt_Filter to filter proxy
+	connect( ui_widget.txt_Filter,
+			 SIGNAL( textChanged (const QString&) ),
+			 SLOT ( on_txt_filter(const QString&) )
+		   );
 		   
 	//* other events
 	connect( ui_widget.btn_LoadModel,
@@ -392,3 +399,10 @@ void KFFOpt_aircraft::closeProcess( int code, QProcess::ExitStatus status )
 	}
 }
 
+//* Set filter on grid
+void KFFOpt_aircraft::on_txt_filter( const QString& txt)
+{
+		//QRegExp *reggie = new QRegExp(txt); ## TODO case insensitive eg 74 ing = 747 Boeing === description
+		pmodel_Aircraft->setFilterRegExp(txt);
+		pmodel_Aircraft->setFilterKeyColumn(1);
+}

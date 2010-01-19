@@ -100,6 +100,8 @@ private slots:
 	void readError();
 	void closeProcess(int, QProcess::ExitStatus);
 
+	void on_txt_filter( const QString& txt);
+	
 signals:
 	void settingsChanged();
 };
