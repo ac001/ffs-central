@@ -257,6 +257,7 @@ void KFFOpt_aircraft::getAircraft()
 	QDir dir, aircraftdir;
 	KFFAircraftData data;
 
+	return;  // ~~~ Sniffing for command line #####################
 	/*dirname = Settings::fg_root();
 	dirname.append( "/Aircraft/" );
 	dir.cd( dirname );

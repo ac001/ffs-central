@@ -26,6 +26,7 @@
  *   GNU General Public License for more details.                            *
  *****************************************************************************/
 
+
 #include "opt_airport.h"
 #include "settings.h"
 #include "shared.h"
@@ -773,6 +774,8 @@ void ReadingThread::run()
 	double length, width;
 	double longitude, latitude, altitude, declinaison, radial;
 
+	emit ( finished() );
+	return;  /// Sniffing out loading ######################
 	buffer = Settings::fg_root() + "/Airports/apt.dat.gz";
 	file = KFilterDev::deviceForFile ( buffer );
 
