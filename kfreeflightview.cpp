@@ -68,6 +68,9 @@ void KFreeFlightView::init()
 
 	m_atlasWithFg = false;
 
+	//***************************************************************************
+	//*** Setup UI
+	//***************************************************************************
 	//** FFS - Create our own Stacked Widget in c++ - do away with UI
 	//ui_kffbase.setupUi( this );
 	//wSplitter = new QSplitter(this);
@@ -79,6 +82,8 @@ void KFreeFlightView::init()
 	//* Right Widget had vertical layout
 	QWidget* rWidget = new QWidget(this);
 	QVBoxLayout* vBox = new QVBoxLayout();
+	vBox->setContentsMargins(0, 0, 0, 0);
+	vBox->setSpacing(0);
 	rWidget->setLayout(vBox);
 	
 	//* Page Selector widget is a tree
@@ -93,7 +98,7 @@ void KFreeFlightView::init()
 	
 	wLaunchButton = new QPushButton(this);
 	vBox->addWidget(wLaunchButton, 1);
-	
+	//***************************************************************************
 	
 	m_oldFG_ROOT = Settings::fg_root();
 
