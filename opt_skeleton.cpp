@@ -29,11 +29,13 @@
 #include "opt_skeleton.h"
 
 #include <QDebug>
+#include <QtCore/QString>
 
 KFFOpt_skeleton::KFFOpt_skeleton( QWidget *parent )
 		: QWidget( parent )
 {
 	m_output = 0;
+	//QString* wHeaderStyleString = new QString("color: red; text-align: left; font-size: 20pt; background-color: white;");
 }
 
 KFFOpt_skeleton::~KFFOpt_skeleton()
@@ -60,5 +62,6 @@ void KFFOpt_skeleton::setOutput(KFFWin_messages* output)
 {
 	m_output = output;
 }
+
 
 

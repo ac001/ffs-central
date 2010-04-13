@@ -89,12 +89,10 @@ void KFreeFlightView::init()
 	pageSelector->setAlternatingRowColors(true);
 	pageSelector->setStyleSheet("font-size: 14pt;");
 	pageSelector->header()->setStretchLastSection(true);
-	vBox->addWidget(pageSelector);
+	vBox->addWidget(pageSelector, 50);
 	
 	wLaunchButton = new QPushButton(this);
-	vBox->addWidget(wLaunchButton);
-	//QVBoxLayout vBox = new QBVoxLayout(this);
-	
+	vBox->addWidget(wLaunchButton, 1);
 	
 	
 	m_oldFG_ROOT = Settings::fg_root();

@@ -20,14 +20,14 @@
    <string>General</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="0">
+   <item row="1" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
       <string>Common options</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
+   <item row="2" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -203,14 +203,14 @@
      </item>
     </layout>
    </item>
-   <item row="6" column="0">
+   <item row="5" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
       <string>Advanced options</string>
      </property>
     </widget>
    </item>
-   <item row="8" column="0">
+   <item row="7" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -344,7 +344,7 @@ By default the access is http://localhost:5500 but can be overwrite it in the ne
      </item>
     </layout>
    </item>
-   <item row="11" column="0">
+   <item row="10" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer name="horizontalSpacer_6">
@@ -408,7 +408,7 @@ By default the access is http://localhost:5500 but can be overwrite it in the ne
      </item>
     </layout>
    </item>
-   <item row="4" column="0">
+   <item row="3" column="0">
     <spacer name="verticalSpacer_5">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -424,7 +424,7 @@ By default the access is http://localhost:5500 but can be overwrite it in the ne
      </property>
     </spacer>
    </item>
-   <item row="10" column="0">
+   <item row="9" column="0">
     <spacer name="verticalSpacer_6">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -440,14 +440,14 @@ By default the access is http://localhost:5500 but can be overwrite it in the ne
      </property>
     </spacer>
    </item>
-   <item row="5" column="0">
+   <item row="4" column="0">
     <widget class="Line" name="line">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>
-   <item row="9" column="0">
+   <item row="8" column="0">
     <widget class="Line" name="line_2">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -455,7 +455,7 @@ By default the access is http://localhost:5500 but can be overwrite it in the ne
     </widget>
    </item>
    <item row="0" column="0">
-    <widget class="QLabel" name="label_3">
+    <widget class="QLabel" name="headerLabel">
      <property name="font">
       <font>
        <weight>75</weight>
@@ -467,13 +467,6 @@ By default the access is http://localhost:5500 but can be overwrite it in the ne
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="Line" name="line_3">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
      </property>
     </widget>
    </item>

@@ -47,6 +47,8 @@ protected:
 	~KFFOpt_skeleton();
 
 	KFFWin_messages* m_output;
+	
+	//QString wHeaderStyleString;
 
 public slots:
 	virtual void saveSettings();
