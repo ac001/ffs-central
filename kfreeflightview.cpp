@@ -114,72 +114,72 @@ void KFreeFlightView::init()
 
 	KFFOpt_common* common = new KFFOpt_common( 0 );
 	wStackedWidget->insertWidget( id,  common );
-	pageSelector->addTopLevelItem(  new QTreeWidgetItem(  QStringList(i18n( "Common" )) ) );
+	pageSelector->insertTopLevelItem( idx++,   new QTreeWidgetItem(  QStringList(i18n( "Common" )) ) );
 	m_sonWidgets.insert( "common", common );
 
 	KFFOpt_rendering* rendering = new KFFOpt_rendering( 0 );
 	wStackedWidget->insertWidget( id, rendering );
-	pageSelector->addTopLevelItem(  new QTreeWidgetItem(  QStringList(i18n( "Rendering" )) ) );
+	pageSelector->insertTopLevelItem( idx++,   new QTreeWidgetItem(  QStringList(i18n( "Rendering" )) ) );
 	m_sonWidgets.insert( "rendering", rendering );
 
 	KFFOpt_airport* airport = new KFFOpt_airport( 0 );
 	wStackedWidget->insertWidget( id, airport );
-	pageSelector->addTopLevelItem(  new QTreeWidgetItem(  QStringList(i18n( "Airport" )) ) );
+	pageSelector->insertTopLevelItem( idx++,   new QTreeWidgetItem(  QStringList(i18n( "Airport" )) ) );
 	m_sonWidgets.insert( "airport", airport );
 
 	KFFOpt_carrier* carrier = new KFFOpt_carrier( 0 );
 	wStackedWidget->insertWidget( id, carrier );
-	pageSelector->addTopLevelItem(  new QTreeWidgetItem(  QStringList(i18n( "Carrier" )) ) );
+	pageSelector->insertTopLevelItem( idx++,   new QTreeWidgetItem(  QStringList(i18n( "Carrier" )) ) );
 	m_sonWidgets.insert( "carrier", carrier );
 
 	KFFOpt_aircraft* aircraft = new KFFOpt_aircraft( 0 );
 	wStackedWidget->insertWidget( id, aircraft );
-	pageSelector->addTopLevelItem(  new QTreeWidgetItem(  QStringList(i18n( "Aircraft" )) ) );
+	pageSelector->insertTopLevelItem( idx++,   new QTreeWidgetItem(  QStringList(i18n( "Aircraft" )) ) );
 	m_sonWidgets.insert( "aircraft", aircraft );
 
 	KFFOpt_position* position = new KFFOpt_position( 0 );
 	wStackedWidget->insertWidget( id, position );
-	pageSelector->addTopLevelItem(  new QTreeWidgetItem(  QStringList(i18n( "Position" )) ) );
+	pageSelector->insertTopLevelItem( idx++,   new QTreeWidgetItem(  QStringList(i18n( "Position" )) ) );
 	m_sonWidgets.insert( "position", position );
 
 	KFFOpt_datetime* datetime = new KFFOpt_datetime( 0 );
 	wStackedWidget->insertWidget( id, datetime );
-	pageSelector->addTopLevelItem(  new QTreeWidgetItem(  QStringList(i18n( "Date Time" )) ) );
+	pageSelector->insertTopLevelItem( idx++,   new QTreeWidgetItem(  QStringList(i18n( "Date Time" )) ) );
 	m_sonWidgets.insert( "datetime", datetime );
 
 	KFFOpt_weather* weather = new KFFOpt_weather( 0 );
 	wStackedWidget->insertWidget( id, weather );
-	pageSelector->addTopLevelItem(  new QTreeWidgetItem(  QStringList(i18n( "Weather" )) ) );
+	pageSelector->insertTopLevelItem( idx++,   new QTreeWidgetItem(  QStringList(i18n( "Weather" )) ) );
 	m_sonWidgets.insert( "weather", weather );
 
 	KFFOpt_flightplan* flightplan = new KFFOpt_flightplan( 0 );
 	wStackedWidget->insertWidget( id, flightplan );
-	pageSelector->addTopLevelItem(  new QTreeWidgetItem(  QStringList(i18n( "Flight Plan" )) ) );
+	pageSelector->insertTopLevelItem( idx++,   new QTreeWidgetItem(  QStringList(i18n( "Flight Plan" )) ) );
 	m_sonWidgets.insert( "flightplan", flightplan );
 
 	KFFOpt_network* network = new KFFOpt_network( 0 );
 	wStackedWidget->insertWidget( id, network );
-	pageSelector->addTopLevelItem(  new QTreeWidgetItem(  QStringList(i18n( "Network" )) ) );
+	pageSelector->insertTopLevelItem( idx++,   new QTreeWidgetItem(  QStringList(i18n( "Network" )) ) );
 	m_sonWidgets.insert( "network", network );
 
 	KFFOpt_radio* radio = new KFFOpt_radio( 0 );
 	wStackedWidget->insertWidget( id, radio );
-	pageSelector->addTopLevelItem(  new QTreeWidgetItem(  QStringList(i18n( "NAV and COM")) ) );
+	pageSelector->insertTopLevelItem( idx++,   new QTreeWidgetItem(  QStringList(i18n( "NAV and COM")) ) );
 	m_sonWidgets.insert( "radio", radio );
 
 	KFFOpt_scenery* scenery = new KFFOpt_scenery( 0 );
 	wStackedWidget->insertWidget( id, scenery );
-	pageSelector->addTopLevelItem(  new QTreeWidgetItem(  QStringList(i18n( "Scenarii")) ) );
+	pageSelector->insertTopLevelItem( idx++,   new QTreeWidgetItem(  QStringList(i18n( "Scenarii")) ) );
 	m_sonWidgets.insert( "scenery", scenery );
 
 	KFFOpt_property* property = new KFFOpt_property( 0 );
 	wStackedWidget->insertWidget( id, property );
-	pageSelector->addTopLevelItem(  new QTreeWidgetItem(  QStringList(i18n( "Property" )) ) );
+	pageSelector->insertTopLevelItem( idx++,   new QTreeWidgetItem(  QStringList(i18n( "Property" )) ) );
 	m_sonWidgets.insert( "property", property );
 
 	KFFOpt_othersopt* othersopt = new KFFOpt_othersopt( 0 );
 	wStackedWidget->insertWidget( id, othersopt );
-	pageSelector->addTopLevelItem(  new QTreeWidgetItem(  QStringList(i18n( "Personnal" )) ) );
+	pageSelector->insertTopLevelItem( idx++,   new QTreeWidgetItem(  QStringList(i18n( "Personnal" )) ) );
 	m_sonWidgets.insert( "othersopt", othersopt );
 
 	wStackedWidget->setCurrentIndex( 0 );
