@@ -83,6 +83,12 @@ void KFreeFlightView::init()
 	
 	//* Page Selector widget is a tree
 	pageSelector = new QTreeWidget(this);
+	pageSelector->setRootIsDecorated(false);
+	pageSelector->header()->hide();
+	pageSelector->setUniformRowHeights(true);
+	pageSelector->setAlternatingRowColors(true);
+	pageSelector->setStyleSheet("font-size: 14pt;");
+	pageSelector->header()->setStretchLastSection(true);
 	vBox->addWidget(pageSelector);
 	
 	wLaunchButton = new QPushButton(this);
@@ -210,9 +216,8 @@ void KFreeFlightView::init()
 	       );
 
 	connect( pageSelector,
-	         SIGNAL( currentRowChanged( int ) ),
-	         wStackedWidget,
-	         SLOT( setCurrentIndex( int ) )
+	         SIGNAL( itemClicked( QTreeWidgetItem*,  int ) ),
+	         SLOT( wSetStack( QTreeWidgetItem*,  int ) )
 	       );
 
 	connect( wLaunchButton,
@@ -253,6 +258,11 @@ void KFreeFlightView::init()
 KFreeFlightView::~KFreeFlightView()
 {
 	save();
+}
+
+void KFreeFlightView::wSetStack(QTreeWidgetItem* item,  int)
+{
+		wStackedWidget->setCurrentIndex( pageSelector->indexOfTopLevelItem( item ) );
 }
 
 void KFreeFlightView::load( bool loadAirport, bool firstTime )

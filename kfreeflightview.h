@@ -149,6 +149,7 @@ private slots:
 	void atlasReadData();
 	void atlasReadError();
 	void atlasCloseProcess( int, QProcess::ExitStatus );
+	void wSetStack(QTreeWidgetItem*,  int);
 };
 
 #endif // KFREEFLIGHTVIEW_H
