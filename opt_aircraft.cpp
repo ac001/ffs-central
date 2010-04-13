@@ -37,6 +37,10 @@
 #include <QDir>
 #include <QStringList>
 
+#include <QtCore/QModelIndex>
+#include <QtGui/QStandardItem>
+
+
 #include <QMessageBox>
 #include <kfiledialog.h>
 
@@ -184,6 +188,11 @@ bool KFFOpt_aircraft::getOptions( QStringList & list )
 		QMessageBox::critical( this, "TODO - was sorry() ?", i18n( "No aircraft selected" ) );
 	}
 	//return;
+	QModelIndex idx = pmodel_Aircraft->mapToSource(ui_widget.tree_Aircraft->selectionModel()->currentIndex());
+	//qDebug() << ui_widget.tree_Aircraft->selectionModel()->currentIndex();
+	//QStandardItem item = model_Aircraft->item( idx.row(), 0);
+	qDebug() << model_Aircraft->item( idx.row(), 0)->text();
+	list << "--aircraft=" + model_Aircraft->item( idx.row(), 0)->text();
 	//list << "--aircraft=" + ui_widget.combo_Aircraft->currentText().section( ' ', 0, 0 );
 
 	if ( ui_widget.kcfg_aircraftFreeze->isChecked() )
