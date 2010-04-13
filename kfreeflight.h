@@ -39,6 +39,9 @@
 #include "pref_page4.h"
 #include "pref_page5.h"
 
+#include <QtGui/QTabWidget>
+#include <QtWebKit/QWebView>
+
 class KFreeFlightView;
 class KPrinter;
 class KToggleAction;
@@ -93,6 +96,9 @@ private:
     KToggleAction* m_toolbarAction;
 	KToggleAction* m_statusbarAction;
 	KSplashScreen* m_splash;
+	
+	QTabWidget* centralTabsWidget;
+	QWebView* webBrowser;
 };
 
 #endif // _KFREEFLIGHT_H_

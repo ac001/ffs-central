@@ -61,6 +61,10 @@ int main( int argc, char **argv )
 	                    ki18n( "Project manager and main developer" ),
 	                    "didier.fabert@gmail.com" );
 
+	m_about->addAuthor( ki18n( "Peter Morgan" ),
+	                    ki18n( "Hacker for FreeFlightSim.org" ),
+	                    "pedromorgan@gmail.com" );
+						
 	m_about->addCredit( ki18n( "Gerard Robin" ),
 	                    ki18n( "Main Beta testeur and 3D modeler" ),
 	                    "ghrobin@laposte.net",

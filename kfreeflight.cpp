@@ -37,7 +37,13 @@
 #include <kconfigdialog.h>
 #include <kstatusbar.h>
 
+#include <QtCore/QString>
+#include <QtCore/QUrl>
 #include <QtGui/QAction>
+#include <QtGui/QTabWidget>
+
+
+//TODO - ffs nuks kde dependancy
 #include <kactioncollection.h>
 #include <kstandardaction.h>
 #include <kstandarddirs.h>
@@ -53,6 +59,7 @@ KFreeFlight::KFreeFlight()
 	QPixmap pixmap;
 	QString buffer;
 
+	//TODO ffs splash and non resource, also progress in splash
 	buffer = stdDir.findResource( "data", "kfreeflight/splash.jpeg" );
 
 	pixmap.load( buffer, "JPEG" );
@@ -68,9 +75,22 @@ KFreeFlight::KFreeFlight()
 	// accept dnd
 	setAcceptDrops( true );
 
-	// tell the KXmlGuiWindow that this is indeed the main widget
-	setCentralWidget( m_view );
+	//** Create central Tabs Widget
+	centralTabsWidget = new QTabWidget(this);
 
+	// tell the KXmlGuiWindow that this is indeed the main widget
+	//setCentralWidget( m_view );
+	setCentralWidget( centralTabsWidget );
+
+	
+	//** Insert Launcher in tab
+	centralTabsWidget->addTab( m_view, QString("Launcher"));
+
+	//** Create web browser in Tab
+	webBrowser = new QWebView(this);
+	centralTabsWidget->addTab( webBrowser, QString("Browser"));
+	webBrowser->load(QUrl("http://freeflightsim.appspot.com"));
+	
 	// then, setup our actions
 	setupActions();
 
