@@ -30,11 +30,15 @@
 #define KFREEFLIGHTVIEW_H
 
 #include <QtGui/QWidget>
-#include <QSplitter>
+#include <QtGui/QSplitter>
+#include <QtGui/QStackedWidget>
+//#include <QtGui/QWidget>
+//#include <QtGui/QVBoxLayout>
+#include <QtGui/QPushButton>
 
 #include <KProcess>
 
-#include "ui_kfreeflightview_base.h"
+//#include "ui_kfreeflightview_base.h"
 #include "opt_skeleton.h"
 #include "win_messages.h"
 #include "win_calculator.h"
@@ -58,7 +62,7 @@ class KUrl;
  * @version 1.0
  */
 
-class KFreeFlightView : public QSplitter, public Ui::KFreeFlightview_base
+class KFreeFlightView : public QSplitter /* , public Ui::KFreeFlightview_base */
 {
 	Q_OBJECT
 
@@ -95,7 +99,7 @@ public slots:
 	virtual void load( bool loadAirport = true, bool firstTime = false );
 
 private:
-	Ui::KFreeFlightview_base ui_kffbase;
+	//Ui::KFreeFlightview_base ui_kffbase;
 	KFFWin_messages* m_output;
 	KFFWin_Calculator* m_calc;
 	KFFWin_metarView* m_metarView;
@@ -114,6 +118,10 @@ private:
 	bool m_atlasWithFg;
 	int m_flag;
 	QString m_profile;
+	
+	QStackedWidget* wStackedWidget;
+	QTreeWidget* pageSelector;
+	QPushButton* wLaunchButton;
 
 signals:
 	/**
