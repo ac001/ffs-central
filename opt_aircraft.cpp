@@ -30,10 +30,10 @@
 #include "settings.h"
 #include "win_messages.h"
 
-#include <QDomDocument>
-#include <QDomElement>
-#include <QDomNode>
-#include <QDomElement>
+//#include <QDomDocument>
+//#include <QDomElement>
+//#include <QDomNode>
+//#include <QDomElement>
 #include <QDir>
 #include <QStringList>
 
@@ -136,6 +136,7 @@ void KFFOpt_aircraft::reload()
 
 void KFFOpt_aircraft::setAircraft()
 {
+	//TODO ffs needs to implement pane
 	QString buffer;
 	QString *aircraft = new QString("aircraft");
 	buffer = Settings::fg_root();
@@ -258,7 +259,9 @@ void KFFOpt_aircraft::getAircraft()
 	KFFAircraftData data;
 
 	return;  // ~~~ Sniffing for command line #####################
-	/*dirname = Settings::fg_root();
+	/*
+	This lot laoded the -set.xml and redundant for now
+	dirname = Settings::fg_root();
 	dirname.append( "/Aircraft/" );
 	dir.cd( dirname );
 
