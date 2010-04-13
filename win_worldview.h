@@ -50,7 +50,7 @@ public slots:
 	virtual void center( qreal, qreal, bool );
 	
 private:
-	Marble::MarbleWidget* m_marble;
+	//Marble::MarbleWidget* m_marble;
 };
 
 #endif // WIN_WORLDVIEW_H

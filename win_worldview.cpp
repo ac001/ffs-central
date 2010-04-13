@@ -32,25 +32,29 @@
 #include <kmessagebox.h>
 #include <klocale.h>
 
+//# TODO -- pete@ffs - this needs to be a google map. Marble is not on Wndows or MAC ;-(
+
 KFFWin_WorldView::KFFWin_WorldView( QWidget *parent )
 	: QWidget( parent )
 {
 	
 	setMinimumSize( 700, 600 );
 	setWindowTitle( i18n( "KFreeFlight - Show airport location with Marble" ) );
-	m_marble = new Marble::MarbleWidget( this );
-	m_marble->setGeometry(0, 0, 700, 600 );
-	loadSettings();
+	//* nuked by pete@ffs
+	//m_marble = new Marble::MarbleWidget( this );
+	//m_marble->setGeometry(0, 0, 700, 600 );
+	//loadSettings();
 }
 
 
 KFFWin_WorldView::~KFFWin_WorldView()
 {
-	delete m_marble;
+	//delete m_marble;
 }
 
 void KFFWin_WorldView::loadSettings()
 {
+	return; // Dead by pete@ffs
 	QString buffer = "earth/";
 	
 	switch ( Settings::marble_theme() )
@@ -72,12 +76,13 @@ void KFFWin_WorldView::loadSettings()
 		}
 	}
 	buffer.append( ".dgml" );
-	m_marble->setMapThemeId( buffer );
+	//m_marble->setMapThemeId( buffer );
 }
 
 void KFFWin_WorldView::center( qreal longitude, qreal latitude, bool animated)
 {
-	m_marble->centerOn( longitude, latitude, animated );
-	m_marble->update();
+	//* nuked pete@ffs
+	//m_marble->centerOn( longitude, latitude, animated );
+	//m_marble->update();
 	show();
 }
