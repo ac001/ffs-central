@@ -29,7 +29,7 @@
 #ifndef WIN_WORLDVIEW_H
 #define WIN_WORLDVIEW_H
 
-#include <MarbleWidget.h>
+//#include <MarbleWidget.h>
 #include <QWidget>
 
 /**
