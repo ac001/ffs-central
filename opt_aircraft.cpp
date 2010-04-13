@@ -37,7 +37,7 @@
 #include <QDir>
 #include <QStringList>
 
-#include <kmessagebox.h>
+#include <QMessageBox>
 #include <kfiledialog.h>
 
 KFFOpt_aircraft::KFFOpt_aircraft( QWidget *parent )
@@ -144,7 +144,7 @@ void KFFOpt_aircraft::reloadList( bool showMessage )
 
 	if ( showMessage )
 	{
-		KMessageBox::information( this, i18n( "Reloaded" ) );
+		QMessageBox::information( this, "TODO-TITLE", i18n( "Reloaded" ) );
 	}
 }
 
@@ -177,7 +177,7 @@ bool KFFOpt_aircraft::getOptions( QStringList & list )
 {
 	if ( !ui_widget.tree_Aircraft->selectionModel()->hasSelection() )
 	{
-		KMessageBox::sorry( this, i18n( "No aircraft selected" ) );
+		QMessageBox::critical( this, "TODO - was sorry() ?", i18n( "No aircraft selected" ) );
 	}
 	//return;
 	//list << "--aircraft=" + ui_widget.combo_Aircraft->currentText().section( ' ', 0, 0 );

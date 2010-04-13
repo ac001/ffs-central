@@ -37,7 +37,7 @@
 #include <kconfigdialog.h>
 #include <kstatusbar.h>
 
-#include <kaction.h>
+#include <QtGui/QAction>
 #include <kactioncollection.h>
 #include <kstandardaction.h>
 #include <kstandarddirs.h>
@@ -118,11 +118,11 @@ void KFreeFlight::setupActions()
 	KStandardAction::preferences( this, SLOT( optionsPreferences() ), actionCollection() );
 
 	// custom menu and menu item - the slot is in the class KFreeFlightView
-	KAction *output = new KAction( KIcon( "utilities-terminal" ), i18n( "Output" ), this );
+	QAction *output = new QAction( KIcon( "utilities-terminal" ), i18n( "Output" ), this );
 	actionCollection()->addAction( QLatin1String( "output" ), output );
 	connect( output, SIGNAL( triggered( bool ) ), m_view, SLOT( showOutput() ) );
 
-	KAction *calc = new KAction( KIcon( "accessories-calculator" ), i18n( "Calculator" ), this );
+	QAction *calc = new QAction( KIcon( "accessories-calculator" ), i18n( "Calculator" ), this );
 	actionCollection()->addAction( QLatin1String( "calc" ), calc );
 	connect( calc, SIGNAL( triggered( bool ) ), m_view, SLOT( showCalc() ) );
 }

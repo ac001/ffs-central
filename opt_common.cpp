@@ -26,11 +26,14 @@
  *   GNU General Public License for more details.                            *
  *****************************************************************************/
 
+//** FreeFlightSim.org = Change Log
+//* pedro - kmessagebox = QMessageBox
+
 #include "opt_common.h"
 #include "settings.h"
 
 #include <klocale.h>
-#include <kmessagebox.h>
+#include <QMessageBox>
 
 
 KFFOpt_common::KFFOpt_common( QWidget *parent )
@@ -133,11 +136,11 @@ bool KFFOpt_common::getOptions( QStringList & list )
 		buffer = i18n( "No host or port configured, the http server will not be launched\n"
 		               "and the NMEA protocol will not be actived!" );
 
-		switch ( KMessageBox::warningYesNo( this,
+		switch ( QMessageBox::warning( this, "WARNING _ NO HOST", 
 		                                    buffer + "\n" + tr2i18n( "Continue ?" ) ) )
 		{
 
-			case KMessageBox::Yes:
+			case QMessageBox::Yes:
 			{
 				break;
 			}
@@ -156,11 +159,11 @@ bool KFFOpt_common::getOptions( QStringList & list )
 			buffer = i18n( "No host or port configured, the http server will not be launched\n"
 			               "and the NMEA protocol will not be actived!" );
 
-			switch ( KMessageBox::warningYesNo( this,
+			switch ( QMessageBox::warning( this, "TODO WARNING", 
 			                                    buffer + "\n" + tr2i18n( "Continue ?" ) ) )
 			{
 
-				case KMessageBox::Yes:
+				case QMessageBox::Yes:
 				{
 					break;
 				}
@@ -233,7 +236,7 @@ void KFFOpt_common::checkNMEASlot()
 {
 	if ( ( ui_widget.kcfg_common_AtlasToo->isChecked() ) && ( !ui_widget.kcfg_common_NMEA->isChecked() ) )
 	{
-		KMessageBox::information( this,
+		QMessageBox::information( this, "TODO- INFO TITLE", 
 		                          tr2i18n( "NMEA protocol must be checked\nThis option will be automatically added" ) );
 		ui_widget.kcfg_common_NMEA->setChecked( true );
 	}
