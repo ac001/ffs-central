@@ -39,10 +39,12 @@
 KFFOpt_common::KFFOpt_common( QWidget *parent )
 		: KFFOpt_skeleton( parent )
 {
-	QString img = Settings::data_dir() + "/accueil.svg";
+	
 
 	ui_widget.setupUi ( this );
-	ui_widget.widgetLogo->load ( img );
+	//* ffs - removing svn image 
+	//QString img = Settings::data_dir() + "/accueil.svg";
+	//ui_widget.widgetLogo->load ( img );
 
 	connect ( ui_widget.btn_stopTerrasync,
 	          SIGNAL( clicked() ),

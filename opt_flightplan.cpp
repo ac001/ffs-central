@@ -32,10 +32,12 @@
 KFFOpt_flightplan::KFFOpt_flightplan( QWidget *parent )
 		: KFFOpt_skeleton( parent )
 {
-	QString img = Settings::data_dir() + "/world.svg";
+	
 
 	ui_widget.setupUi( this );
-	ui_widget.widgetLogo->load( img );
+	//* ffs - removing svg image
+	//QString img = Settings::data_dir() + "/world.svg";
+	//ui_widget.widgetLogo->load( img );
 
 	m_grp = new QButtonGroup( this );
 	m_grp->addButton( ui_widget.kcfg_WayPoint_none, 0 );
