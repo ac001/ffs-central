@@ -43,18 +43,19 @@
 KFFOpt_aircraft::KFFOpt_aircraft( QWidget *parent )
 		: KFFOpt_skeleton( parent )
 {
-	QString img = Settings::data_dir() + "/aircraft1.svg";
+	//QString img = Settings::data_dir() + "/aircraft1.svg"; nuked pete@ffs
 
 	ui_widget.setupUi( this );
-	ui_widget.widgetLogo->load( img );
+	//ui_widget.widgetLogo->load( img );
 
 	m_process = 0;
+	/* nuked pete@ffs
 	m_render = new KFFWidget_Render( ui_widget.widget_scene );
 	m_render->initWidget();
 	m_render->setSize( ui_widget.widget_scene->width(),
 	                   ui_widget.widget_scene->height()
 	                 );
-
+	*/
 	m_url = KUrl::fromPath ( Settings::fg_root() );
 	
 	connect( ui_widget.btn_Reload,
@@ -99,11 +100,12 @@ KFFOpt_aircraft::KFFOpt_aircraft( QWidget *parent )
 	         SIGNAL( clicked() ),
 	         SLOT( loadModel() )
 	       );
-	connect( this,
+	/* connect( this,
 	         SIGNAL( settingsChanged() ),
 	         m_render,
 	         SLOT( changeSettings() )
 	       );
+	*/
 }
 
 KFFOpt_aircraft::~KFFOpt_aircraft()
@@ -116,9 +118,11 @@ KFFOpt_aircraft::~KFFOpt_aircraft()
 
 void KFFOpt_aircraft::resizeEvent( QResizeEvent * event )
 {
+	/* nuked pete@ffs 
 	m_render->setSize( ui_widget.widget_scene->width(),
 	                   ui_widget.widget_scene->height()
 	                 );
+	*/
 }
 
 void KFFOpt_aircraft::reload()
@@ -226,11 +230,11 @@ bool KFFOpt_aircraft::getOptions( QStringList & list )
 void KFFOpt_aircraft::loadModel()
 {
 	QString buffer;
-
+	return; //TODO dead for now - pete@ff
 	buffer = KFileDialog::getOpenFileName ( m_url, QString(), this );
 	if ( !buffer.isEmpty() )
 	{
-		m_render->loadModel( buffer );
+		//m_render->loadModel( buffer );
 	}
 	buffer.truncate( buffer.lastIndexOf("/") );
 	m_url = KUrl::fromPath ( buffer );

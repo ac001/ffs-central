@@ -31,7 +31,7 @@
 
 #include "ui_option_aircraft_base.h"
 #include "opt_skeleton.h"
-#include "widget_render.h"
+// #include "widget_render.h"
 
 //#include "widget_render.h" ? uhh twice
 
@@ -78,7 +78,7 @@ protected:
 private:
 	Ui::opt_aircraft ui_widget;
 	KProcess* m_process;
-	KFFWidget_Render *m_render;
+	//KFFWidget_Render *m_render;
 	QString m_input;
 	QString m_error;
 	KUrl m_url;

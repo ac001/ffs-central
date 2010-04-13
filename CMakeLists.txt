@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.6.0 FATAL_ERROR)
 project(kfreeflight)
 include(version.cmake)
-option( WITH_OSG_RENDERING "Activate Aircraft 3D rendering with OpenSceneGraph" ON )
+#option( WITH_OSG_RENDERING "Activate Aircraft 3D rendering with OpenSceneGraph" ON )
 
 set(CMAKE_INSTALL_PREFIX "/usr/local")
 
@@ -35,16 +35,16 @@ find_package(Msgfmt REQUIRED)
 find_package(Gettext REQUIRED)
 SET(CMAKE_MODULE_PATH "${kfreeflight_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 
-if ( WITH_OSG_RENDERING )
-    set( WITH_OPENSCENEGRAPH_ENABLED TRUE )
-    find_package (OpenGL REQUIRED)
-    find_package(OpenSceneGraph REQUIRED COMPONENTS osgGA osgDB osgUtil osgViewer osgAnimation)
-    find_package (Plib REQUIRED)
-    #find_package (Simgear REQUIRED)
-    message(STATUS "3D rendering is active")
-else( WITH_OSG_RENDERING )
-    set(WITH_OPENSCENEGRAPH_ENABLED FALSE)
-endif( WITH_OSG_RENDERING )
+#if ( WITH_OSG_RENDERING )
+#    set( WITH_OPENSCENEGRAPH_ENABLED TRUE )
+#    find_package (OpenGL REQUIRED)
+#    find_package(OpenSceneGraph REQUIRED COMPONENTS osgGA osgDB osgUtil osgViewer osgAnimation)
+#    find_package (Plib REQUIRED)
+#    #find_package (Simgear REQUIRED)
+#    message(STATUS "3D rendering is active")
+#else( WITH_OSG_RENDERING )
+#    set(WITH_OPENSCENEGRAPH_ENABLED FALSE)
+#endif( WITH_OSG_RENDERING )
 
 configure_file(${kfreeflight_SOURCE_DIR}/config.h.cmake
                ${kfreeflight_BINARY_DIR}/config.h)
@@ -119,8 +119,8 @@ set(kfreeflight_SRCS
     metar.cpp
     metar.h
     sgcoremag.h
-    widget_render.cpp
-    widget_render.h
+    #widget_render.cpp
+    #widget_render.h
     shared.h
    )
 

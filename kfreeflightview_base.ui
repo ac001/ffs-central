@@ -28,7 +28,7 @@
   <widget class="QWidget" name="layoutWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="KListWidget" name="pageSelector">
+     <widget class="QListWidget" name="pageSelector">
       <property name="minimumSize">
        <size>
         <width>140</width>
@@ -58,12 +58,12 @@
       </property>
       <property name="gridSize">
        <size>
-        <width>100</width>
-        <height>60</height>
+        <width>200</width>
+        <height>30</height>
        </size>
       </property>
       <property name="viewMode">
-       <enum>QListView::IconMode</enum>
+       <enum>QListView::ListMode</enum>
       </property>
       <property name="modelColumn">
        <number>0</number>
@@ -136,11 +136,6 @@
   </widget>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>KListWidget</class>
-   <extends>QListWidget</extends>
-   <header>klistwidget.h</header>
-  </customwidget>
   <customwidget>
    <class>KPushButton</class>
    <extends>QPushButton</extends>
