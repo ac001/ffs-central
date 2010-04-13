@@ -32,10 +32,10 @@
 KFFOpt_position::KFFOpt_position( QWidget *parent )
 		: KFFOpt_skeleton( parent )
 {
-	QString img = Settings::data_dir() + "/aircraft2.svg";
+	//QString img = Settings::data_dir() + "/aircraft2.svg" ;  pete@ffs nuked image
 
 	ui_widget.setupUi ( this );
-	ui_widget.widgetLogo->load ( img );
+	//ui_widget.widgetLogo->load ( img );  pete@ffs nuked image
 
 	m_grp = new QButtonGroup( this );
 	m_grp->addButton( ui_widget.RB_Ground, 0 );

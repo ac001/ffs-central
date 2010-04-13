@@ -117,6 +117,7 @@ void KFFWin_metarView::download()
 	m_progress->progressBar()->setValue ( 0 );
 	m_progress->show();
 
+	//** Pete: this need to be a fileisWritable() check
 	icao = ui_widget.lineEdit_AirportID->text().toUpper();
 	m_file.setFileName ( "/tmp/" + icao + ".txt" );
 	if ( m_file.open ( QFile::ReadOnly ) )

@@ -42,10 +42,10 @@
 KFFOpt_carrier::KFFOpt_carrier( QWidget *parent )
 		: KFFOpt_skeleton( parent )
 {
-	QString img = Settings::data_dir() + "/carrier.svg";
+	//QString img = Settings::data_dir() + "/carrier.svg"; pete@ffs nuked image
 
 	ui_widget.setupUi ( this );
-	ui_widget.widgetLogo->load ( img );
+	//ui_widget.widgetLogo->load ( img ); pete@ffs nuked image
 
 	connect( ui_widget.btn_Reload,
 	         SIGNAL( clicked() ),

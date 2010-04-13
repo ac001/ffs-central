@@ -32,12 +32,13 @@
 KFFOpt_datetime::KFFOpt_datetime( QWidget *parent )
 		: KFFOpt_skeleton( parent )
 {
-	QString img = Settings::data_dir() + "/clouds.svg";
-	QString img2 = Settings::data_dir() + "/x29.svg";
+	//Removed by pete@ffs
+	//QString img = Settings::data_dir() + "/clouds.svg";
+	//QString img2 = Settings::data_dir() + "/x29.svg";
 
 	ui_widget.setupUi ( this );
-	ui_widget.widgetLogo->load ( img );
-	ui_widget.widgetLogo2->load ( img2 );
+	//ui_widget.widgetLogo->load ( img ); nuked by pete@ffs
+	//ui_widget.widgetLogo2->load ( img2 );
 
 	m_grp = new QButtonGroup( this );
 	m_grp->addButton( ui_widget.RB_Real_Time, 0 );

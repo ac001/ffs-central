@@ -33,10 +33,10 @@
 KFFOpt_rendering::KFFOpt_rendering( QWidget *parent )
 		: KFFOpt_skeleton( parent )
 {
-	QString img = Settings::data_dir() + "/clouds.svg";
+	//QString img = Settings::data_dir() + "/clouds.svg"; pete@ffs nuked image
 
 	ui_widget.setupUi ( this );
-	ui_widget.widgetLogo->load ( img );
+	//ui_widget.widgetLogo->load ( img ); pete@ffs nuked image
 	
 	m_shadingGrp = new QButtonGroup( this );
 	m_shadingGrp->addButton( ui_widget.RB_Shading_flat, 0 );
