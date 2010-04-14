@@ -48,6 +48,8 @@ KFFOpt_scenery::KFFOpt_scenery( QWidget *parent )
 	KIconLoader loader;
 	
 	ui_widget.setupUi ( this );
+	wSetupHeader(ui_widget.wHeaderLabel);
+	
 
 	m_aircraftIcon = loader.loadIcon( "kffplane", KIconLoader::Small );
 	m_weatherIcon = loader.loadIcon( "kffweather", KIconLoader::Small );

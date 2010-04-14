@@ -37,7 +37,8 @@ KFFOpt_datetime::KFFOpt_datetime( QWidget *parent )
 	//QString img2 = Settings::data_dir() + "/x29.svg";
 
 	ui_widget.setupUi ( this );
-	ui_widget.wHeaderLabel->setStyleSheet("color: red; text-align: left; font-size: 20pt; background-color: white;");
+	wSetupHeader(ui_widget.wHeaderLabel);
+	//ui_widget.wHeaderLabel->setStyleSheet("color: red; text-align: left; font-size: 20pt; background-color: white;");
 	//wSetupHeader();
 	//ui_widget.widgetLogo->load ( img ); nuked by pete@ffs
 	//ui_widget.widgetLogo2->load ( img2 );

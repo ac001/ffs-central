@@ -42,6 +42,8 @@ KFFOpt_common::KFFOpt_common( QWidget *parent )
 	
 
 	ui_widget.setupUi ( this );
+	wSetupHeader(ui_widget.wHeaderLabel);
+	//ui_widget.wHeaderLabel->setStyleSheet("color: red; text-align: left; font-size: 20pt; background-color: white;");
 	//* ffs - removing svn image 
 	//QString img = Settings::data_dir() + "/accueil.svg";
 	//ui_widget.widgetLogo->load ( img );

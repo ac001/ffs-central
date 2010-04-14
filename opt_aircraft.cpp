@@ -51,6 +51,7 @@ KFFOpt_aircraft::KFFOpt_aircraft( QWidget *parent )
 
 	ui_widget.setupUi( this );
 	//ui_widget.widgetLogo->load( img );
+	wSetupHeader(ui_widget.wHeaderLabel);
 
 	m_process = 0;
 	/* nuked pete@ffs

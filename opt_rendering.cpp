@@ -36,6 +36,7 @@ KFFOpt_rendering::KFFOpt_rendering( QWidget *parent )
 	//QString img = Settings::data_dir() + "/clouds.svg"; pete@ffs nuked image
 
 	ui_widget.setupUi ( this );
+	wSetupHeader(ui_widget.wHeaderLabel);
 	//ui_widget.widgetLogo->load ( img ); pete@ffs nuked image
 	
 	m_shadingGrp = new QButtonGroup( this );

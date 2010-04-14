@@ -29,7 +29,8 @@
 #ifndef OPT_SKELETON_H
 #define OPT_SKELETON_H
 
-#include <QWidget>
+#include <QtGui/QLabel>
+#include <QtCore/QString>
 
 /**
  * @author Didier Fabert <didier.fabert@gmail.com>
@@ -48,7 +49,8 @@ protected:
 
 	KFFWin_messages* m_output;
 	
-	//QString wHeaderStyleString;
+	//static const QString HEADER_STYLE;
+	void wSetupHeader(QLabel *);
 
 public slots:
 	virtual void saveSettings();

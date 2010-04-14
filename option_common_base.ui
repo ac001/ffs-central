@@ -455,7 +455,7 @@ By default the access is http://localhost:5500 but can be overwrite it in the ne
     </widget>
    </item>
    <item row="0" column="0">
-    <widget class="QLabel" name="headerLabel">
+    <widget class="QLabel" name="wHeaderLabel">
      <property name="font">
       <font>
        <weight>75</weight>

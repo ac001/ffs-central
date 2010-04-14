@@ -30,12 +30,14 @@
 
 #include <QDebug>
 #include <QtCore/QString>
+#include <QtGui/QLabel>
+#include <QtGui/QLayout>
 
 KFFOpt_skeleton::KFFOpt_skeleton( QWidget *parent )
 		: QWidget( parent )
 {
 	m_output = 0;
-	//QString* wHeaderStyleString = new QString("color: red; text-align: left; font-size: 20pt; background-color: white;");
+	//QString KFFOpt_skeleton::HEADER_STYLE("color: red; text-align: left; font-size: 20pt; background-color: white;");
 }
 
 KFFOpt_skeleton::~KFFOpt_skeleton()
@@ -64,4 +66,12 @@ void KFFOpt_skeleton::setOutput(KFFWin_messages* output)
 }
 
 
+
+void KFFOpt_skeleton::wSetupHeader(QLabel * headerLabel)
+{
+	headerLabel->setStyleSheet("background-color: white; border: 2px outset #dddddd; color: #000099; font-size: 20pt;");
+	headerLabel->setAlignment(Qt::AlignLeft);
+	headerLabel->parentWidget()->setContentsMargins(0,0,0,0);
+	headerLabel->parentWidget()->layout()->setSpacing(0);
+}
 

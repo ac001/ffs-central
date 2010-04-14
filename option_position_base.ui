@@ -21,7 +21,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
    <item row="0" column="0" colspan="3">
-    <widget class="QLabel" name="label_3">
+    <widget class="QLabel" name="wHeaderLabel">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
        <horstretch>0</horstretch>
@@ -42,14 +42,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="3">
-    <widget class="Line" name="line_3">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="2">
+   <item row="1" column="0" colspan="2">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string>Start position</string>
@@ -119,7 +112,7 @@
      </layout>
     </widget>
    </item>
-   <item row="2" column="2">
+   <item row="1" column="2">
     <widget class="QGroupBox" name="groupBox_option">
      <property name="title">
       <string>Options</string>
@@ -236,7 +229,7 @@
         <item>
          <widget class="KDoubleNumInput" name="kdn_longitude">
           <property name="minimum">
-           <double>-179.999999000000003</double>
+           <double>-180.000000000000000</double>
           </property>
           <property name="maximum">
            <double>180.000000000000000</double>
@@ -269,7 +262,7 @@
         <item>
          <widget class="KDoubleNumInput" name="kdn_latitude">
           <property name="minimum">
-           <double>-179.999999000000003</double>
+           <double>-180.000000000000000</double>
           </property>
           <property name="maximum">
            <double>180.000000000000000</double>
@@ -329,7 +322,7 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="0" colspan="3">
+   <item row="2" column="0" colspan="3">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -345,7 +338,7 @@
      </property>
     </spacer>
    </item>
-   <item row="4" column="0" colspan="3">
+   <item row="3" column="0" colspan="3">
     <widget class="Line" name="line">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -358,7 +351,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="0" colspan="3">
+   <item row="4" column="0" colspan="3">
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <spacer name="horizontalSpacer_6">

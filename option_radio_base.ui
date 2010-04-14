@@ -21,7 +21,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout_7">
    <item row="0" column="0">
-    <widget class="QLabel" name="label_3">
+    <widget class="QLabel" name="wHeaderLabel">
      <property name="font">
       <font>
        <weight>75</weight>
@@ -36,14 +36,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="Line" name="line">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
+   <item row="2" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_15">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -96,15 +89,15 @@
      <item>
       <widget class="QToolBox" name="toolBox2">
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="page1">
         <property name="geometry">
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>395</width>
-          <height>114</height>
+          <width>437</width>
+          <height>124</height>
          </rect>
         </property>
         <attribute name="label">
@@ -147,7 +140,7 @@
                 <double>108.000000000000000</double>
                </property>
                <property name="maximum">
-                <double>117.974999999999994</double>
+                <double>117.969999999999999</double>
                </property>
                <property name="decimals">
                 <number>3</number>
@@ -203,7 +196,7 @@
                 <double>108.000000000000000</double>
                </property>
                <property name="maximum">
-                <double>117.974999999999994</double>
+                <double>117.969999999999999</double>
                </property>
                <property name="decimals">
                 <number>3</number>
@@ -312,8 +305,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>395</width>
-          <height>114</height>
+          <width>189</width>
+          <height>105</height>
          </rect>
         </property>
         <attribute name="label">
@@ -356,7 +349,7 @@
                 <double>108.000000000000000</double>
                </property>
                <property name="maximum">
-                <double>117.974999999999994</double>
+                <double>117.969999999999999</double>
                </property>
                <property name="decimals">
                 <number>3</number>
@@ -412,7 +405,7 @@
                 <double>108.000000000000000</double>
                </property>
                <property name="maximum">
-                <double>117.974999999999994</double>
+                <double>117.969999999999999</double>
                </property>
                <property name="decimals">
                 <number>3</number>
@@ -518,8 +511,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>395</width>
-          <height>112</height>
+          <width>437</width>
+          <height>124</height>
          </rect>
         </property>
         <attribute name="label">
@@ -730,8 +723,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>410</width>
-          <height>82</height>
+          <width>223</width>
+          <height>39</height>
          </rect>
         </property>
         <attribute name="label">
@@ -846,8 +839,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>410</width>
-          <height>83</height>
+          <width>296</width>
+          <height>40</height>
          </rect>
         </property>
         <attribute name="label">
@@ -904,7 +897,7 @@
               <double>108.000000000000000</double>
              </property>
              <property name="maximum">
-              <double>117.974999999999994</double>
+              <double>117.969999999999999</double>
              </property>
              <property name="decimals">
               <number>3</number>
@@ -933,8 +926,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>410</width>
-          <height>93</height>
+          <width>189</width>
+          <height>74</height>
          </rect>
         </property>
         <attribute name="label">
@@ -977,7 +970,7 @@
                 <double>108.000000000000000</double>
                </property>
                <property name="maximum">
-                <double>499.975000000000023</double>
+                <double>499.980000000000018</double>
                </property>
                <property name="decimals">
                 <number>3</number>
@@ -1033,7 +1026,7 @@
                 <double>108.000000000000000</double>
                </property>
                <property name="maximum">
-                <double>499.975000000000023</double>
+                <double>499.980000000000018</double>
                </property>
                <property name="decimals">
                 <number>3</number>
@@ -1077,8 +1070,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>410</width>
-          <height>93</height>
+          <width>189</width>
+          <height>74</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1121,7 +1114,7 @@
                 <double>108.000000000000000</double>
                </property>
                <property name="maximum">
-                <double>499.975000000000023</double>
+                <double>499.980000000000018</double>
                </property>
                <property name="decimals">
                 <number>3</number>
@@ -1177,7 +1170,7 @@
                 <double>108.000000000000000</double>
                </property>
                <property name="maximum">
-                <double>499.975000000000023</double>
+                <double>499.980000000000018</double>
                </property>
                <property name="decimals">
                 <number>3</number>
@@ -1220,7 +1213,7 @@
      </item>
     </layout>
    </item>
-   <item row="4" column="0">
+   <item row="3" column="0">
     <widget class="QSvgWidget" name="widgetLogo" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -1248,7 +1241,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
+   <item row="1" column="0">
     <spacer name="verticalSpacer_9">
      <property name="orientation">
       <enum>Qt::Vertical</enum>

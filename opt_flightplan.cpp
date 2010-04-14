@@ -35,6 +35,7 @@ KFFOpt_flightplan::KFFOpt_flightplan( QWidget *parent )
 	
 
 	ui_widget.setupUi( this );
+	wSetupHeader(ui_widget.wHeaderLabel);
 	//* ffs - removing svg image
 	//QString img = Settings::data_dir() + "/world.svg";
 	//ui_widget.widgetLogo->load( img );

@@ -45,6 +45,7 @@ KFFOpt_carrier::KFFOpt_carrier( QWidget *parent )
 	//QString img = Settings::data_dir() + "/carrier.svg"; pete@ffs nuked image
 
 	ui_widget.setupUi ( this );
+	wSetupHeader(ui_widget.wHeaderLabel);
 	//ui_widget.widgetLogo->load ( img ); pete@ffs nuked image
 
 	connect( ui_widget.btn_Reload,

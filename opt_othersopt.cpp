@@ -40,6 +40,8 @@ KFFOpt_othersopt::KFFOpt_othersopt( QWidget *parent )
 		: KFFOpt_skeleton( parent )
 {
 	ui_widget.setupUi ( this );
+	wSetupHeader(ui_widget.wHeaderLabel);
+	
 	m_available = ui_widget.selector->availableListWidget();
 	m_selected = ui_widget.selector->selectedListWidget();
 	m_available->setContextMenuPolicy( Qt::CustomContextMenu );

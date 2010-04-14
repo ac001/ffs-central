@@ -45,6 +45,7 @@ KFFOpt_airport::KFFOpt_airport ( QWidget *parent )
 	KIconLoader loader;
 
 	ui_widget.setupUi ( this );
+	wSetupHeader(ui_widget.wHeaderLabel);
 
 	m_progress = 0;
 	m_metarView = 0;

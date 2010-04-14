@@ -74,9 +74,12 @@ void KFreeFlightView::init()
 	//** FFS - Create our own Stacked Widget in c++ - do away with UI
 	//ui_kffbase.setupUi( this );
 	//wSplitter = new QSplitter(this);
+	setContentsMargins(0, 0, 0, 0);
+	//setSpacing(0);
 	
 	//** Add stacket widget to left
 	wStackedWidget = new QStackedWidget(this);
+	wStackedWidget->setContentsMargins(0, 0, 0, 0);
 	addWidget(wStackedWidget);
 	
 	//* Right Widget had vertical layout
